@@ -19,6 +19,7 @@ document.getElementById('btn-reset-game').addEventListener('click', () => {
   localStorage.removeItem('dungeon_of_soul_save_v1');
   localStorage.removeItem('dungeon_of_soul_save_v1_recovery');
   meta = loadMeta();
+  stopBgm();
   playBgm('lobby');
   showScreen('lobby');
   renderLobbyAll();
