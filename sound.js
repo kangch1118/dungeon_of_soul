@@ -57,6 +57,7 @@ const BGM = {
 };
 let bgmAudio = null;
 let bgmKey = null;
+let pendingBgmKey = null;
 
 function bgmMasterVol() {
   return (typeof options !== 'undefined' && options.bgm != null ? options.bgm : 50) / 100;
@@ -71,14 +72,30 @@ function playBgm(key) {
     const audio = new Audio(def.src);
     audio.loop = true;
     audio.volume = Math.max(0, Math.min(1, def.volume * bgmMasterVol()));
-    audio.play().catch(() => { /* 자동재생 정책 — 이후 사용자가 뭔가 클릭하면 다음 곡부터는 대개 풀린다 */ });
+    audio.addEventListener('error', () => {
+      pendingBgmKey = key;
+      console.warn('[sound] BGM 파일을 불러오지 못했습니다:', def.src);
+    }, { once: true });
+    audio.play().then(() => {
+      pendingBgmKey = null;
+    }).catch(() => {
+      pendingBgmKey = key;
+    });
     bgmAudio = audio;
   } catch (e) { /* 무시 */ }
 }
 function stopBgm() {
   if (bgmAudio) { bgmAudio.pause(); bgmAudio = null; }
   bgmKey = null;
+  pendingBgmKey = null;
 }
+
+// 브라우저가 첫 자동 재생을 막은 경우, 사용자의 다음 입력에서 BGM을 다시 시작한다.
+function retryPendingBgm() {
+  if (pendingBgmKey) playBgm(pendingBgmKey);
+}
+window.addEventListener('pointerdown', retryPendingBgm, { capture: true });
+window.addEventListener('keydown', retryPendingBgm, { capture: true });
 // 재생 중에 BGM 슬라이더를 움직이면 즉시 반영(효과음처럼 다음 재생까지 기다릴 필요 없음)
 const optBgmSliderForBgm = document.getElementById('opt-bgm');
 if (optBgmSliderForBgm) {
