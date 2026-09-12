@@ -60,7 +60,7 @@ function performAdvancementBasic() {
   if(a.clones>0&&id!=='honggildong')for(let i=0;i<2;i++)advFx('echo',{x:t.x+(i?35:-35),y:t.y,target:t,delay:.08+i*.08,mult:.25,radius:85,duration:.4,color:'#66e8e4'});
   if(['magician','warlock'].includes(id)||(id==='pirate'&&dist(player.x,player.y,t.x,t.y)>120)){
     for(let n=0;n<player.projectileCount;n++)advProjectile(angle+(n-(player.projectileCount-1)/2)*.14,id==='pirate'?2:id==='magician'?.55:1,player.pierce+(id==='magician'?2:id==='pirate'?1:0),id==='magician');
-    playSfx(id==='pirate'?'rogue_basic':'mage_basic');
+    playSfx(id==='pirate'?'rogue_basic':id==='magician'?'magician_basic':'mage_basic');
     if(id==='warlock'&&a.count%3===0)advFx('field',{x:t.x,y:t.y,radius:65,duration:2,dps:.4,color});
   }else if(id==='archmage'){
     const list=enemies.filter(e=>!e.dead&&dist(t.x,t.y,e.x,e.y)<180).sort((x,y)=>dist(t.x,t.y,x.x,x.y)-dist(t.x,t.y,y.x,y.y)).slice(0,3);
@@ -69,10 +69,11 @@ function performAdvancementBasic() {
     const mult={dragon:1.6,berserker:1.4,commander:1.4,ninja:.65,honggildong:.6,pirate:1.4,paladin:1.4,crusader:1.6,madmonk:.55}[id];
     if(['paladin','madmonk'].includes(id))advArea(player.x,player.y,id==='madmonk'?100:145,mult,0,0,true);
     else advLine(angle,150,id==='honggildong'?40:105,mult);
-    advFx('slash',{angle,radius:145,duration:.22,color});playSfx(['ninja','honggildong','madmonk'].includes(id)?'rogue_basic':'warrior_hit1');
+    advFx('slash',{angle,radius:145,duration:.22,color});playSfx(id==='honggildong'?'honggildong_basic':['ninja','madmonk'].includes(id)?'rogue_basic':'warrior_hit1');
     if(id==='paladin')player.shield=Math.min(player.shieldMax,player.shield+player.maxHp*.015);
     if(['dragon','crusader'].includes(id)&&a.count%3===0)advFx('burst',{x:t.x,y:t.y,radius:85,mult:.8,color});
     const echoes=id==='honggildong'?(a.clones>0?2:Math.random()<.3?1:0):id==='ninja'&&a.count%3===0?1:0;
+    if(id==='honggildong'&&echoes>0)playSfx('honggildong_clone');
     for(let i=0;i<echoes;i++)advFx('echo',{x:t.x+(i?35:-35),y:t.y,target:t,delay:.08+i*.08,mult:mult*.45,radius:85,duration:.4,color});
   }
   return true;
@@ -127,7 +128,7 @@ function executeAdvQ(id) {
 function executeAdvUltimate(id) {
   const a=player.adv,angle=advAim(),t=advTarget()||player;
   switch(id){
-    case 'dragon': advFx('dragon',{angle,length:560,radius:155,mult:8,delay:.25,duration:1,color:'#ff873e'});playSfx('flame_slash');break;
+    case 'dragon': advFx('dragon',{angle,length:560,radius:155,mult:8,delay:.25,duration:1,color:'#ff873e'});playSfx('flame_slash');playSfx('dragon_fire');break;
     case 'berserker': a.blood=8;advShield(.2);advFx('aura',{radius:150,duration:.8,color:'#ff4661'});break;
     case 'commander': a.allies=Array.from({length:3},(_,i)=>({x:player.x+(i-1)*40,y:player.y+30,life:12,attack:0,index:i}));advImage('commander');break;
     case 'archmage':for(let i=0;i<3;i++)advFx('bolt',{x:player.x+Math.cos(angle)*(100+i*110),y:player.y+Math.sin(angle)*(100+i*110),radius:110+i*15,mult:3,delay:.35+i*.35,duration:.65,color:'#80dcff'});playSfx('lightning');break;

@@ -27,6 +27,13 @@ const SFX = {
   shuriken: { src: 'sound/표창.mp3', volume: 0.7 },
   // 화염의 검 W스킬 적중 시
   flame_slash: { src: 'sound/화염검기.mp3', volume: 0.75 },
+  // 용기사 E(용의 포효) 전용 브레스 사운드
+  dragon_fire: { src: 'sound/dragon_fire.mp3', volume: 0.8 },
+  // 홍길동 — 본체 기본공격 / 분신 타격 전용
+  honggildong_basic: { src: 'sound/홍길동_기본공격.mp3', volume: 0.7 },
+  honggildong_clone: { src: 'sound/홍길동_분신.mp3', volume: 0.6, cooldown: 0.1 },
+  // 마술사 기본공격(관통 트럼프) 전용
+  magician_basic: { src: 'sound/마술사_기본공격.mp3', volume: 0.6 },
   // R스킬(낙뢰 강타)
   lightning: { src: 'sound/번개.mp3', volume: 0.8 },
   // 공격했지만 사거리 안에 대상이 없을 때(헛스윙)
@@ -34,6 +41,7 @@ const SFX = {
   // 몬스터
   bat: { src: 'sound/bat.mp3', volume: 0.15, cooldown: 0.3 },
   monster_atk: { src: 'sound/monster.mp3', volume: 0.55, cooldown: 0.3 },
+  slime_atk: { src: 'sound/poizion_slime.mp3', volume: 0.5, cooldown: 0.3 },
   slime_die: { src: 'sound/die_slime.mp3', volume: 0.7 },
   // 플레이어
   hurt: { src: 'sound/hurt.mp3', volume: 0.8, cooldown: 0.2 },

@@ -526,6 +526,7 @@ function startStage() {
   spawnTimer = 0;
   document.getElementById('hud-stage').textContent = state.stage;
   document.getElementById('hud-boss').classList.remove('show');
+  updateHudPortrait();
 }
 
 function spawnNormalEnemy(forcedType, position) {
@@ -574,7 +575,7 @@ function spawnBoss() {
   ensureBossArt(tier);
   state.boss = {
     x, y,
-    radius: 46,
+    radius: 70,
     speed: tier.speed,
     hp: 560 * mult * tier.hp,
     maxHp: 560 * mult * tier.hp,
@@ -2255,7 +2256,20 @@ const hudEls = {
   stage: document.getElementById('hud-stage'),
   bossFill: document.getElementById('hud-boss-fill'),
   fps: document.getElementById('hud-fps'),
+  portraitFrame: document.getElementById('hud-portrait-frame'),
+  levelBadge: document.getElementById('hud-level-badge'),
 };
+
+// HUD 좌측 상단 초상화 — 로비의 .portrait-frame과 같은 규칙(전직 시 전직 모션 첫 프레임,
+// 아니면 외형 초상화)이라 advPortraitStyle()을 그대로 재사용한다. 외형/전직은 스테이지 중
+// 바뀌지 않으므로 스테이지 시작 시 한 번만 그리면 된다.
+function updateHudPortrait() {
+  const advanced = player.adv && ADVANCED_JOBS.find(j => j.id === player.adv.id);
+  const appearanceDef = APPEARANCE_POOL.find(a => a.id === meta.appearance) || APPEARANCE_POOL[0];
+  hudEls.portraitFrame.innerHTML = advanced
+    ? `<div class="adv-portrait" style="${advPortraitStyle(advanced)}" role="img" aria-label="${advanced.name}"></div>`
+    : `<img src="${appearanceDef.portrait}" alt="${appearanceDef.name}">`;
+}
 const hotbarEls = {};
 for (const k of ['Q', 'W', 'E', 'R']) {
   hotbarEls[k] = {
@@ -2292,6 +2306,7 @@ function updateHud() {
   const expRatio = clamp(player.exp / player.expToNext, 0, 1);
   hudEls.expFill.style.width = (expRatio * 100) + '%';
   hudEls.expText.textContent = `Lv.${player.level}`;
+  hudEls.levelBadge.textContent = player.level;
 
   hudEls.gold.textContent = player.gold;
   hudEls.soul.textContent = player.soul;
