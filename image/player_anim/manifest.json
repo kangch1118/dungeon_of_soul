@@ -1,0 +1,26 @@
+{
+  "warrior": {
+    "cellW": 262,
+    "cellH": 437,
+    "baselineY": 433,
+    "refBodyH": 215
+  },
+  "mage": {
+    "cellW": 220,
+    "cellH": 370,
+    "baselineY": 366,
+    "refBodyH": 234
+  },
+  "rogue": {
+    "cellW": 235,
+    "cellH": 263,
+    "baselineY": 259,
+    "refBodyH": 241
+  },
+  "cleric": {
+    "cellW": 294,
+    "cellH": 448,
+    "baselineY": 444,
+    "refBodyH": 234
+  }
+}

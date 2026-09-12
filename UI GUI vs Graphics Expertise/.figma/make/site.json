@@ -1,0 +1,10 @@
+{
+  "description": "This web application enables game developers to create and customize character graphics, monsters, and skill effects, enhancing their game's visual appeal.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

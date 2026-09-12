@@ -1,0 +1,38 @@
+[
+  {
+    "id": "card_ornate_gold",
+    "prompt": "Use case: stylized-concept. Production 2D dark fantasy RPG UI raster asset, polished hand-painted game art, deep midnight navy, antique gold, strong readable silhouette, tasteful luminous magic, no text, no letters, no watermark, no mockup, only ONE asset. Portrait 2:3 card background, front-on perfectly rectangular symmetrical ornate antique gold frame with small amber gemstone at top center, dark navy matte center EMPTY for separately rendered icon and text, restrained engraved corners, fine gold edge illumination. Frame fills 92% canvas with transparent outside margin. Interior opaque dark navy, lower 60% calm flat dark for legible text. No icons within card.",
+    "source": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-19d1f307-d12c-4661-9bf1-8421b0c8aa92.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "mode": "built-in"
+  },
+  {
+    "id": "fx_levelup_halo",
+    "prompt": "Use case: stylized-concept. Production 2D dark fantasy RPG UI raster asset, polished hand-painted game art, deep midnight navy, antique gold, strong readable silhouette, tasteful luminous magic, no text, no letters, no watermark, no mockup, only ONE asset. Square transparent PNG. Level-up magical halo overlay: circular gold filigree ring with rising golden motes and four short elegant radiant spokes, entirely empty TRANSPARENT central circular hole occupying 55% width. Thin peripheral ring occupies 65-80% image width. All glow smoothly fades to true transparency. No floor no background no object no lettering.",
+    "source": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d9ad0cc5-7753-4156-94a1-8df7c408a016.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "mode": "built-in"
+  },
+  {
+    "id": "fx_card_select",
+    "prompt": "Use case: stylized-concept. Production 2D dark fantasy RPG UI raster asset, polished hand-painted game art, deep midnight navy, antique gold, strong readable silhouette, tasteful luminous magic, no text, no letters, no watermark, no mockup, only ONE asset. Square transparent PNG. A single magical card selection confirmation burst: bright warm white-gold central sparkle, eight tapered gold light rays and a small number of amber shards radiating outward, compact elegant impact, rays stay within 85% of frame. No circle no background no card no objects. Genuine transparent background.",
+    "source": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-7fc47577-3d45-48a5-ac00-634a6912c342.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "mode": "built-in"
+  },
+  {
+    "id": "icon_atk",
+    "prompt": "Use case: stylized-concept. ONE square dark fantasy RPG ability icon, polished hand-painted raster illustration, crisp large silhouette readable at 64px. Isolated on genuinely transparent background. No border, no tile, no text, no lettering, no numbers, no watermark. Antique gold material accents, sophisticated rich luminous colors, centered subject within 80% frame with transparent margin. Attack power upgrade: one broad steel sword diagonal pointing upper right, crimson energy wrapping blade and a small fiery slash behind it. Strong single blade silhouette.",
+    "source": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-f9a89e2a-11a1-40b8-a8bc-5c402fbed9fa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "mode": "built-in"
+  },
+  {
+    "id": "icon_aspd",
+    "prompt": "Use case: stylized-concept. ONE square dark fantasy RPG ability icon, polished hand-painted raster illustration, crisp large silhouette readable at 64px. Isolated on genuinely transparent background. No border, no tile, no text, no lettering, no numbers, no watermark. Antique gold material accents, sophisticated rich luminous colors, centered subject within 80% frame with transparent margin. Attack speed upgrade: three curved silver blade afterimages sweeping in same direction, bright cyan wind streaks trailing behind. Clearly rapid repeated slashes, not boots, not a tornado.",
+    "source": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-74b5c0f9-408e-458a-b7fd-84b40d39b9a6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "mode": "built-in"
+  },
+  {
+    "id": "icon_hp",
+    "prompt": "Use case: stylized-concept. ONE square dark fantasy RPG ability icon, polished hand-painted raster illustration, crisp large silhouette readable at 64px. Isolated on genuinely transparent background. No border, no tile, no text, no lettering, no numbers, no watermark. Antique gold material accents, sophisticated rich luminous colors, centered subject within 80% frame with transparent margin. Maximum health vitality upgrade: one ruby red heart shaped faceted magical crystal cradled by a small antique gold ornamental setting, warm golden healing light radiates softly from core. Clear heart silhouette.",
+    "source": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-2d90080e-b125-4c66-b835-eba29df50510.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "mode": "built-in"
+  }
+]

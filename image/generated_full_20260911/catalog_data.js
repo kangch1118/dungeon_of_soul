@@ -1,0 +1,933 @@
+const ASSETS = [
+  {
+    "name": "background_lobby.png",
+    "width": 1672,
+    "height": 941,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "background_title.png",
+    "width": 1672,
+    "height": 941,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "cleric_attack_down.png",
+    "width": 1942,
+    "height": 809,
+    "cornerAlpha": 0,
+    "centerAlpha": 146
+  },
+  {
+    "name": "cleric_attack_side.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_attack_up.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 248
+  },
+  {
+    "name": "cleric_death_down.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_death_side.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_death_up.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_hit_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "cleric_hit_side.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "cleric_hit_up.png",
+    "width": 1896,
+    "height": 830,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "cleric_idle_down.png",
+    "width": 1920,
+    "height": 819,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_idle_side.png",
+    "width": 1536,
+    "height": 1024,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_idle_up.png",
+    "width": 1536,
+    "height": 1024,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_walk_down.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 3
+  },
+  {
+    "name": "cleric_walk_side.png",
+    "width": 1536,
+    "height": 1024,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "cleric_walk_up.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "decal_bones.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "decal_candles.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "decal_chains.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 1
+  },
+  {
+    "name": "decal_coffin.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "decal_crack.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 2
+  },
+  {
+    "name": "decal_moss.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "decal_puddle.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "decal_rubble.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "decal_runes.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "decal_wood.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "floor_01_moss.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "floor_02_cave.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "floor_03_goblin.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "floor_04_crypt.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "floor_05_vampire.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "icon_currency_diamond.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_equipment_dagger.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 251
+  },
+  {
+    "name": "icon_equipment_dragonfang_sword.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_equipment_flame_sword.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_equipment_frost_staff.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_equipment_knight_armor.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_equipment_leather_armor.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_equipment_luck_ring.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_equipment_magic_bracelet.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_equipment_shadow_robe.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_equipment_steel_bow.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_equipment_vampire_necklace.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_pet_fairy.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_pet_flame_spirit.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_pet_griffin.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_pet_ice_wolf.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_pet_slime.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_q_fireball.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_q_flash_slash.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "icon_q_shuriken.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_q_spirit.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_skill_arrow_rain.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_skill_destruction.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_skill_earth_shatter.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_skill_magic_bolt.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_skill_mana_burst.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_skill_meteor.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "icon_skill_piercing_arrow.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "icon_skill_smash.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "mage_attack_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_attack_side.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 237
+  },
+  {
+    "name": "mage_attack_up.png",
+    "width": 1536,
+    "height": 1024,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_death_down.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_death_side.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_death_up.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_hit_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "mage_hit_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "mage_hit_up.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "mage_idle_down.png",
+    "width": 1920,
+    "height": 819,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_idle_side.png",
+    "width": 1926,
+    "height": 816,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_idle_up.png",
+    "width": 1920,
+    "height": 819,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_walk_down.png",
+    "width": 1487,
+    "height": 1058,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_walk_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "mage_walk_up.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_attack_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_attack_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_attack_up.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_death_down.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_death_side.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 1
+  },
+  {
+    "name": "rogue_death_up.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_hit_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "rogue_hit_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "rogue_hit_up.png",
+    "width": 1663,
+    "height": 946,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "rogue_idle_down.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_idle_side.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_idle_up.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_walk_down.png",
+    "width": 1487,
+    "height": 1058,
+    "cornerAlpha": 0,
+    "centerAlpha": 1
+  },
+  {
+    "name": "rogue_walk_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "rogue_walk_up.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_button_default.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_button_hover.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_button_pressed.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "ui_card_common.png",
+    "width": 1024,
+    "height": 1536,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_card_epic.png",
+    "width": 1024,
+    "height": 1536,
+    "cornerAlpha": 1,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_card_legendary.png",
+    "width": 1024,
+    "height": 1536,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_card_rare.png",
+    "width": 1024,
+    "height": 1536,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_hotbar_slot.png",
+    "width": 1312,
+    "height": 1199,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_hud_frame.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_joystick_base.png",
+    "width": 1278,
+    "height": 1230,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_joystick_knob.png",
+    "width": 1278,
+    "height": 1230,
+    "cornerAlpha": 0,
+    "centerAlpha": 252
+  },
+  {
+    "name": "ui_modal_frame.png",
+    "width": 1536,
+    "height": 1024,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "ui_panel.png",
+    "width": 1916,
+    "height": 821,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_pause_frame.png",
+    "width": 1269,
+    "height": 1239,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_character_active.png",
+    "width": 1976,
+    "height": 796,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_character_inactive.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_equipment_active.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_equipment_inactive.png",
+    "width": 1991,
+    "height": 790,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_game_active.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_game_inactive.png",
+    "width": 2086,
+    "height": 754,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_pet_active.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_pet_inactive.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_shop_active.png",
+    "width": 2048,
+    "height": 768,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_tab_shop_inactive.png",
+    "width": 1989,
+    "height": 791,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "ui_title_emblem.png",
+    "width": 1774,
+    "height": 887,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "wall_01_stone.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "wall_02_fortress.png",
+    "width": 1254,
+    "height": 1254,
+    "cornerAlpha": 255,
+    "centerAlpha": 255
+  },
+  {
+    "name": "warrior_attack_down.png",
+    "width": 1821,
+    "height": 864,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_attack_side.png",
+    "width": 1983,
+    "height": 793,
+    "cornerAlpha": 0,
+    "centerAlpha": 1
+  },
+  {
+    "name": "warrior_attack_up.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 3
+  },
+  {
+    "name": "warrior_death_down.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_death_side.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_death_up.png",
+    "width": 1717,
+    "height": 916,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_hit_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "warrior_hit_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "warrior_hit_up.png",
+    "width": 1821,
+    "height": 864,
+    "cornerAlpha": 0,
+    "centerAlpha": 253
+  },
+  {
+    "name": "warrior_idle_down.png",
+    "width": 2172,
+    "height": 724,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_idle_side.png",
+    "width": 1920,
+    "height": 819,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_idle_up.png",
+    "width": 1920,
+    "height": 819,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_walk_down.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_walk_side.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  },
+  {
+    "name": "warrior_walk_up.png",
+    "width": 1881,
+    "height": 836,
+    "cornerAlpha": 0,
+    "centerAlpha": 0
+  }
+];

@@ -1,0 +1,112 @@
+[
+  {
+    "name": "attack_sword_swoosh",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. wide silver white fan-shaped sword slash afterimage, curved cutting front on right, taper trails left. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-2a134396-5e73-40d9-9617-cf1621654e0c.png"
+  },
+  {
+    "name": "attack_arcane_bolt",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. small compact round purple blue energy orb projectile, leading edge right, short tail left. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-b258d303-77a6-40f8-930b-997bb2149693.png"
+  },
+  {
+    "name": "attack_dagger_spark",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. short very sharp silver white horizontal thrust flash, point facing right. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-114c0697-4082-4fdf-9e3f-e18080305558.png"
+  },
+  {
+    "name": "attack_holy_ring",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. gold white circular translucent shockwave ring, empty transparent center, top-down. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-2bacc9de-f221-4f50-afb0-b4b713a0f2fe.png"
+  },
+  {
+    "name": "q_flash_beam",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. very thin long white cyan energy blade beam pointing right, sharp leading tip right. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-10ff6e27-5aaf-4154-9ccc-310b26a7b966.png"
+  },
+  {
+    "name": "q_fireball",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. burning round orange red fireball on right with short flame tail streaming left. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-de3f0d89-4b73-49c4-b7df-e24184b4f60d.png"
+  },
+  {
+    "name": "q_shuriken",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one small four-point steel throwing star with clean sharp silhouette. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-f6badd6b-2c93-41a2-ad82-5dd1de464e67.png"
+  },
+  {
+    "name": "q_guardian_spirit",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one floating translucent white and pale gold guardian soul, small gentle ghost-like shape, no text or emoji. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-22a88944-1258-4aae-a853-a4059c4efab1.png"
+  },
+  {
+    "name": "w_flame_slash",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. broad fan-shaped flaming sword slash, orange red curved cutting front on right, flame trails taper left. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-20f446cb-72d3-485f-a68e-ec304b2f8d3c.png"
+  },
+  {
+    "name": "w_frost_burst",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. radial sky-blue cyan frost explosion with ice splinters spreading from center. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d2bf3842-0823-4cec-8535-906ec4c434f3.png"
+  },
+  {
+    "name": "w_frost_ground",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. top-down circular patch of translucent blue white frost, delicate jagged ice rim and subtle frozen texture. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-8c2d6c9d-2ec7-40ae-9f3c-b3e72d4e7d9f.png"
+  },
+  {
+    "name": "w_piercing_arrow",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one horizontal slim steel arrow with point on right, thin wind trails left, fit complete item inside square. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-0fb144e2-8e98-4652-a2c9-59a81f5be374.png"
+  },
+  {
+    "name": "w_dragon_roar",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. broad red gold shockwave shaped as a spectral roaring dragon head facing right, energy effect only, no solid dragon body. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-be351e4b-c36b-4094-936f-b6450016c31c.png"
+  },
+  {
+    "name": "passive_shield_spark",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. compact silver gold defensive impact spark with a faint shield-shaped light outline. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d9396ecd-4e36-4a1e-8475-dd94f20daea2.png"
+  },
+  {
+    "name": "passive_lifesteal",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. small curling blood-red absorption particle with rounded luminous head on right and thin red trail to left. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-8a86b90a-b324-4518-b555-8f6658f109ee.png"
+  },
+  {
+    "name": "e_dash_trail",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. horizontal pale silver rushing speed afterimage streaks pointing right, no character. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-6894e1f7-8f1a-43e8-9df4-bdfd44626f0a.png"
+  },
+  {
+    "name": "e_earth_shockwave",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. top-down radial brown earth shockwave, circular fractured rock cracks and outward tiny stone shards. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-a4ad88fc-d7bf-4f55-8f75-ba3009913b46.png"
+  },
+  {
+    "name": "e_arrow_fall",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. single falling arrow pointing down with pale wind speed trail above it, special downward orientation. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-fab9a59c-37e5-45ff-a376-8e95bc474b67.png"
+  },
+  {
+    "name": "e_mana_burst",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. radial purple blue arcane energy explosion, bright center and jagged expanding energy wisps. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-4e8a7340-2254-4b1f-828c-53834b85bc8a.png"
+  },
+  {
+    "name": "e_meteor",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one burning irregular stone meteor flying right, orange flame tail left, whole object contained. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d29f871d-2311-4dba-b271-8ac4a2c0297f.png"
+  },
+  {
+    "name": "r_lightning_bolt",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. vertical yellow white jagged lightning column striking downward from top to ground, no scenery. Tall vertical canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-f29029ab-64be-407d-891b-a2023a9c3201.png"
+  },
+  {
+    "name": "ui_control_keycap",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. single square blank keycap dark navy metal and leather inset with antique gold rim, no letter symbol or number, face flat front view. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-b4527ad7-599c-4d2d-a78d-29d9f24faf09.png"
+  }
+]

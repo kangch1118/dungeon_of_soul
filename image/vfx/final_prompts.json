@@ -1,0 +1,217 @@
+[
+  {
+    "name": "attack_sword_swoosh",
+    "prompt": "Edit the provided game VFX only. Remove the entire opaque black background. Preserve ONLY the silver white slash and particles. Return REAL RGBA PNG with alpha=0 in all empty background regions, NOT black RGB. Keep exact original slash silhouette and white/silver colors. No text or new objects. Transparent cutout sprite.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-5a67b7a3-5f28-442a-8153-fc0cb5d91e54.png"
+  },
+  {
+    "name": "attack_arcane_bolt",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. small compact round purple blue energy orb projectile, leading edge right, short tail left. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-b258d303-77a6-40f8-930b-997bb2149693.png"
+  },
+  {
+    "name": "attack_dagger_spark",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. short very sharp silver white horizontal thrust flash, point facing right. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-114c0697-4082-4fdf-9e3f-e18080305558.png"
+  },
+  {
+    "name": "attack_holy_ring",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. gold white circular translucent shockwave ring, empty transparent center, top-down. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-2bacc9de-f221-4f50-afb0-b4b713a0f2fe.png"
+  },
+  {
+    "name": "q_flash_beam",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. very thin long white cyan energy blade beam pointing right, sharp leading tip right. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-10ff6e27-5aaf-4154-9ccc-310b26a7b966.png"
+  },
+  {
+    "name": "q_fireball",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. burning round orange red fireball on right with short flame tail streaming left. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-de3f0d89-4b73-49c4-b7df-e24184b4f60d.png"
+  },
+  {
+    "name": "q_shuriken",
+    "prompt": "Standalone game projectile sprite: exactly ONE small four-point steel shuriken, symmetrical around exact canvas center. Crisp low resolution pixel art, neutral silver gray and white only. Square canvas, centered star occupies 65% width and height. True transparent alpha PNG backdrop. Absolutely NO trails, aura, sparks, gold color, motion lines, frame, text or additional objects. The object will rotate around its center in game.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-88755ea1-77ec-498a-a90b-f618f061e498.png"
+  },
+  {
+    "name": "q_guardian_spirit",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one floating translucent white and pale gold guardian soul, small gentle ghost-like shape, no text or emoji. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-22a88944-1258-4aae-a853-a4059c4efab1.png"
+  },
+  {
+    "name": "w_flame_slash",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. broad fan-shaped flaming sword slash, orange red curved cutting front on right, flame trails taper left. Wide horizontal canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-20f446cb-72d3-485f-a68e-ec304b2f8d3c.png"
+  },
+  {
+    "name": "w_frost_burst",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. radial sky-blue cyan frost explosion with ice splinters spreading from center. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d2bf3842-0823-4cec-8535-906ec4c434f3.png"
+  },
+  {
+    "name": "w_frost_ground",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. top-down circular patch of translucent blue white frost, delicate jagged ice rim and subtle frozen texture. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-8c2d6c9d-2ec7-40ae-9f3c-b3e72d4e7d9f.png"
+  },
+  {
+    "name": "w_piercing_arrow",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one horizontal slim steel arrow with point on right, thin wind trails left, fit complete item inside square. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-0fb144e2-8e98-4652-a2c9-59a81f5be374.png"
+  },
+  {
+    "name": "w_dragon_roar",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. broad red gold shockwave shaped as a spectral roaring dragon head facing right, energy effect only, no solid dragon body. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-be351e4b-c36b-4094-936f-b6450016c31c.png"
+  },
+  {
+    "name": "passive_shield_spark",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. compact silver gold defensive impact spark with a faint shield-shaped light outline. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d9396ecd-4e36-4a1e-8475-dd94f20daea2.png"
+  },
+  {
+    "name": "passive_lifesteal",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. small curling blood-red absorption particle with rounded luminous head on right and thin red trail to left. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-8a86b90a-b324-4518-b555-8f6658f109ee.png"
+  },
+  {
+    "name": "e_dash_trail",
+    "prompt": "A transparent PNG game sprite of 7 horizontal speed streaks rushing RIGHT. Pure white and neutral silver gray pixel-art lines, tapering left, point right. Long horizontal canvas. Simple discrete pixel clusters. Isolated speed-line effect on genuinely TRANSPARENT alpha backdrop, nothing else. No colored aura, no character, no panel, no checkerboard pattern, no black rectangle. Blank areas have alpha zero.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-4b47acfd-3381-4835-bd25-4eb065d64d4a.png"
+  },
+  {
+    "name": "e_earth_shockwave",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. top-down radial brown earth shockwave, circular fractured rock cracks and outward tiny stone shards. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-a4ad88fc-d7bf-4f55-8f75-ba3009913b46.png"
+  },
+  {
+    "name": "e_arrow_fall",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. single falling arrow pointing down with pale wind speed trail above it, special downward orientation. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-fab9a59c-37e5-45ff-a376-8e95bc474b67.png"
+  },
+  {
+    "name": "e_mana_burst",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. radial purple blue arcane energy explosion, bright center and jagged expanding energy wisps. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-4e8a7340-2254-4b1f-828c-53834b85bc8a.png"
+  },
+  {
+    "name": "e_meteor",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. one burning irregular stone meteor flying right, orange flame tail left, whole object contained. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d29f871d-2311-4dba-b271-8ac4a2c0297f.png"
+  },
+  {
+    "name": "r_lightning_bolt",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. vertical yellow white jagged lightning column striking downward from top to ground, no scenery. Tall vertical canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-f29029ab-64be-407d-891b-a2023a9c3201.png"
+  },
+  {
+    "name": "ui_control_keycap",
+    "prompt": "Use case: stylized-concept. Standalone in-game combat VFX sprite for top-down dark fantasy RPG. single square blank keycap dark navy metal and leather inset with antique gold rim, no letter symbol or number, face flat front view. Square canvas. Match the attached character reference's crisp pixel-art effects, visible pixel clusters, limited stepped color shading, NOT smooth painterly rendering. Reference is STYLE ONLY, no character or equipment copied unless subject explicitly calls for object. Effect only centered with generous 12% empty margin. TRUE TRANSPARENT alpha PNG outside effect; no opaque black background, checkerboard, text, icon tile, scenery, UI frame or border. Basic directional VFX faces RIGHT unless stated downward or radial.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-b4527ad7-599c-4d2d-a78d-29d9f24faf09.png"
+  },
+  {
+    "name": "q_fire_explosion_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/4 of orange red fireball explosion. small compact initial flash radius 18% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-e3d9903e-5736-46bc-b5cd-d390028337a5.png",
+    "sequence": "q_fire_explosion",
+    "frame": 1
+  },
+  {
+    "name": "q_fire_explosion_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/4 of orange red fireball explosion. expanding peak explosive burst radius 32% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-8ccab226-3660-46d6-b624-1438b895432d.png",
+    "sequence": "q_fire_explosion",
+    "frame": 2
+  },
+  {
+    "name": "q_fire_explosion_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/4 of orange red fireball explosion. fully expanded dispersing burst radius 40% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-728b5234-9087-4c4e-9b00-9c42ca2891d9.png",
+    "sequence": "q_fire_explosion",
+    "frame": 3
+  },
+  {
+    "name": "q_fire_explosion_04",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 4/4 of orange red fireball explosion. fading scattered embers and fragments radius 42% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-ed4f512a-da21-45ce-a5fe-f322cc10ec68.png",
+    "sequence": "q_fire_explosion",
+    "frame": 4
+  },
+  {
+    "name": "e_meteor_explosion_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/4 of large orange red meteor impact explosion with dark rock fragments. small compact initial flash radius 18% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-12d52c05-57cb-475d-903d-90c2966eaa81.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 1
+  },
+  {
+    "name": "e_meteor_explosion_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/4 of large orange red meteor impact explosion with dark rock fragments. expanding peak explosive burst radius 32% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d872d3e6-6a65-4ac6-90ba-dd043bfd90ae.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 2
+  },
+  {
+    "name": "e_meteor_explosion_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/4 of large orange red meteor impact explosion with dark rock fragments. fully expanded dispersing burst radius 40% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-912918fb-6524-4441-8e90-2d94db0bd121.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 3
+  },
+  {
+    "name": "e_meteor_explosion_04",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 4/4 of large orange red meteor impact explosion with dark rock fragments. fading scattered embers and fragments radius 42% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-0b8d5a4a-86e5-4dd3-ad33-5f13d85f835c.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 4
+  },
+  {
+    "name": "r_lightning_spark_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/4 of yellow white lightning ground impact spark. small compact initial flash radius 18% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-cb5234d9-d8ce-4e7a-ab4d-0eb19c3485b2.png",
+    "sequence": "r_lightning_spark",
+    "frame": 1
+  },
+  {
+    "name": "r_lightning_spark_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/4 of yellow white lightning ground impact spark. expanding peak explosive burst radius 32% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-862c3cf2-7d49-4a4f-bb28-c543db154375.png",
+    "sequence": "r_lightning_spark",
+    "frame": 2
+  },
+  {
+    "name": "r_lightning_spark_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/4 of yellow white lightning ground impact spark. fully expanded dispersing burst radius 40% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-38971888-ea45-489a-b2ab-8003ac4b0899.png",
+    "sequence": "r_lightning_spark",
+    "frame": 3
+  },
+  {
+    "name": "r_lightning_spark_04",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 4/4 of yellow white lightning ground impact spark. fading scattered embers and fragments radius 42% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-78c0f49b-67b0-4e5e-80a4-26db13459db3.png",
+    "sequence": "r_lightning_spark",
+    "frame": 4
+  },
+  {
+    "name": "q_fire_ground_01",
+    "prompt": "ONE game ground VFX animation frame 1 of 3. Direct overhead view of a COMPLETE ROUND DISC of scorched ground with low orange red flames all around entire circular perimeter and scattered flame tufts inside. Full 360 degree circle, centered at exact canvas center. NOT a crescent or slash. Square true TRANSPARENT alpha PNG canvas outside circle, circle diameter 65% of canvas. Crisp retro pixel art clusters, dark scorched maroon/brown interior partially transparent, orange flame rim. No reference image. No directional trails or character. No text, scenery, opaque square backdrop or border.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-18b058aa-745f-4ea2-bc1a-75f1bfdc63a1.png",
+    "sequence": "q_fire_ground",
+    "frame": 1
+  },
+  {
+    "name": "q_fire_ground_02",
+    "prompt": "ONE game ground VFX animation frame 2 of 3. Direct overhead view of a COMPLETE ROUND DISC of scorched ground with low orange red flames all around entire circular perimeter and scattered flame tufts inside. Full 360 degree circle, centered at exact canvas center. NOT a crescent or slash. Square true TRANSPARENT alpha PNG canvas outside circle, circle diameter 65% of canvas. Crisp retro pixel art clusters, dark scorched maroon/brown interior partially transparent, orange flame rim. Use prior frame as reference: identical circle footprint, canvas dimensions, center; change only flickering flame tip positions slightly. No text, scenery, opaque square backdrop or border.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-1ffe78a8-2d7f-4b01-a9c0-13cf0e080aa4.png",
+    "sequence": "q_fire_ground",
+    "frame": 2
+  },
+  {
+    "name": "q_fire_ground_03",
+    "prompt": "ONE game ground VFX animation frame 3 of 3. Direct overhead view of a COMPLETE ROUND DISC of scorched ground with low orange red flames all around entire circular perimeter and scattered flame tufts inside. Full 360 degree circle, centered at exact canvas center. NOT a crescent or slash. Square true TRANSPARENT alpha PNG canvas outside circle, circle diameter 65% of canvas. Crisp retro pixel art clusters, dark scorched maroon/brown interior partially transparent, orange flame rim. Use prior frame as reference: identical circle footprint, canvas dimensions, center; change only flickering flame tip positions slightly. No text, scenery, opaque square backdrop or border.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-6a57f2d8-fb45-42ba-9319-e298a0ec0290.png",
+    "sequence": "q_fire_ground",
+    "frame": 3
+  }
+]

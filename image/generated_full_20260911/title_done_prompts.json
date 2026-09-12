@@ -1,0 +1,17 @@
+[
+  {
+    "name": "ui_title_emblem",
+    "prompt": "Use case: stylized-concept. Dark fantasy RPG 던전 오브 소울. Rich crisp pixel-painted illustration with restrained saturation, strong dark silhouettes and gold/metal highlights. A wide ornamental navy and antique gold heraldic crest with dark ribbon and crossed sword motif behind the title. Ribbon and middle area blank to overlay Korean title in game. Actual transparent PNG background, no text.",
+    "hint": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-38d8ecc6-7d52-4e10-9e4e-47d49dd1ffca.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "name": "background_title",
+    "prompt": "Use case: stylized-concept. Dark fantasy RPG 던전 오브 소울. Rich crisp pixel-painted illustration with restrained saturation, strong dark silhouettes and gold/metal highlights. Wide 16:9 full-bleed illustrated title screen background for a dark fantasy dungeon RPG. Ancient ruined castle gate, foggy blue night, tiny gold torch highlights, ominous vampire spires. Quiet dark central space to overlay title and menu. No characters, text or UI.",
+    "hint": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d6e65e0c-a469-46b3-8194-b70a43280565.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "name": "background_lobby",
+    "prompt": "Use case: stylized-concept. Dark fantasy RPG 던전 오브 소울. Rich crisp pixel-painted illustration with restrained saturation, strong dark silhouettes and gold/metal highlights. Wide 16:9 full-bleed illustrated lobby background for a dark fantasy dungeon RPG. Interior ancient stone adventurer hall overlooking glowing dungeon entrance, cool navy stone, antique gold torchlight, subtle violet mystical light. Central foreground spacious and clear for character and interface overlays. No characters, text or UI.",
+    "hint": "Generated images are saved to C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e as C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-a16ebe9a-6948-4a1d-9b89-5a66107edc0e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

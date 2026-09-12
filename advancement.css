@@ -1,0 +1,22 @@
+#job-modal .modal-inner { width:min(1060px,95vw);min-width:0;max-width:100%;max-height:calc(100dvh - 32px);overflow:auto;box-sizing:border-box; }
+#job-modal {padding:16px;box-sizing:border-box;}
+#job-card-row {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch;width:100%;}
+.adv-card{background:linear-gradient(150deg,#202030,#10131d);border:1px solid #70604a;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;color:#dbd7cc;min-width:0;text-align:left;}
+.adv-card.selected{border-color:#f4cf7d;box-shadow:0 0 18px #e7bc5125;}
+.adv-portrait{width:100%;height:100%;background-size:400% 100%;background-position:0 0;background-repeat:no-repeat;}
+.adv-card>.adv-portrait{width:150px;height:200px;align-self:center;}
+.adv-card h3{display:flex;align-items:center;justify-content:center;gap:9px;font-size:20px;margin:0;color:#f4dba3;}
+.adv-card h3 img{width:38px;height:38px;border-radius:7px;}
+.adv-card p{font-size:12px;line-height:1.65;margin:0;word-break:keep-all;}
+.adv-card .adv-basic{color:#b6dfff;font-size:13px;text-align:center;}
+.adv-card button{margin-top:auto;width:100%;min-height:44px;}
+.adv-card button:disabled{opacity:.5;cursor:not-allowed;}
+#roulette-hud{position:absolute;top:110px;left:50%;transform:translateX(-50%);width:min(430px,calc(100% - 24px));display:flex;gap:12px;padding:13px;background:#11101fee;border:1px solid #c29aeb;border-radius:12px;box-shadow:0 8px 35px #0008;z-index:25;color:#efdefb;pointer-events:none;box-sizing:border-box;}
+#roulette-hud[hidden]{display:none;}
+#roulette-hud img{width:64px;height:64px;border-radius:50%;border:2px solid #c8a0ef;flex-shrink:0;}
+#roulette-hud strong{font-size:17px;color:#ffe2a0;}
+#roulette-hud p{font-size:12px;line-height:1.5;margin:5px 0;}
+#roulette-hud small{font-size:12px;color:#cfb5ed;}
+.roulette-track{height:4px;border-radius:3px;background:#352e43;margin-top:8px;overflow:hidden;}
+.roulette-track i{display:block;height:100%;background:#d8b0ff;}
+@media(max-width:700px){#job-card-row{grid-template-columns:1fr;} .adv-card>.adv-portrait{height:176px;width:132px;}#roulette-hud{top:105px;gap:9px;padding:10px;}#roulette-hud img{width:42px;height:42px;}#roulette-hud strong{font-size:14px;}#roulette-hud p{font-size:11px;}}

@@ -1,0 +1,868 @@
+/* =========================================================================
+   던전 오브 소울 — UI 스타일
+   image/demo.png · image/ui demo.png 목업 기준: 짙은 네이비 + 금색 장식 프레임,
+   모서리를 깎은(팔각형) 버튼/탭, 광택 스탯바, Noto Sans KR.
+   기존 마크업/클래스 이름은 유지하고 외형만 목업에 맞췄다.
+   ========================================================================= */
+
+:root {
+  /* 표면 / 패널 */
+  --bg-deep: #070b14;
+  --panel-grad: linear-gradient(160deg, #17223c 0%, #0d1526 58%, #111c34 100%);
+  --panel-solid: #101a2e;
+  --panel-border: #33456b;
+  --panel-border-soft: #26324e;
+  --panel-shadow: 0 0 0 1px #0a1122, inset 0 0 42px rgba(0,0,0,0.5), 0 14px 40px rgba(0,0,0,0.7);
+
+  /* 금색 */
+  --gold: #d9a441;
+  --gold-bright: #f5d891;
+  --gold-mid: #b9863a;
+  --gold-dark: #7c5a26;
+  --gold-fill: linear-gradient(180deg, #4c3c1f 0%, #2c2616 48%, #1b1710 100%);
+  --gold-glow: 0 0 16px rgba(245,216,145,0.45);
+
+  /* 텍스트 */
+  --text: #e2e8f4;
+  --text-soft: #aeb9d0;
+  --text-dim: #7d8bab;
+  --text-gold: #f0c96b;
+
+  /* 상태색 */
+  --hp: linear-gradient(180deg, #ff4d7d, #c30f3e);
+  --shield: linear-gradient(180deg, #a8e8ff, #2f7fd1);
+  --exp: linear-gradient(180deg, #b98bff, #6a2ec7);
+  --boss: linear-gradient(180deg, #ff5a5a, #a11414);
+  --gloss: rgba(255,255,255,0.16);
+
+  --font: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+
+  /* 모서리 깎은 팔각형 */
+  --oct: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 26%, #101a30 0%, #0a1120 55%, #060a12 100%);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  user-select: none;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0a1120; }
+::-webkit-scrollbar-thumb { background: #33456b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.screen.active { display: flex; }
+.hidden { display: none !important; }
+
+/* =========================================================================
+   금색 장식 프레임 — 패널 네 귀퉁이 브래킷 + 상/하 중앙 다이아 스터드
+   ========================================================================= */
+.panel, .modal-inner, .option-panel { position: relative; }
+
+/* GPT 생성 금속 프레임(image/ui2/ui_panel.png)을 9-slice border-image로 두른다.
+   가운데(fill 없음)는 그대로 뚫려 있어 기존 .panel/.lobby-section 자체 background가 비친다. */
+.panel, .modal-inner, .lobby-section {
+  border-style: solid;
+  border-width: 22px;
+  border-image-source: url('image/ui2/ui_panel.png');
+  border-image-slice: 80 92 fill;
+  border-image-width: 22px;
+  border-image-repeat: stretch;
+}
+.panel, .modal-inner { padding: 22px 30px; }
+
+/* =========================================================================
+   타이틀 화면
+   ========================================================================= */
+#screen-title { flex-direction: column; }
+
+.title-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('image/background_title.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: brightness(0.75) saturate(1.05);
+}
+.title-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 22%, rgba(0,0,0,0) 0%, rgba(6,10,20,0.4) 60%, rgba(6,10,20,0.9) 100%),
+    linear-gradient(to bottom, rgba(6,10,20,0.15) 0%, rgba(6,10,20,0.3) 45%, rgba(6,10,20,0.96) 100%);
+}
+
+.title-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  margin-bottom: 6vh;
+  animation: rise 0.9s ease-out;
+  background-image: url('image/ui2/ui_title_emblem.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: min(640px, 86vw) auto;
+  padding-top: 128px;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.game-logo {
+  font-weight: 900;
+  font-size: clamp(30px, 5.5vw, 52px);
+  letter-spacing: 8px;
+  margin: 0;
+  color: #f6ecd2;
+  text-shadow: 0 0 26px rgba(245,216,145,0.5), 0 4px 14px rgba(0,0,0,0.9);
+}
+.game-logo::after {
+  content: '';
+  display: block;
+  width: 78%;
+  height: 2px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold-bright) 50%, var(--gold) 75%, transparent);
+}
+.game-sub {
+  margin: 2px 0 14px;
+  color: var(--gold);
+  letter-spacing: 9px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.title-buttons { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.title-footer {
+  position: relative;
+  z-index: 2;
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+/* =========================================================================
+   버튼 — 모서리 깎은 팔각형 (기본: 네이비 / 주요·활성: 금색 그라디언트)
+   ========================================================================= */
+.menu-btn, .img-btn {
+  position: relative;
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gold-bright);
+  border: none;
+  background-color: #0d1526;
+  background-image: url('image/ui2/ui_button_default.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  clip-path: var(--oct);
+  cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  transition: filter 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease, background-image 0.05s ease;
+}
+.menu-btn {
+  padding: 10px 24px;
+  font-size: 13px;
+}
+.menu-btn:hover, .img-btn:hover {
+  background-image: url('image/ui2/ui_button_hover.png');
+  box-shadow: var(--gold-glow);
+  transform: translateY(-1px);
+}
+.menu-btn:active, .img-btn:active {
+  background-image: url('image/ui2/ui_button_pressed.png');
+  transform: translateY(0);
+}
+.menu-btn:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(0.5); }
+
+/* 금색(주요) 버튼 — 타이틀 시작 / 탐험 시작 / 확인 등. 텍스처는 공용, 발광만 더 강하게. */
+.img-btn, .btn-explore, #btn-option-close, #btn-next-stage, #btn-resume {
+  color: var(--gold-bright);
+  box-shadow: var(--gold-glow);
+}
+.img-btn { padding: 15px 44px; font-size: 16px; letter-spacing: 4px; }
+.img-btn-option { padding: 11px 36px; font-size: 14px; }
+.img-btn:hover, .btn-explore:hover { box-shadow: 0 0 22px rgba(245,216,145,0.6); }
+
+.menu-btn.small { padding: 6px 15px; font-size: 11px; letter-spacing: 0.5px; }
+.menu-btn.ghost {
+  background: transparent;
+  border-color: var(--panel-border-soft);
+  color: var(--text-soft);
+  box-shadow: none;
+  margin-top: 14px;
+}
+
+/* =========================================================================
+   공통 패널 / 옵션
+   ========================================================================= */
+.panel {
+  background: var(--panel-grad);
+  box-shadow: var(--panel-shadow);
+  min-width: 340px;
+  max-width: 92vw;
+}
+.option-panel h2, .modal-inner h2 {
+  font-weight: 900;
+  margin: 0 0 16px;
+  text-align: center;
+  color: var(--gold-bright);
+  letter-spacing: 3px;
+  text-shadow: 0 0 14px rgba(245,216,145,0.3);
+}
+
+.option-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 14px; }
+.option-row label { width: 90px; flex-shrink: 0; color: var(--text-soft); }
+.option-row input[type="range"] { flex: 1; accent-color: var(--gold); }
+.option-row select {
+  flex: 1;
+  background: #0f1830;
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  padding: 4px 6px;
+  font-family: var(--font);
+}
+.option-row span { width: 28px; text-align: right; color: var(--gold-bright); }
+.option-checkbox label { width: auto; display: flex; align-items: center; gap: 6px; }
+
+.option-help { margin-top: 12px; border-top: 1px solid var(--panel-border-soft); padding-top: 14px; }
+.option-help h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.option-help ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text-soft); }
+.option-help b { color: var(--gold-bright); }
+.option-actions { margin-top: 20px; text-align: center; }
+
+/* =========================================================================
+   게임 화면 / HUD
+   ========================================================================= */
+#screen-game { background: #000; }
+#game-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+#hud { position: absolute; inset: 0; pointer-events: none; font-family: var(--font); }
+
+.hud-top-left { position: absolute; top: 16px; left: 16px; width: 270px; }
+.stage-label {
+  font-weight: 800;
+  color: var(--gold-bright);
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+.stage-label span { color: #ffe08a; }
+
+.bar {
+  position: relative;
+  height: 18px;
+  background: #0b1122;
+  border: 1px solid #2b3a5c;
+  box-shadow: inset 0 0 7px rgba(0,0,0,0.75);
+  overflow: hidden;
+  margin-bottom: 6px;
+  /* 오른쪽 끝을 뾰족하게 (목업 HUD 바) */
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+}
+.bar-fill { position: absolute; inset: 0; width: 100%; transform-origin: left; transition: width 0.25s ease; }
+.bar-fill::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 42%;
+  background: var(--gloss);
+}
+.hp-fill { background: var(--hp); }
+.shield-bar { height: 10px; margin-top: -4px; display: none; }
+.shield-bar.show { display: block; }
+.shield-fill { background: var(--shield); }
+.shield-bar .bar-text { font-size: 9px; }
+.exp-fill { background: var(--exp); }
+.boss-fill { background: var(--boss); }
+.bar-text {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.95);
+}
+
+.hud-top-right {
+  position: absolute; top: 16px; right: 16px;
+  display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+}
+.currency {
+  background: linear-gradient(180deg, #17223c, #0d1526);
+  border: 1px solid #2b3a5c;
+  box-shadow: 0 0 0 1px #0a1122, 0 4px 12px rgba(0,0,0,0.5);
+  border-radius: 3px;
+  padding: 4px 12px 4px 8px;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: flex; align-items: center; gap: 6px;
+  color: var(--text);
+}
+
+/* 재화 아이콘 — image/ui/{coin,gem}.png (demo.png HUD에서 크롭) */
+.coin-icon, .soul-icon, .diamond-icon {
+  display: inline-block;
+  width: 17px; height: 17px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 0;
+  flex-shrink: 0;
+}
+.coin-icon { background-image: url('image/ui/coin.png'); }
+.soul-icon { background-image: url('image/ui/gem.png'); }
+.diamond-icon { background-image: url('image/icon/icon_currency_diamond.png'); }
+
+/* GPT 생성 아이콘(image/icon/*.png) — 이모지가 있던 자리에 <img>로 대체할 때 공용 크기 */
+.icon-img { width: 1em; height: 1em; object-fit: contain; vertical-align: -0.15em; }
+.icon-img-inline { width: 1.1em; height: 1.1em; }
+
+.hud-boss {
+  position: absolute; top: 16px; left: 50%;
+  transform: translateX(-50%);
+  width: min(440px, 62vw);
+  display: none; text-align: center;
+}
+.hud-boss.show { display: block; }
+.boss-name {
+  font-weight: 800;
+  color: #ffb0b0;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+.boss-bar { height: 14px; }
+
+.hud-fps { position: absolute; bottom: 20px; left: 16px; font-size: 11px; color: #9be89b; }
+
+.hotbar {
+  position: absolute; bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 10px;
+  padding: 9px 14px;
+  background: linear-gradient(180deg, rgba(23,34,60,0.9), rgba(13,21,38,0.9));
+  border: 1px solid #2b3a5c;
+  box-shadow: 0 0 0 1px #0a1122, 0 10px 26px rgba(0,0,0,0.65), inset 0 0 20px rgba(217,164,65,0.06);
+  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
+}
+.slot {
+  position: relative;
+  width: 50px; height: 50px;
+  background-image: url('image/ui2/ui_hotbar_slot.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.55;
+  pointer-events: auto;
+  cursor: default;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.slot:hover { filter: brightness(1.25) drop-shadow(0 0 6px rgba(217,164,65,0.6)); }
+.slot.active { opacity: 1; filter: drop-shadow(0 0 8px rgba(245,216,145,0.65)); }
+/* 스킬 아이콘을 슬롯의 주인공으로 — 키 글자는 오른쪽 아래 작은 배지로 뺐다 */
+.slot-icon {
+  font-size: 26px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+}
+.slot-key {
+  position: absolute;
+  right: 3px; bottom: 1px;
+  font-size: 10px;
+  color: var(--gold-bright);
+  font-weight: 800;
+  background: rgba(4,8,16,0.75);
+  border-radius: 3px;
+  padding: 0 3px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+.slot-cd {
+  position: absolute; inset: 0;
+  border-radius: 6px;
+  background: rgba(4,8,16,0.72);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gold-bright);
+}
+
+.corner-btn {
+  position: absolute; bottom: 20px; right: 20px;
+  pointer-events: auto;
+  background-color: #131f37;
+  background-image: url('image/ui2/ui_pause_frame.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 50%;
+  color: var(--gold-bright);
+  width: 42px; height: 42px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.corner-btn:hover { filter: brightness(1.25) drop-shadow(0 0 6px rgba(217,164,65,0.6)); }
+.corner-btn-controls { right: 70px; font-size: 16px; font-weight: 800; }
+
+/* =========================================================================
+   조작법 안내 모달
+   ========================================================================= */
+.controls-guide { display: flex; flex-direction: column; gap: 16px; margin: 4px 0 20px; text-align: left; }
+.controls-row { display: flex; align-items: center; gap: 8px; }
+.key-cap {
+  flex-shrink: 0;
+  min-width: 36px; height: 36px;
+  padding: 0 6px;
+  display: flex; align-items: center; justify-content: center;
+  background-image: url('image/vfx2/ui_control_keycap.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  color: var(--gold-bright);
+  font-weight: 800;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.85);
+}
+.key-cap-wide { min-width: 56px; padding: 0 10px; font-size: 12px; }
+.key-cluster {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 30px);
+  grid-template-rows: repeat(2, 30px);
+  gap: 3px;
+  grid-template-areas: ". up ." "left down right";
+}
+.key-cluster .key-cap { min-width: 0; width: 100%; height: 100%; font-size: 12px; }
+.controls-desc { display: flex; flex-direction: column; gap: 2px; margin-left: 6px; }
+.controls-desc b { color: var(--gold-bright); font-size: 13px; }
+.controls-desc span { color: var(--text-soft); font-size: 12px; }
+
+/* =========================================================================
+   모달
+   ========================================================================= */
+.modal {
+  position: absolute; inset: 0;
+  background: rgba(4,7,14,0.8);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+}
+.modal.hidden { display: none; }
+.modal-inner {
+  background: var(--panel-grad);
+  box-shadow: var(--panel-shadow);
+  text-align: center;
+  min-width: 320px;
+  max-width: 92vw;
+}
+.modal-sub { color: var(--text-soft); font-size: 13px; margin: 0 0 18px; }
+.gameover-title { color: #ff5a5a !important; text-shadow: 0 0 18px rgba(220,38,38,0.5); }
+
+.card-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.skill-card {
+  width: 150px;
+  padding: 16px 12px;
+  background: linear-gradient(180deg, #1c2b4a, #0d1526);
+  border: 1px solid #33456b;
+  cursor: pointer;
+  clip-path: var(--oct);
+  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-bright);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.55), var(--gold-glow);
+}
+.skill-card.locked { opacity: 0.45; cursor: not-allowed; }
+.skill-card .card-icon { font-size: 28px; margin-bottom: 8px; }
+.skill-card .card-name { font-weight: 800; font-size: 14px; color: var(--gold-bright); margin-bottom: 6px; }
+.skill-card .card-desc { font-size: 12px; color: var(--text-soft); line-height: 1.5; }
+.skill-card .card-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(217,164,65,0.14);
+  border: 1px solid rgba(217,164,65,0.3);
+  color: var(--gold-bright);
+}
+
+/* 레벨업 전용 장식: 로비의 다른 skill-card에는 영향을 주지 않는다. */
+#levelup-modal { overflow-y: auto; padding: 20px 12px; }
+#levelup-modal .modal-inner { width: min(850px, 100%); min-width: 0; max-width: 100%; max-height: 100%; overflow-y: auto; }
+#levelup-modal .card-row { gap: 12px; padding: 12px 8px 24px; }
+#levelup-modal .skill-card {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  width: clamp(170px, 24vw, 230px); min-height: 310px; aspect-ratio: 2 / 3;
+  padding: 48px 24px 32px; border: 0; clip-path: none;
+  background: #101827 url('image/levelup_design_20260912/card_ornate_gold.png') center / 100% 100% no-repeat;
+  color: var(--text-soft); font: inherit; text-align: center;
+  animation: levelup-enter .35s ease-out backwards;
+  animation-delay: calc(var(--card-index) * 65ms);
+  transition: transform .18s ease, filter .18s ease;
+}
+#levelup-modal .skill-card:hover:not(:disabled) { transform: translateY(-5px); filter: brightness(1.16); }
+#levelup-modal .skill-card:focus-visible { outline: 2px solid #ffe4a2; outline-offset: 3px; }
+#levelup-modal .skill-card:disabled { cursor: default; }
+#levelup-modal .skill-card.selected { filter: brightness(1.22); }
+#levelup-modal .card-icon { position: relative; display: grid; place-items: center; width: 92px; height: 92px; flex-shrink: 0; margin: 0 0 16px; font-size: 46px; }
+#levelup-modal .card-icon span, #levelup-modal .levelup-icon { position: relative; z-index: 1; }
+#levelup-modal .levelup-icon { width: 82px; height: 82px; object-fit: contain; }
+#levelup-modal .levelup-halo { position: absolute; width: 116px; height: 116px; opacity: .4; pointer-events: none; animation: levelup-halo 35s linear infinite; }
+#levelup-modal .card-name { font-size: 17px; margin-bottom: 12px; color: #ffe0a0; }
+#levelup-modal .card-desc { font-size: 13px; line-height: 1.6; }
+#levelup-modal .card-tag { margin-top: auto; }
+#levelup-modal .levelup-burst { position: absolute; width: 100%; top: 12%; left: 0; opacity: 0; pointer-events: none; }
+#levelup-modal .selected .levelup-burst { animation: levelup-flash .48s ease-out forwards; }
+@keyframes levelup-enter { from { opacity: 0; transform: translateY(15px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes levelup-halo { to { transform: rotate(360deg); } }
+@keyframes levelup-flash { 0% { opacity: 0; transform: scale(.4); } 20% { opacity: 1; } 100% { opacity: 0; transform: scale(1.4); } }
+@media (max-width: 600px) {
+  #levelup-modal .modal-inner { padding: 18px 4px; border-width: 12px; border-image-width: 12px; }
+  #levelup-modal .card-row { flex-wrap: nowrap; gap: 6px; padding-inline: 2px; }
+  #levelup-modal .skill-card { width: calc((100% - 12px) / 3); min-width: 0; min-height: 255px; padding: 36px 10px 26px; aspect-ratio: auto; }
+  #levelup-modal .card-icon { width: 52px; height: 60px; font-size: 30px; margin-bottom: 12px; }
+  #levelup-modal .levelup-icon { width: 52px; height: 52px; }
+  #levelup-modal .levelup-halo { width: 68px; height: 68px; }
+  #levelup-modal .card-name { font-size: 13px; }
+  #levelup-modal .card-desc { font-size: 11px; overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #levelup-modal .skill-card, #levelup-modal .levelup-halo, #levelup-modal .selected .levelup-burst { animation: none; transition: none; }
+}
+
+.stage-progress { color: #dfca9c; font-size: 12px; margin: 4px 0 8px; text-shadow: 0 1px 3px #000; }
+.basic-attack-hud { position: absolute; bottom: 108px; left: 50%; transform: translateX(-50%); width: 190px; padding: 7px 10px; background: #10192ee8; border: 1px solid #b79650; border-radius: 6px; font-size: 12px; color: #d6c29b; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
+.basic-attack-hud strong { color: #ffe5a7; font-variant-numeric: tabular-nums; }
+.basic-cd-track { height: 4px; background: #303846; width: 100%; overflow: hidden; border-radius: 3px; }
+.basic-cd-track i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg,#bd8637,#fff0ad); }
+.clear-summary { font-size: 14px; line-height: 2; color: var(--text-soft); margin-bottom: 20px; }
+.clear-summary b { color: var(--gold-bright); }
+.pause-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+
+/* =========================================================================
+   터치 기기 보정 (이동은 방향키 전용 — 조이스틱 없음)
+   ========================================================================= */
+.touch-device .slot { width: 58px; height: 58px; }
+.touch-device .slot-icon { font-size: 30px; }
+.touch-device .hotbar { bottom: 26px; gap: 14px; }
+.touch-device .corner-btn { width: 48px; height: 48px; font-size: 17px; }
+
+/* =========================================================================
+   로비 화면
+   ========================================================================= */
+#screen-lobby { align-items: stretch; justify-content: stretch; background: var(--bg-deep); }
+
+.lobby-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,11,20,0.55) 0%, rgba(7,11,20,0.85) 100%),
+    url('image/background_lobby.jpg') center 35% / cover;
+  filter: saturate(0.9) brightness(0.72);
+}
+
+.lobby-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  padding: 18px clamp(14px, 4vw, 48px);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(7,11,20,0.5) 0%, rgba(7,11,20,0.12) 42%, rgba(7,11,20,0.55) 100%);
+}
+
+.lobby-header {
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--panel-border-soft);
+}
+.lobby-title {
+  font-weight: 900;
+  margin: 0;
+  color: var(--gold-bright);
+  letter-spacing: 3px;
+  font-size: 20px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+.lobby-currency { display: flex; gap: 10px; margin-left: auto; }
+.currency.locked { opacity: 0.5; }
+
+/* 탭 4개를 전부 같은 크기로 고정한다 — 텍스트 길이에 따라 버튼 폭이 제각각이면
+   장식 이미지가 탭마다 다른 비율로 늘어나서 모양이 삐뚤어 보인다. */
+.tab-nav { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.tab-btn {
+  position: relative;
+  width: 118px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-weight: 700;
+  background-color: #0e1830;
+  background-image: url('image/ui2/ui_tab_pill_inactive.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  color: var(--text-dim);
+  padding: 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: color 0.15s ease, filter 0.15s ease;
+}
+.tab-btn:hover { color: var(--text); filter: brightness(1.15); }
+.tab-btn.active {
+  background-image: url('image/ui2/ui_tab_pill_active.png');
+  color: var(--gold-bright);
+  filter: drop-shadow(0 0 6px rgba(245,216,145,0.4));
+}
+
+.tab-content { flex: 1; min-height: 0; overflow-y: auto; padding-right: 6px; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; animation: rise 0.35s ease-out; }
+
+.lobby-section {
+  position: relative;
+  box-shadow: inset 0 0 36px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.5);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+.lobby-section h3 {
+  font-weight: 800;
+  margin: 0 0 14px;
+  color: var(--gold-bright);
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-left: 3px solid var(--gold);
+  padding-left: 10px;
+}
+
+/* --- 캐릭터 탭 --- */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.stat-item {
+  background: rgba(6,10,20,0.5);
+  border: 1px solid var(--panel-border-soft);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+.stat-item .stat-label { color: var(--text-dim); margin-right: 6px; }
+.stat-item .stat-value { color: var(--gold-bright); font-weight: 700; }
+
+.level-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+.level-row .lv-badge {
+  font-weight: 800;
+  background: var(--gold-fill);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 6px 14px;
+  color: var(--gold-bright);
+  font-size: 14px;
+}
+.level-row .bar { flex: 1; min-width: 160px; margin-bottom: 0; clip-path: none; border-radius: 3px; }
+
+.job-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.job-current {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(6,10,20,0.5);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  padding: 10px 16px;
+}
+.job-current .job-icon { font-size: 24px; }
+.job-current .job-name { font-weight: 800; color: var(--gold-bright); }
+.job-current .job-tier { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
+
+/* 직업/외형 초상화 — image/portrait/*.png (classmoving.png 크롭) */
+.portrait-frame {
+  width: 66px; height: 66px;
+  flex-shrink: 0;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 0 1px #0a1122, var(--gold-glow);
+  border-radius: 4px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1a2744, #0d1526);
+  image-rendering: pixelated;
+}
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.appearance-portrait {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--panel-border);
+  margin-bottom: 6px;
+  image-rendering: pixelated;
+  background: linear-gradient(145deg, #1a2744, #0d1526);
+}
+
+/* --- 장비 탭 --- */
+.equip-slots { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.equip-slot-box {
+  width: 120px;
+  background: linear-gradient(145deg, #16213b, #0b1220);
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease;
+  /* 보유 장비 카드(.item-card)와 같은 등급 프레임 — 장착칸은 항상 common 톤 */
+  border-style: solid;
+  border-width: 12px;
+  border-image-slice: 16% 14%;
+  border-image-width: 12px;
+  border-image-repeat: stretch;
+  border-image-source: url('image/ui2/ui_card_common.png');
+}
+.equip-slot-box:hover { transform: translateY(-2px); filter: brightness(1.15); }
+.equip-slot-box .slot-cat { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; letter-spacing: 1px; }
+.equip-slot-box .slot-icon-big { font-size: 30px; }
+.equip-slot-box .slot-item-name { font-size: 12px; color: var(--text); margin-top: 4px; }
+.equip-slot-box .slot-item-lv { font-size: 10px; color: var(--gold-bright); }
+.equip-slot-box.empty { opacity: 0.55; cursor: default; }
+.equip-slot-box.empty:hover { transform: none; filter: none; }
+
+.item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
+.item-card {
+  background: linear-gradient(145deg, #16213b, #0b1220);
+  padding: 10px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease;
+  position: relative;
+  /* 등급별 프레임(image/ui2/ui_card_*.png) — 9-slice border-image, 기본은 일반 등급 */
+  border-style: solid;
+  border-width: 14px;
+  border-image-slice: 16% 14%;
+  border-image-width: 14px;
+  border-image-repeat: stretch;
+  border-image-source: url('image/ui2/ui_card_common.png');
+}
+.item-card.rarity-rare { border-image-source: url('image/ui2/ui_card_rare.png'); }
+.item-card.rarity-epic { border-image-source: url('image/ui2/ui_card_epic.png'); }
+.item-card.rarity-legendary { border-image-source: url('image/ui2/ui_card_legendary.png'); }
+.item-card:hover { transform: translateY(-3px); filter: brightness(1.15); }
+.item-card .item-icon { font-size: 26px; }
+.item-card .item-name { font-size: 11px; margin-top: 4px; color: var(--text-soft); }
+.item-card .item-rarity { font-size: 10px; margin-top: 2px; font-weight: 700; }
+.item-card .item-equipped-badge {
+  position: absolute; top: 4px; right: 4px;
+  font-size: 9px;
+  background: var(--gold-fill);
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  border-radius: 3px; padding: 1px 5px; font-weight: 700;
+}
+.item-card.locked { opacity: 0.4; cursor: not-allowed; }
+
+/* --- 상점 탭 --- */
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.shop-card {
+  background: linear-gradient(160deg, #17223c, #0b1220);
+  box-shadow: inset 0 0 26px rgba(0,0,0,0.5);
+  padding: 20px 18px;
+  text-align: center;
+  border-style: solid;
+  border-width: 14px;
+  border-image-slice: 16% 14%;
+  border-image-width: 14px;
+  border-image-repeat: stretch;
+  border-image-source: url('image/ui2/ui_card_common.png');
+}
+.shop-card .shop-icon { font-size: 36px; margin-bottom: 8px; }
+.shop-card .shop-name { font-weight: 800; color: var(--gold-bright); margin-bottom: 6px; }
+.shop-card .shop-desc { font-size: 12px; color: var(--text-soft); margin-bottom: 12px; min-height: 32px; }
+.shop-card .shop-cost { font-size: 13px; color: var(--gold-bright); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+
+
+/* --- 게임 탭 --- */
+.game-tab-summary { font-size: 14px; line-height: 2; color: var(--text-soft); margin-bottom: 18px; }
+.game-tab-summary b { color: var(--gold-bright); }
+.btn-explore { padding: 14px 40px; font-size: 15px; }
+
+/* --- 공용 잠금 안내 --- */
+.lock-note { font-size: 12px; color: #ff9a9a; margin-top: 8px; }
+
+/* =========================================================================
+   스킬 툴팁
+   ========================================================================= */
+.skill-tooltip {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  margin-top: -10px;
+  background: linear-gradient(160deg, #17223c, #0d1526);
+  border: 1px solid var(--gold-mid);
+  border-radius: 5px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.9), 0 0 0 1px #0a1122;
+  padding: 10px 14px;
+  max-width: 220px;
+  z-index: 60;
+}
+.skill-tooltip.hidden { display: none; }
+.skill-tooltip .tooltip-name { font-weight: 800; color: var(--gold-bright); font-size: 13px; margin-bottom: 4px; white-space: nowrap; }
+.skill-tooltip .tooltip-desc { color: var(--text-soft); font-size: 12px; line-height: 1.5; }
+.skill-tooltip .tooltip-cd { color: var(--text-dim); font-size: 11px; margin-top: 6px; }
+
+/* Touch controls remain below modal overlays and never steal desktop input. */
+#touch-controls {display:none;position:absolute;inset:0;pointer-events:none;z-index:3;}
+.touch-device #touch-controls {display:block;}
+#touch-joystick {position:absolute;left:max(18px,env(safe-area-inset-left));bottom:max(30px,env(safe-area-inset-bottom));width:112px;height:112px;border:2px solid #a58d56;border-radius:50%;background:rgba(20,30,45,.72);pointer-events:auto;touch-action:none;display:grid;place-items:center;}
+#touch-knob {width:46px;height:46px;border-radius:50%;background:#827450;border:2px solid #efd997;pointer-events:none;}
+#touch-attack {position:absolute;right:max(22px,env(safe-area-inset-right));bottom:max(38px,env(safe-area-inset-bottom));width:78px;height:78px;border-radius:50%;border:2px solid #e4c576;background:#283443;color:#ffe5a0;font:bold 18px sans-serif;pointer-events:auto;touch-action:none;}
+#touch-attack.held {background:#71603d;}
+.touch-device .hotbar {bottom:174px;gap:8px;}
+.touch-device .basic-attack-hud {bottom:264px;}
+.touch-device .corner-btn {bottom:125px;}
+.slot {font:inherit;color:inherit;padding:0;touch-action:manipulation;background-color:transparent;border:0;appearance:none;}
+button.skill-card {color:inherit;font:inherit;}
+button:focus-visible,[role=button]:focus-visible {outline:3px solid #ffe49a;outline-offset:3px;}
+#storage-notice {position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:1000;background:#5a281e;color:#fff2d6;border:1px solid #ffc576;border-radius:6px;padding:10px 16px;max-width:90vw;}
+@media(max-height:500px){.touch-device .hotbar{bottom:105px;left:70%;}.touch-device .basic-attack-hud{bottom:190px;left:70%;}.touch-device .corner-btn{bottom:auto;top:12px;}#touch-joystick{bottom:18px;width:96px;height:96px;}#touch-attack{bottom:16px;width:70px;height:70px;}}
+
+@media(max-height:500px){.touch-device .hud-top-right{right:140px;}}
+.touch-help{display:none}.touch-device .touch-help{display:block}

@@ -1,0 +1,107 @@
+[
+  {
+    "name": "q_fire_explosion_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/4 of orange red fireball explosion. small compact initial flash radius 18% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-e3d9903e-5736-46bc-b5cd-d390028337a5.png",
+    "sequence": "q_fire_explosion",
+    "frame": 1
+  },
+  {
+    "name": "q_fire_explosion_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/4 of orange red fireball explosion. expanding peak explosive burst radius 32% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-8ccab226-3660-46d6-b624-1438b895432d.png",
+    "sequence": "q_fire_explosion",
+    "frame": 2
+  },
+  {
+    "name": "q_fire_explosion_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/4 of orange red fireball explosion. fully expanded dispersing burst radius 40% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-728b5234-9087-4c4e-9b00-9c42ca2891d9.png",
+    "sequence": "q_fire_explosion",
+    "frame": 3
+  },
+  {
+    "name": "q_fire_explosion_04",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 4/4 of orange red fireball explosion. fading scattered embers and fragments radius 42% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-ed4f512a-da21-45ce-a5fe-f322cc10ec68.png",
+    "sequence": "q_fire_explosion",
+    "frame": 4
+  },
+  {
+    "name": "e_meteor_explosion_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/4 of large orange red meteor impact explosion with dark rock fragments. small compact initial flash radius 18% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-12d52c05-57cb-475d-903d-90c2966eaa81.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 1
+  },
+  {
+    "name": "e_meteor_explosion_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/4 of large orange red meteor impact explosion with dark rock fragments. expanding peak explosive burst radius 32% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-d872d3e6-6a65-4ac6-90ba-dd043bfd90ae.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 2
+  },
+  {
+    "name": "e_meteor_explosion_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/4 of large orange red meteor impact explosion with dark rock fragments. fully expanded dispersing burst radius 40% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-912918fb-6524-4441-8e90-2d94db0bd121.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 3
+  },
+  {
+    "name": "e_meteor_explosion_04",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 4/4 of large orange red meteor impact explosion with dark rock fragments. fading scattered embers and fragments radius 42% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-0b8d5a4a-86e5-4dd3-ad33-5f13d85f835c.png",
+    "sequence": "e_meteor_explosion",
+    "frame": 4
+  },
+  {
+    "name": "r_lightning_spark_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/4 of yellow white lightning ground impact spark. small compact initial flash radius 18% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-cb5234d9-d8ce-4e7a-ab4d-0eb19c3485b2.png",
+    "sequence": "r_lightning_spark",
+    "frame": 1
+  },
+  {
+    "name": "r_lightning_spark_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/4 of yellow white lightning ground impact spark. expanding peak explosive burst radius 32% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-862c3cf2-7d49-4a4f-bb28-c543db154375.png",
+    "sequence": "r_lightning_spark",
+    "frame": 2
+  },
+  {
+    "name": "r_lightning_spark_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/4 of yellow white lightning ground impact spark. fully expanded dispersing burst radius 40% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-38971888-ea45-489a-b2ab-8003ac4b0899.png",
+    "sequence": "r_lightning_spark",
+    "frame": 3
+  },
+  {
+    "name": "r_lightning_spark_04",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 4/4 of yellow white lightning ground impact spark. fading scattered embers and fragments radius 42% of canvas. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-78c0f49b-67b0-4e5e-80a4-26db13459db3.png",
+    "sequence": "r_lightning_spark",
+    "frame": 4
+  },
+  {
+    "name": "q_fire_ground_01",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 1/3 of top-down circular orange red residual fire ground patch. loop phase 1 of 3, same footprint and intensity but flame tips flicker in new positions. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. Character reference is style only; do not draw character. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-94ec9290-e59d-41ce-9bae-68956149bb94.png",
+    "sequence": "q_fire_ground",
+    "frame": 1
+  },
+  {
+    "name": "q_fire_ground_02",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 2/3 of top-down circular orange red residual fire ground patch. loop phase 2 of 3, same footprint and intensity but flame tips flicker in new positions. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-c655487c-b8e4-401d-94ca-1d296c38f298.png",
+    "sequence": "q_fire_ground",
+    "frame": 2
+  },
+  {
+    "name": "q_fire_ground_03",
+    "prompt": "Use case: stylized-concept. SINGLE animation frame 3/3 of top-down circular orange red residual fire ground patch. loop phase 3 of 3, same footprint and intensity but flame tips flicker in new positions. One square transparent PNG, one centered VFX only, no sprite sheet or panels. FIXED canvas dimensions and center across sequence, full effect inside canvas. Crisp retro pixel clusters, stepped limited palette, same style as attached reference. The previous frame is reference 1: continue its motion, same exact canvas and center. Genuine transparent alpha backdrop, no opaque background, no text frame scenery or watermark.",
+    "source": "C:\\Users\\강치원\\.codex\\generated_images\\01a08e8c-2fb5-79d2-b1c6-4da77b53095e\\exec-c039b541-bc7c-4e64-8b4f-820c5c6992d1.png",
+    "sequence": "q_fire_ground",
+    "frame": 3
+  }
+]

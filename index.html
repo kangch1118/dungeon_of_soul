@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>던전 오브 소울</title>
+
+<!-- PWA: 홈 화면에 추가하면 브라우저 주소창 없이 앱처럼 전체화면으로 뜬다 -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0e0d0a">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="던전오브소울">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="advancement.css">
+</head>
+<body>
+  <div id="storage-notice" role="alert" hidden><span id="storage-message"></span> <button id="storage-retry">저장 다시 시도</button><button id="storage-recover" hidden>현재 복구 상태로 저장</button></div>
+
+  <!-- ===================== 타이틀 화면 ===================== -->
+  <section id="screen-title" class="screen active">
+    <div class="title-bg"></div>
+    <div class="title-overlay"></div>
+    <div class="title-content">
+      <h1 class="game-logo">던전 오브 소울</h1>
+      <p class="game-sub">— Beta —</p>
+      <div class="title-buttons">
+        <button id="btn-start" class="img-btn img-btn-start" aria-label="게임 시작">게임 시작</button>
+        <button id="btn-option" class="img-btn img-btn-option" aria-label="옵션">옵션</button>
+        <button id="btn-install-app" class="menu-btn small hidden" style="margin-top:6px;">📲 홈 화면에 앱으로 추가</button>
+      </div>
+      <button id="btn-offline" class="menu-btn small" hidden>오프라인 준비</button><p id="offline-status" role="status"></p>
+      <p class="title-footer">방향키로 이동 · A키로 기본공격</p>
+    </div>
+  </section>
+
+  <!-- ===================== 로비 화면 (캐릭터/장비/게임/상점/펫 탭) ===================== -->
+  <section id="screen-lobby" class="screen">
+    <div class="lobby-bg"></div>
+    <div class="lobby-frame">
+      <header class="lobby-header">
+        <h2 class="lobby-title">던전 오브 소울</h2>
+        <div class="lobby-currency">
+          <span class="currency"><span class="coin-icon">🪙</span><span id="lobby-gold">0</span></span>
+          <span class="currency"><span class="soul-icon">🔮</span><span id="lobby-soul">0</span></span>
+          <span class="currency locked" title="미구현"><span class="diamond-icon"></span> 0</span>
+        </div>
+        <button id="btn-lobby-title" class="menu-btn small">타이틀로</button>
+      </header>
+
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="character">캐릭터</button>
+        <button class="tab-btn" data-tab="equipment">장비</button>
+        <button class="tab-btn" data-tab="game">게임</button>
+        <button class="tab-btn" data-tab="shop">상점</button>
+      </nav>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab-character"></div>
+        <div class="tab-pane" id="tab-equipment"></div>
+        <div class="tab-pane" id="tab-game"></div>
+        <div class="tab-pane" id="tab-shop"></div>
+      </div>
+    </div>
+
+    <!-- 전직 선택 모달 -->
+    <div id="job-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2>전직</h2>
+        <p class="modal-sub" id="job-modal-sub">직업을 선택하세요</p>
+        <div class="card-row" id="job-card-row"></div>
+        <button id="btn-job-cancel" class="menu-btn ghost">취소</button>
+      </div>
+    </div>
+
+    <!-- 뽑기 결과 모달 -->
+    <div id="gacha-modal" class="modal hidden">
+      <div class="modal-inner" id="gacha-modal-inner"></div>
+    </div>
+
+    <!-- 장비 상세 모달 -->
+    <div id="item-detail-modal" class="modal hidden">
+      <div class="modal-inner" id="item-detail-inner"></div>
+    </div>
+  </section>
+
+  <!-- ===================== 옵션 화면(모달) ===================== -->
+  <section id="screen-option" class="screen">
+    <div class="panel option-panel">
+      <h2>옵션</h2>
+
+      <div class="option-row">
+        <label for="opt-bgm">배경음량</label>
+        <input type="range" id="opt-bgm" min="0" max="100" value="50">
+        <span id="opt-bgm-val">50</span>
+      </div>
+
+      <div class="option-row">
+        <label for="opt-sfx">효과음량</label>
+        <input type="range" id="opt-sfx" min="0" max="100" value="70">
+        <span id="opt-sfx-val">70</span>
+      </div>
+
+      <div class="option-row">
+        <label for="opt-difficulty">난이도</label>
+        <select id="opt-difficulty">
+          <option value="easy">쉬움</option>
+          <option value="normal" selected>보통</option>
+          <option value="hard">어려움</option>
+        </select>
+      </div>
+
+      <div class="option-row option-checkbox">
+        <label for="opt-showfps"><input type="checkbox" id="opt-showfps"> 화면에 FPS 표시</label>
+      </div>
+
+      <div class="option-help">
+        <h3>조작법</h3>
+        <ul>
+          <li><b>방향키</b> — 이동</li>
+          <li><b>A</b> — 기본공격 (가장 가까운 몬스터에게)</li>
+          <li><b>Q / W / E / R</b> — 보유 스킬 사용</li>
+          <li><b>ESC</b> — 일시정지</li>
+        </ul>
+      </div>
+
+      <div class="option-actions">
+        <button id="btn-option-close" class="menu-btn">확인</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 게임 화면 ===================== -->
+  <section id="screen-game" class="screen">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div class="hud-top-left">
+        <div class="stage-label">STAGE <span id="hud-stage">1</span></div>
+        <div id="hud-stage-progress" class="stage-progress"></div>
+        <div class="bar hp-bar">
+          <div class="bar-fill hp-fill" id="hud-hp-fill"></div>
+          <span class="bar-text" id="hud-hp-text">100/100</span>
+        </div>
+        <div class="bar shield-bar" id="hud-shield-bar">
+          <div class="bar-fill shield-fill" id="hud-shield-fill"></div>
+          <span class="bar-text" id="hud-shield-text"></span>
+        </div>
+        <div class="bar exp-bar">
+          <div class="bar-fill exp-fill" id="hud-exp-fill"></div>
+          <span class="bar-text" id="hud-exp-text">Lv.1</span>
+        </div>
+      </div>
+
+      <div class="hud-top-right">
+        <div class="currency"><span class="coin-icon">🪙</span><span id="hud-gold">0</span></div>
+        <div class="currency"><span class="soul-icon">🔮</span><span id="hud-soul">0</span></div>
+      </div>
+
+      <div class="hud-boss" id="hud-boss">
+        <div class="boss-name" id="hud-boss-name">BOSS</div>
+        <div class="bar boss-bar">
+          <div class="bar-fill boss-fill" id="hud-boss-fill"></div>
+        </div>
+      </div>
+
+      <div class="hud-fps" id="hud-fps"></div>
+
+      <div class="basic-attack-hud" title="A 키를 누르고 있으면 준비될 때마다 기본공격합니다."><span>A · 기본공격</span><strong id="basic-cd-text">준비</strong><div class="basic-cd-track"><i id="basic-cd-fill"></i></div></div>
+      <div class="hotbar" id="hotbar">
+        <button type="button" class="slot" data-slot="Q" aria-label="Q 스킬"><span class="slot-icon" id="slot-icon-Q"></span><span class="slot-key">Q</span><span class="slot-cd" id="slot-cd-Q"></span></button>
+        <button type="button" class="slot" data-slot="W" aria-label="W 스킬"><span class="slot-icon" id="slot-icon-W"></span><span class="slot-key">W</span><span class="slot-cd" id="slot-cd-W"></span></button>
+        <button type="button" class="slot" data-slot="E" aria-label="E 스킬"><span class="slot-icon" id="slot-icon-E"></span><span class="slot-key">E</span><span class="slot-cd" id="slot-cd-E"></span></button>
+        <button type="button" class="slot" data-slot="R" aria-label="R 스킬"><span class="slot-icon" id="slot-icon-R"></span><span class="slot-key">R</span><span class="slot-cd" id="slot-cd-R"></span></button>
+      </div>
+
+      <button id="btn-pause" class="corner-btn" aria-label="일시정지">Ⅱ</button>
+      <button id="btn-controls" class="corner-btn corner-btn-controls" aria-label="조작법">?</button>
+
+      <div class="skill-tooltip hidden" id="skill-tooltip">
+        <div class="tooltip-name" id="tooltip-name"></div>
+        <div class="tooltip-desc" id="tooltip-desc"></div>
+        <div class="tooltip-cd" id="tooltip-cd"></div>
+      </div>
+    </div>
+
+    <div id="touch-controls" aria-label="터치 조작">
+      <div id="touch-joystick" aria-label="이동 조이스틱"><span id="touch-knob"></span></div>
+      <button id="touch-attack" aria-label="누르고 있으면 기본공격">공격</button>
+    </div>
+
+    <!-- 레벨업 카드 선택 -->
+    <div id="levelup-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2>레벨 업! <span id="levelup-lv"></span></h2>
+        <p class="modal-sub">카드 1장을 선택하세요</p>
+        <div class="card-row" id="card-row"></div>
+      </div>
+    </div>
+
+    <!-- 스테이지 클리어 -->
+    <div id="stageclear-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2>STAGE CLEAR</h2>
+        <div class="clear-summary" id="clear-summary"></div>
+        <button id="btn-next-stage" class="menu-btn">다음 스테이지</button>
+        <button id="btn-clear-lobby" class="menu-btn ghost">보상 받고 로비로</button>
+      </div>
+    </div>
+
+    <!-- 일시정지 -->
+    <div id="pause-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2>일시정지</h2>
+        <div class="pause-actions">
+          <button id="btn-resume" class="menu-btn">계속하기</button>
+          <button id="btn-pause-controls" class="menu-btn">조작법</button>
+          <button id="btn-pause-option" class="menu-btn">옵션</button>
+          <button id="btn-quit-title" class="menu-btn">로비로</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 조작법 안내 -->
+    <div id="controls-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2>조작법</h2>
+        <p class="touch-help">왼쪽 조이스틱으로 이동 · 오른쪽 공격 버튼을 길게 눌러 기본공격 · 스킬 아이콘을 눌러 사용</p>
+        <div class="controls-guide">
+          <div class="controls-row">
+            <div class="key-cluster">
+              <span class="key-cap key-cap-arrow" style="grid-area:up;">▲</span>
+              <span class="key-cap key-cap-arrow" style="grid-area:left;">◀</span>
+              <span class="key-cap key-cap-arrow" style="grid-area:down;">▼</span>
+              <span class="key-cap key-cap-arrow" style="grid-area:right;">▶</span>
+            </div>
+            <div class="controls-desc"><b>방향키</b><span>이동</span></div>
+          </div>
+          <div class="controls-row">
+            <span class="key-cap">A</span>
+            <div class="controls-desc"><b>기본공격</b><span>가장 가까운 몬스터를 공격합니다</span></div>
+          </div>
+          <div class="controls-row">
+            <span class="key-cap">Q</span><span class="key-cap">W</span><span class="key-cap">E</span><span class="key-cap">R</span>
+            <div class="controls-desc"><b>스킬</b><span>보유한 스킬을 사용합니다</span></div>
+          </div>
+          <div class="controls-row">
+            <span class="key-cap key-cap-wide">ESC</span>
+            <div class="controls-desc"><b>일시정지</b><span>게임을 멈춥니다</span></div>
+          </div>
+        </div>
+        <button id="btn-controls-close" class="menu-btn">확인</button>
+      </div>
+    </div>
+
+    <!-- 게임 오버 -->
+    <div id="gameover-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2 class="gameover-title">YOU DIED</h2>
+        <div class="clear-summary" id="gameover-summary"></div>
+        <button id="btn-gameover-title" class="menu-btn">로비로</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="data.js"></script>
+  <script src="advancement-data.js"></script>
+  <script src="sound.js"></script>
+  <script src="meta.js"></script>
+  <script src="advancements.js"></script>
+  <script src="lobby.js"></script>
+  <script src="combat-expansion.js"></script>
+  <script src="game.js"></script>
+  <script src="phase2.js"></script>
+  <script src="pwa.js"></script>
+</body>
+</html>
