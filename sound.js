@@ -32,7 +32,7 @@ const SFX = {
   // 공격했지만 사거리 안에 대상이 없을 때(헛스윙)
   whiff: { src: 'sound/허공.mp3', volume: 0.45, cooldown: 0.25 },
   // 몬스터
-  bat: { src: 'sound/bat.mp3', volume: 0.3, cooldown: 0.3 },
+  bat: { src: 'sound/bat.mp3', volume: 0.15, cooldown: 0.3 },
   monster_atk: { src: 'sound/monster.mp3', volume: 0.55, cooldown: 0.3 },
   slime_die: { src: 'sound/die_slime.mp3', volume: 0.7 },
   // 플레이어
