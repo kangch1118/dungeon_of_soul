@@ -100,7 +100,7 @@ resizeCanvas();
 const WORLD_W = 2600;
 const WORLD_H = 2600;
 // 플레이어가 못 따라잡으면 몬스터가 무한정 쌓여서 렉으로 이어질 수 있어 안전장치로 상한을 둔다.
-const MAX_LIVE_ENEMIES = 40;
+const MAX_LIVE_ENEMIES = 55;
 
 /* -------------------------------------------------------------------------
    3. 입력
@@ -576,9 +576,9 @@ function spawnBoss() {
     x, y,
     radius: 46,
     speed: tier.speed,
-    hp: 420 * mult * tier.hp,
-    maxHp: 420 * mult * tier.hp,
-    dmg: 22 * mult,
+    hp: 560 * mult * tier.hp,
+    maxHp: 560 * mult * tier.hp,
+    dmg: 30 * mult,
     isElite: true,
     isBoss: true,
     hitCooldown: 0,
@@ -1152,11 +1152,39 @@ function onGameOver() {
 
 // 화면 전환(로비/타이틀 이동)은 lobby.js 가 담당한다.
 
+const pauseCardRow = document.getElementById('pause-card-row');
+function renderPauseCards() {
+  pauseCardRow.innerHTML = '';
+  const stacks = player.cardStacks || {};
+  const owned = SKILL_POOL.filter(c => stacks[c.id] > 0);
+  if (!owned.length) {
+    pauseCardRow.innerHTML = '<p class="pause-card-empty">아직 선택한 카드가 없습니다.</p>';
+    return;
+  }
+  owned.forEach(card => {
+    const el = document.createElement('div');
+    el.className = 'pause-card';
+    el.innerHTML = `
+      <div class="pause-card-icon"><img src="${cardImagePath(card.id)}" alt=""></div>
+      <div class="pause-card-name">${card.name}</div>
+      <div class="pause-card-count">${stacks[card.id]}/${CARD_LIMITS[card.id] || 1}</div>
+    `;
+    const iconImage = el.querySelector('img');
+    iconImage.addEventListener('error', () => {
+      const fallback = document.createElement('span');
+      fallback.textContent = card.icon;
+      iconImage.replaceWith(fallback);
+    }, { once: true });
+    pauseCardRow.appendChild(el);
+  });
+}
+
 function togglePause() {
   if (!player || player.dying) return;
   clearInput();
   if (state.mode === 'playing') {
     state.mode = 'paused';
+    renderPauseCards();
     pauseModal.classList.remove('hidden');
   } else if (state.mode === 'paused') {
     state.mode = 'playing';
@@ -1320,17 +1348,17 @@ function update(dt) {
     state.waveNotice = Math.max(0, state.waveNotice - dt);
     spawnTimer -= dt;
     const needsEnemies = state.stageElapsed < state.stageDuration || state.killCount < state.killTarget;
-    const spawnInterval = clamp(1.35 - state.stage * .04 - Math.min(.25,state.stageElapsed / 450), .65, 1.35);
+    const spawnInterval = clamp(1.35 - state.stage * .06 - Math.min(.35,state.stageElapsed / 350), .45, 1.35);
     if (spawnTimer <= 0 && needsEnemies && enemies.length < MAX_LIVE_ENEMIES) {
       spawnNormalEnemy();
       spawnTimer = spawnInterval;
     }
     if (needsEnemies && state.stageElapsed >= state.nextWaveAt) {
-      state.nextWaveAt += 25;
+      state.nextWaveAt += 20;
       state.waveNotice = 3;
       const type = state.stage >= 2 ? 'bat' : 'slime';
       const center = bossPoint(player.x + Math.cos(state.nextWaveAt) * 540, player.y + Math.sin(state.nextWaveAt) * 540, 80);
-      const count = Math.min(6, 3 + Math.floor(state.stage / 2));
+      const count = Math.min(9, 4 + Math.floor(state.stage / 1.5));
       for (let i = 0; i < count; i++) spawnNormalEnemy(type, bossPoint(center.x + (i - count/2)*45, center.y + (i%2)*45, 25));
       floatTexts.push({x:player.x,y:player.y-80,text:type==='bat'?'박쥐 무리 접근!':'슬라임 공세!',color:'#ffc574',life:2,vy:-15});
     }

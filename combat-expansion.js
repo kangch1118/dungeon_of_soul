@@ -164,7 +164,7 @@ function updateBossAI(b, dt) {
     ((b.bossId === 'slime_king' && b.action?.type === 'jump') || (b.bossId === 'bat_queen' && b.action?.type === 'dash'));
   b.action=null;b.height=0;
   if(canChain) { b.chainDone=true; b.patternIndex--; startBossPattern(b); return; }
-  if(b.aiState==='attack'){b.aiState='recover';b.aiTime=b.bossId==='ancient_golem'?2:1.3;return;}
+  if(b.aiState==='attack'){b.aiState='recover';b.aiTime=b.bossId==='ancient_golem'?1.5:.95;return;}
   if(b.aiState==='ritual') {
     const alive=enemies.filter(e=>!e.dead&&e.ritual&&e.ownerBossId===b.ownerId);
     b.hp=Math.min(b.maxHp,b.hp+alive.length*b.maxHp*.04);alive.forEach(e=>e.dead=true);
@@ -177,7 +177,7 @@ function updateBossAI(b, dt) {
     else {b.aiState='intro';b.aiTime=1;}
     return;
   }
-  if(b.aiState!=='idle'){b.aiState='idle';b.aiTime=b.phase===2?.85:1.25;return;}
+  if(b.aiState!=='idle'){b.aiState='idle';b.aiTime=b.phase===2?.55:.85;return;}
   if(Math.abs(b.x-player.x)>canvas.width*.46||Math.abs(b.y-player.y)>canvas.height*.4){b.aiTime=.3;return;}
   b.chainDone=false;
   startBossPattern(b);
