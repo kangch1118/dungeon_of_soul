@@ -14,6 +14,13 @@ document.getElementById('btn-start').addEventListener('click', () => {
   renderLobbyAll();
 });
 
+document.getElementById('btn-reset-game').addEventListener('click', () => {
+  if (!window.confirm('모든 진행도와 재화를 초기화할까요?')) return;
+  localStorage.removeItem('dungeon_of_soul_save_v1');
+  localStorage.removeItem('dungeon_of_soul_save_v1_recovery');
+  window.location.reload();
+});
+
 document.getElementById('btn-lobby-title').addEventListener('click', () => {
   stopBgm();
   showScreen('title');
