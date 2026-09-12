@@ -1771,6 +1771,42 @@ function getGlowGradient(radius, colorInner, colorOuter) {
   return g;
 }
 
+// 엘리트 몹도 매 프레임 ctx.filter(saturate/brightness)를 걸면 위 drop-shadow와 같은 이유로 느려진다
+// (엘리트가 여러 마리 겹치면 스테이지 3부터 렉 발생). 필터는 스프라이트당 한 번만 적용해 캔버스에 구워두고,
+// 이후에는 필터 없이 그 결과물을 그대로 그린다.
+const eliteSpriteCache = {};
+function getEliteSprite(img) {
+  if (!img || !img.complete || img.naturalWidth === 0) return null;
+  let baked = eliteSpriteCache[img.src];
+  if (!baked) {
+    const c = document.createElement('canvas');
+    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    const cx = c.getContext('2d');
+    cx.filter = 'saturate(1.5) brightness(1.15)';
+    cx.drawImage(img, 0, 0);
+    baked = c;
+    eliteSpriteCache[img.src] = baked;
+  }
+  return baked;
+}
+
+// 엘리트가 처음 등장하는 프레임에 필터용 캔버스를 만들지 않도록 미리 준비한다.
+function warmEliteSprites() {
+  const warm = () => {
+    for (const set of Object.values(monsterImages)) {
+      getEliteSprite(set.walk);
+      getEliteSprite(set.attack);
+    }
+  };
+  if (typeof window.requestIdleCallback === 'function') window.requestIdleCallback(warm, { timeout: 1200 });
+  else window.setTimeout(warm, 0);
+}
+for (const set of Object.values(monsterImages)) {
+  set.walk.addEventListener('load', warmEliteSprites, { once: true });
+  set.attack.addEventListener('load', warmEliteSprites, { once: true });
+}
+warmEliteSprites();
+
 function drawEnemies() {
   for (const e of enemies) {
     if (e.dead) continue;
@@ -1826,10 +1862,12 @@ function drawEnemies() {
         const frame = useAttack
           ? clamp(Math.floor((0.4 - e.attackAnim) / 0.1), 0, MONSTER_FRAMES - 1)
           : (e.animFrame || 0);
+        let drawImg = img;
         if (e.flash > 0) {
           ctx.filter = 'brightness(2.4)';
         } else if (e.isElite) {
-          ctx.filter = 'saturate(1.5) brightness(1.15)';
+          ctx.filter = 'none';
+          drawImg = getEliteSprite(img) || img;
           const glowR = e.radius * 1.8;
           ctx.fillStyle = getGlowGradient(glowR, 'rgba(120,200,255,0.4)', 'rgba(120,200,255,0)');
           ctx.beginPath();
@@ -1839,7 +1877,7 @@ function drawEnemies() {
           ctx.filter = 'none';
         }
         const squash = e.monsterType === 'slime' && !e.hopping && e.hopTime < .2 ? .88 : 1;
-        ctx.drawImage(img, frame * MONSTER_FRAME, 0, MONSTER_FRAME, MONSTER_FRAME,
+        ctx.drawImage(drawImg, frame * MONSTER_FRAME, 0, MONSTER_FRAME, MONSTER_FRAME,
                       -size / (2*squash), drawTopY + size*(1-squash), size/squash, size*squash);
         drawn = true;
       }
