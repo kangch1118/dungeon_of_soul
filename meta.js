@@ -8,8 +8,8 @@ const SAVE_KEY = 'dungeon_of_soul_save_v1';
 
 function defaultMeta() {
   return {
-    gold: 100,
-    soul: 0,
+    gold: 10000,
+    soul: 10000,
     crystal: 0, // 미구현
     charLevel: 1,
     charExp: 0,
