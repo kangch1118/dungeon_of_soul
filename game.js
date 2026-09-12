@@ -2128,7 +2128,7 @@ function drawParticles() {
 }
 
 function drawFloatTexts() {
-  ctx.font = 'bold 14px Georgia, serif';
+  ctx.font = 'bold 16px Georgia, serif';
   ctx.textAlign = 'center';
   for (const ft of floatTexts) {
     const [sx, sy] = worldToScreen(ft.x, ft.y);
