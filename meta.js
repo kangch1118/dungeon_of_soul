@@ -8,7 +8,7 @@ const SAVE_KEY = 'dungeon_of_soul_save_v1';
 
 function defaultMeta() {
   return {
-    gold: 10000,
+    gold: 100000,
     soul: 10000,
     crystal: 0, // 미구현
     charLevel: 1,
