@@ -5,7 +5,82 @@
    기존 마크업/클래스 이름은 유지하고 외형만 목업에 맞췄다.
    ========================================================================= */
 
+/* 실제 게임 코드(js/html)에 등장하는 글자만 남긴 서브셋 WOFF2 — 원본 TTF는 장당
+   5~12MB(완성형 한글 전체+한자 포함)라 그대로 쓰면 로딩이 느리고, 로딩 중간에
+   폰트가 바뀌며 레이아웃이 밀리는 원인이 됐다(총 70MB+ → 약 600KB로 축소).
+   혹시 나중에 서브셋에 없는 새 글자를 쓰게 되면 이 글꼴만 그 글자를 건너뛰고
+   font-family 목록의 다음 글꼴(Noto Sans KR 등)로 자연스럽게 대체되니, 그때 다시
+   전체 텍스트를 스캔해서 서브셋을 다시 만들면 된다. */
+@font-face {
+  font-family: 'KoPubWorld Dotum';
+  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MaruBuri';
+  src: url('font/maruburi_ttf/MaruBuri-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MaruBuri';
+  src: url('font/maruburi_ttf/MaruBuri-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MaruBuri';
+  src: url('font/maruburi_ttf/MaruBuri-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MaruBuri';
+  src: url('font/maruburi_ttf/MaruBuri-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'MaruBuri';
+  src: url('font/maruburi_ttf/MaruBuri-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KoPubWorld Batang';
+  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Batang%20Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KoPubWorld Dotum';
+  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'KoPubWorld Dotum';
+  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Bold.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  /* 옵션 화면에서 조절하는 HUD 배율(1 = 100%) — game.js가 슬라이더 값으로 갱신한다 */
+  --ui-hud-scale: 1;
+  --ui-basic-scale: 1;
+  --ui-hotbar-scale: 1;
+
   /* 표면 / 패널 */
   --bg-deep: #070b14;
   --panel-grad: linear-gradient(160deg, #17223c 0%, #0d1526 58%, #111c34 100%);
@@ -35,7 +110,9 @@
   --boss: linear-gradient(180deg, #ff5a5a, #a11414);
   --gloss: rgba(255,255,255,0.16);
 
-  --font: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font: 'MaruBuri', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-card: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font-display: 'KoPubWorld Dotum', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 
   /* 모서리 깎은 팔각형 */
   --oct: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
@@ -132,6 +209,7 @@ html, body {
 }
 
 .game-logo {
+  font-family: 'KoPubWorld Batang', var(--font-display);
   font-weight: 900;
   font-size: clamp(30px, 5.5vw, 52px);
   letter-spacing: 8px;
@@ -148,6 +226,7 @@ html, body {
   background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold-bright) 50%, var(--gold) 75%, transparent);
 }
 .game-sub {
+  font-family: var(--font-display);
   margin: 2px 0 14px;
   color: var(--gold);
   letter-spacing: 9px;
@@ -183,6 +262,25 @@ html, body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.7);
   transition: filter 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease, background-image 0.05s ease;
 }
+.game-sub,
+.menu-btn,
+.img-btn,
+.option-panel h2,
+.modal-inner h2,
+.stage-label,
+.tab-btn,
+.adv-card h3,
+#roulette-hud strong {
+  font-family: var(--font-display);
+}
+.skill-card .card-name,
+.pause-card-name,
+.equip-slot-box .slot-item-name,
+.item-card .item-name,
+.shop-card .shop-name,
+.skill-tooltip .tooltip-name {
+  font-family: var(--font-card);
+}
 .menu-btn {
   padding: 10px 24px;
   font-size: 13px;
@@ -203,7 +301,7 @@ html, body {
   color: var(--gold-bright);
   box-shadow: var(--gold-glow);
 }
-.img-btn { padding: 15px 44px; font-size: 16px; letter-spacing: 4px; }
+.img-btn { padding: 15px 44px; font-size: 16px; letter-spacing: 3px; }
 .img-btn-option { padding: 11px 36px; font-size: 14px; }
 .img-btn:hover, .btn-explore:hover { box-shadow: 0 0 22px rgba(245,216,145,0.6); }
 
@@ -235,7 +333,7 @@ html, body {
 }
 
 .option-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 14px; }
-.option-row label { width: 90px; flex-shrink: 0; color: var(--text-soft); }
+.option-row label { width: 128px; flex-shrink: 0; color: var(--text-soft); }
 .option-row input[type="range"] { flex: 1; accent-color: var(--gold); }
 .option-row select {
   flex: 1;
@@ -274,13 +372,19 @@ html, body {
 #hud { position: absolute; inset: 0; pointer-events: none; font-family: var(--font); }
 
 .hud-top-left { position: absolute; top: 16px; left: 16px; width: 270px; }
+/* 다른 패널(.panel/.modal-inner/.lobby-section)과 같은 금속 프레임(image/ui2/ui_panel.png)을
+   두께만 줄여서 두른다 — HUD만 다른 모양(둥근 테두리)이라 붕 떠 보이던 것을 통일했다. */
 .hud-status-panel {
   display: flex; align-items: flex-start; gap: 10px;
-  background: linear-gradient(160deg, rgba(23,34,60,0.88), rgba(13,21,38,0.88));
-  border: 1px solid #b79650;
-  border-radius: 8px;
-  padding: 8px 12px 8px 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45), inset 0 0 12px rgba(0,0,0,0.35);
+  background: linear-gradient(160deg, rgba(23,34,60,0.94), rgba(13,21,38,0.94));
+  border-style: solid;
+  border-width: 12px;
+  border-image-source: url('image/ui2/ui_panel.png');
+  border-image-slice: 80 92 fill;
+  border-image-width: 12px;
+  border-image-repeat: stretch;
+  padding: 2px 6px 2px 2px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
 .hud-status-body { flex: 1; min-width: 0; }
 .hud-portrait { position: relative; width: 48px; height: 48px; flex-shrink: 0; }
@@ -423,13 +527,13 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0.55;
+  opacity: 0.85;
   pointer-events: auto;
   cursor: default;
   transition: filter 0.15s ease, opacity 0.15s ease;
 }
 .slot:hover { filter: brightness(1.25) drop-shadow(0 0 6px rgba(217,164,65,0.6)); }
-.slot.active { opacity: 1; filter: drop-shadow(0 0 8px rgba(245,216,145,0.65)); }
+.slot.active { opacity: 1; filter: drop-shadow(0 0 4px rgba(245,216,145,0.5)); }
 /* 스킬 아이콘을 슬롯의 주인공으로 — 키 글자는 오른쪽 아래 작은 배지로 뺐다 */
 .slot-icon {
   font-size: 26px;
@@ -451,7 +555,10 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
 .slot-cd {
   position: absolute; inset: 0;
   border-radius: 6px;
-  background: rgba(4,8,16,0.72);
+  background: rgba(4,8,16,0.6);
+  /* 슬롯 배경(육각 프레임)과 같은 모양으로 잘라서, 쿨타임 중일 때만 사각형
+     덩어리로 꽉 차 보이며 다른 슬롯보다 커 보이던 것을 맞춘다. */
+  clip-path: polygon(50% 2%, 95% 26%, 95% 74%, 50% 98%, 5% 74%, 5% 26%);
   display: flex; align-items: center; justify-content: center;
   font-size: 12px;
   font-weight: 800;
@@ -620,14 +727,19 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
 .pause-card {
   width: 82px;
   min-height: 92px;
-  padding: 8px 6px 6px;
+  padding: 6px 5px 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: linear-gradient(180deg, #1c2b4a, #0d1526);
-  border: 1px solid #33456b;
-  border-radius: 4px;
   flex-shrink: 0;
+  /* 다른 아이템 카드(.item-card)와 같은 등급 프레임 — 평범한 사각 테두리 대신 통일감 있게 */
+  border-style: solid;
+  border-width: 10px;
+  border-image-slice: 16% 14%;
+  border-image-width: 10px;
+  border-image-repeat: stretch;
+  border-image-source: url('image/ui2/ui_card_common.png');
 }
 .pause-card-icon { width: 34px; height: 34px; margin: 0 0 4px; display: grid; place-items: center; font-size: 20px; flex-shrink: 0; }
 .pause-card-icon img { width: 100%; height: 100%; object-fit: contain; }
@@ -695,20 +807,22 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
 .tab-nav { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
 .tab-btn {
   position: relative;
-  width: 118px;
+  width: 175px;
   height: 66px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font);
   font-weight: 700;
-  background-color: #0e1830;
+  background-color: transparent;
   background-image: url('image/ui2/ui_tab_pill_inactive.png');
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: left center;
   background-repeat: no-repeat;
   border: none;
+  appearance: none;
   color: var(--text-dim);
-  padding: 0;
+  padding: 0 10px 0 46px;
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -927,3 +1041,195 @@ button:focus-visible,[role=button]:focus-visible {outline:3px solid #ffe49a;outl
 
 @media(max-height:500px){.touch-device .hud-top-right{right:140px;}}
 .touch-help{display:none}.touch-device .touch-help{display:block}
+/* HUD: resource labels, separate stage objective, and compact pause menu. */
+body:not(.touch-device) .hud-top-left { width: 360px; }
+.hud-status-panel { padding: 8px; gap: 14px; }
+.hud-status-body .stage-label { margin-bottom: 10px; letter-spacing: 2px; }
+/* 라벨을 바 왼쪽에, 수치는 바 아래 중앙에 두는 배치(레퍼런스 목업 기준) */
+.hud-meter-row { display:flex; align-items:center; gap:10px; margin:5px 2px 0; }
+.hud-meter-label { flex:0 0 auto; min-width:44px; color:#ebd5a6; font-size:12px; font-weight:700; white-space:nowrap; }
+.hud-meter-row .bar { flex:1; margin-bottom:0; }
+.bar-value {
+  text-align:center; margin:2px 2px 6px;
+  font-size:12px; font-weight:700; color:#fff;
+  font-variant-numeric:tabular-nums;
+  text-shadow:0 1px 2px rgba(0,0,0,0.95);
+}
+#hud .hud-status-body .bar { clip-path:none; border-radius:3px; border:1px solid #8e713d; box-shadow:0 0 0 1px #080d17,inset 0 2px 7px #000; }
+#hud .hud-status-body .hp-fill { background:linear-gradient(90deg,#861e35,#d83754,#ee6b79); }
+#hud .hud-status-body .exp-fill { background:linear-gradient(90deg,#294b83,#527cbe,#91bce8); }
+#hud .hud-status-body .exp-bar { height:18px; margin-bottom:2px; }
+#hud .hud-status-body .exp-bar .bar-text { font-size:10px; }
+.hud-objective { position:absolute; left:16px; top:196px; width:360px; padding:8px 12px; background:#0c1423eb; border-left:2px solid #bd9650; }
+.objective-label { font-size:10px; color:#b79b65; letter-spacing:1px; }
+.hud-objective .stage-progress { margin:4px 0 0; font-size:12px; }
+.basic-attack-hud { width:270px; padding:10px 12px; gap:8px; align-items:center; border-radius:3px; border:1px solid #b79650; box-shadow:inset 0 0 0 3px #111b2a,0 3px 12px #0008; background:linear-gradient(135deg,#253147,#0c1422); }
+.basic-key { display:grid; place-items:center; width:32px; height:32px; font:800 18px var(--font); color:#ffe1a0; border:1px solid #c49a50; background:linear-gradient(#443921,#19191b); box-shadow:0 2px 0 #705529; }
+.basic-label { flex:1; font-weight:700; color:#eee0c4; }
+.basic-label small { display:block; margin-top:3px; font-size:9px; font-weight:400; color:#9aa8bf; }
+.basic-attack-hud .basic-cd-track { height:5px; border:1px solid #574627; }
+#pause-modal { padding:16px; }
+#pause-modal .modal-inner { width:420px; min-width:0; max-width:100%; max-height:calc(100dvh - 32px); overflow-y:auto; padding:24px 18px; }
+#pause-modal h2 { margin:4px 0 24px; }
+#pause-modal .pause-card-row { max-height:210px; }
+#pause-modal .pause-card-empty { padding:18px 0; }
+#pause-modal .pause-actions { gap:12px; margin-top:24px; }
+#pause-modal .menu-btn { min-height:48px; width:100%; padding:10px 14px; background-size:100% 100%; }
+#pause-modal #btn-resume { filter:brightness(1.15); }
+.touch-device .hud-objective { width:270px; top:190px; }
+.touch-device .basic-attack-hud { width:230px; padding:7px 9px; }
+@media(max-height:500px) { .hud-objective { top:174px; } .touch-device .hud-objective { top:174px; } #pause-modal .modal-inner { padding:10px 14px; } #pause-modal .pause-actions { gap:6px; margin-top:12px; } }
+#hud .hud-top-left .hud-objective { position:static; width:100%; margin-top:6px; }
+/* Generated gold/enamel HUD frame; live text and fills stay in the DOM. */
+#hud .hud-status-panel, #hud .basic-attack-hud {
+  border:16px solid #bfa36b;
+  border-image: url('image/ui_hud_20260913/frame.png') 145 fill / 16px / 0 stretch;
+  border-radius:0; background:#091320;
+  box-shadow:0 4px 14px #0009;
+}
+#hud .hud-status-panel { align-items:center; padding:3px 2px; gap:12px; }
+#hud .hud-portrait { width:72px; height:72px; }
+#hud .hud-portrait .portrait-frame { border-radius:0; border:0; image-rendering:auto; box-shadow:none; }
+#hud .hud-level-badge { min-width:25px; height:25px; right:-6px; bottom:-5px; border:2px ridge #dfc17d; background:linear-gradient(145deg,#51452d,#151b22); color:#ffe4a8; font-size:13px; }
+#hud .hud-status-body .stage-label { font-size:15px; text-align:center; color:#f1dbac; letter-spacing:3px; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid #91744280; }
+#hud .hud-meter-label { margin:4px 1px; font-size:10px; color:#ead5a9; }
+#hud .hud-status-body .bar { border:2px ridge #d4b77c; border-radius:2px; background:#060c14; box-shadow:0 0 0 1px #211a13,inset 0 2px 5px #000; height:23px; margin-bottom:5px; }
+#hud .hud-status-body .bar-fill { box-shadow:inset 0 1px 1px #fff9,inset 0 -3px 4px #0009; background-size:auto; }
+#hud .hud-status-body .hp-fill { background:linear-gradient(175deg,transparent 45%,#ff899433 46%,transparent 65%),linear-gradient(0deg,#8a001b,#ef1537 50%,#ff6d79 54%,#b40023); }
+#hud .hud-status-body .exp-fill { background:linear-gradient(175deg,transparent 45%,#b9f7ff66 46%,transparent 65%),linear-gradient(0deg,#064580,#09a4e6 50%,#8aeaff 54%,#1371ac); }
+#hud .hud-status-body .bar-text { font-size:12px; text-shadow:0 1px 3px #000,0 0 3px #000; }
+#hud .hud-status-body .exp-bar { height:18px; margin-bottom:0; }
+#hud .hud-status-body .shield-bar { height:16px; margin-top:0; }
+@media(max-width:600px) { #hud .hud-top-left { width:min(300px,calc(100vw - 90px)); } #hud .hud-portrait { width:52px; height:52px; } #hud .hud-status-panel { gap:8px; border-image-width:12px; border-width:12px; } #hud .hud-status-body .stage-label { font-size:12px; letter-spacing:1px; } }
+/* Face-focused HUD portraits and skill/basic-attack size hierarchy. */
+#hud .hud-portrait .portrait-frame { position:relative; }
+/* 초상화 원본(image/portrait/*.png)이 이미 얼굴 위주로 알맞게 잘려 있어서 억지로
+   확대할 필요가 없다 — 그냥 자연스럽게 꽉 채워서 중앙 정렬만 한다. */
+#hud .hud-portrait .portrait-frame > img:not(.adv-static-portrait) { width:100%; height:100%; object-fit:cover; object-position:center; }
+/* 전직 정지 초상화(image/portrait/*.png)는 이미 얼굴 위주로 꽉 차게 잘려 있어서
+   위 확대 보정이 필요 없다 — 오히려 과하게 확대돼 잘려 보이므로 제외한다. */
+#hud .hud-portrait .portrait-frame > img.adv-static-portrait { width:100%; height:100%; object-fit:cover; }
+#hud .hud-portrait .adv-portrait { transform:scale(2.5); transform-origin:50% 16%; }
+#hud .hud-level-badge { right:auto; left:-6px; }
+body:not(.touch-device) #hud .hotbar { gap:12px; padding:10px 16px; }
+body:not(.touch-device) #hud .hotbar .slot { width:66px; height:66px; }
+body:not(.touch-device) #hud .hotbar .slot-icon { font-size:34px; }
+body:not(.touch-device) #hud .hotbar .slot-key { font-size:12px; right:4px; bottom:3px; }
+/* Skill tray uses the same generated metal/enamel frame as the HUD. */
+#hud .hotbar {
+  clip-path:none;
+  border:14px solid #baa16b;
+  border-image:url('image/ui_hud_20260913/frame.png') 145 fill / 14px / 0 stretch;
+  background:#091320;
+  box-shadow:0 6px 18px #000b;
+  padding:5px 8px;
+  gap:12px;
+}
+body:not(.touch-device) #hud .hotbar { padding:5px 8px; }
+body:not(.touch-device) #hud .basic-attack-hud { bottom:132px; }
+#hud .basic-attack-hud { width:226px; grid-template-columns:29px 1fr auto; gap:5px; border-width:12px; border-image-width:12px; }
+#hud .basic-key { width:27px; height:32px; font-size:16px; }
+#hud .basic-label { font-size:11px; }
+#hud .basic-label small { display:none; }
+#hud .basic-cd-track { height:6px; }
+body:not(.touch-device) #hud .basic-attack-hud { bottom:118px; }
+#hud .basic-attack-hud { width:280px; padding:0 2px; gap:7px; display:grid; grid-template-columns:36px 1fr auto; }
+#hud .basic-key { grid-row:1 / 3; height:39px; width:34px; border:2px ridge #bea16a; background:linear-gradient(145deg,#55534a,#12161c 65%); box-shadow:inset 0 0 2px #22262b; text-shadow:0 2px 2px #000; }
+#hud .basic-label { font-size:12px; }
+#hud .basic-label small { font-size:8px; }
+#hud .basic-attack-hud strong { font-size:11px; color:#f6d68d; }
+#hud .basic-cd-track { grid-column:2 / 4; height:8px; border:1px solid #c4ab74; border-radius:1px; background:#050a11; }
+#hud .basic-cd-track i { background:linear-gradient(0deg,#8e5b15,#efb845 48%,#ffeb9b 55%,#ae7c26); box-shadow:inset 0 1px 1px #fff9; }
+.touch-device #hud .hotbar { border-width:10px; border-image-width:10px; padding:3px 5px; gap:8px; }
+/* Original concept artwork sampled as live gauge textures. */
+#hud .hud-status-panel, #hud .basic-attack-hud, #hud .hotbar {
+  border-image-width:18px;
+  border-image-slice:125 fill;
+  background-color:#08101b;
+  box-shadow:0 0 0 1px #34291a,0 5px 16px #000b;
+}
+#hud .hud-status-panel { gap:12px; }
+#hud .hud-status-body .stage-label { font-family:Georgia,var(--font); font-size:17px; color:#f3dfaf; text-shadow:0 2px 2px #000; border-bottom:1px solid #b5975970; }
+#hud .hud-status-body .bar { border:3px ridge #d5bd89; border-radius:0; height:25px; clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%); }
+#hud .hud-status-body .bar-fill { background-image:url('image/ui_hud_20260913/concept.png'); background-repeat:no-repeat; box-shadow:inset 0 1px 2px #fff9,inset 0 -2px 3px #0007; }
+#hud .hud-status-body .hp-fill { background-size:2300px 885px; background-position:-900px -180px; background-color:#b80022; }
+#hud .hud-status-body .exp-fill { background-size:2300px 885px; background-position:-900px -353px; background-color:#039ad1; }
+#hud .hud-status-body .shield-fill { background-image:linear-gradient(#c5efff,#397caf); }
+#hud .hud-status-body .exp-bar { height:20px; }
+#hud .hud-status-body .bar-text { color:#fff5df; }
+#hud .hud-meter-label { color:#f1d8a4; font-size:11px; text-shadow:0 1px 2px #000; }
+#hud .basic-attack-hud { grid-template-columns:29px 28px 1fr auto; width:242px; }
+#hud .basic-attack-hud::before { content:''; grid-column:2; grid-row:1 / 3; width:28px; height:34px; background:url('image/ui_hud_20260913/concept.png') -96px -95px / 380px 146px no-repeat; }
+#hud .basic-key { grid-column:1; }
+#hud .basic-label { grid-column:3; grid-row:1; color:#f1dab0; }
+#hud .basic-attack-hud strong { grid-column:4; grid-row:1; }
+#hud .basic-cd-track { grid-column:3 / 5; }
+#hud .basic-cd-track i { background:#d5a335 url('image/ui_hud_20260913/concept.png') -920px -753px / 2300px 885px no-repeat; }
+#hud .hotbar { border-image-width:18px; }
+
+/* A(기본공격) 키는 조이스틱 노브, 그 옆 스킬 아이콘 자리는 공용 버튼 텍스처를 배경으로 쓴다
+   (image/ui2 — 여기저기 흩어진 임시 그라디언트/스프라이트 배경을 정리). */
+#hud .basic-key {
+  border: 0;
+  box-shadow: none;
+  background: url('image/ui2/ui_joystick_knob.png') center / 100% 100% no-repeat;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+}
+#hud .basic-attack-hud::before {
+  content: '';
+  background: url('image/ui2/ui_button_default.png') center / cover no-repeat;
+  border-radius: 3px;
+}
+
+/* 기본공격 바 안쪽 내용물이 왼쪽(A) 여백은 좁고 오른쪽(준비) 여백은 넓어 보였다
+   — A/아이콘 쪽은 오른쪽으로, 문구/게이지 쪽은 왼쪽으로 당겨 중앙에 맞춘다. */
+#hud .basic-attack-hud { padding: 0 3px 0 7px; gap: 5px; }
+
+/* 타이틀 로고 글자가 금장 엠블럼 장식(양옆 검) 밖으로 삐져나갔다 —
+   엠블럼과 같은 폭으로 맞추고 살짝 줄여서 안쪽 여백 안에 들어오게 한다. */
+.title-content { width: min(640px, 86vw); }
+.game-logo { width: 100%; text-align: center; font-size: clamp(24px, 4.4vw, 42px); letter-spacing: 6px; }
+
+/* 기본공격 바 — A 옆에 있던 빈 장식 칸(칼 아이콘 지운 자리) 완전히 제거하고
+   문구/게이지/상태를 그 자리로 당긴다. */
+#hud .basic-attack-hud::before { display: none; }
+#hud .basic-attack-hud { grid-template-columns: 29px 1fr auto; }
+#hud .basic-label { grid-column: 2; }
+#hud .basic-attack-hud strong { grid-column: 3; }
+#hud .basic-cd-track { grid-column: 2 / 4; }
+
+/* HUD 초상화는 좀 더 키우고, 패널 전체 크기는 살짝 줄여서 초상화 비중을 키운다. */
+#hud .hud-portrait { width: 86px; height: 86px; }
+body:not(.touch-device) #hud .hud-top-left { width: 350px; }
+/* 체력/경험치 바를 가로로 더 길게, 세로는 살짝 낮게 */
+#hud .hud-status-body .bar { height: 22px; }
+
+/* 개별 스킬 슬롯이 아니라 핫바 전체를 감싸는 큰 사각 배경 쪽을 image/ui2/ui_button_default.png로
+   교체 — 슬롯(육각 프레임)은 원래대로 되돌린다. */
+.slot { background-image: url('image/ui2/ui_hotbar_slot.png'); background-size: 100% 100%; background-position: center; }
+#hud .hotbar {
+  /* 금테 + 양끝 다이아몬드 전부 살아있는 원본 그대로 배경으로 쓴다.
+     예전 규칙이 남긴 box-shadow(1px 얇은 외곽선)가 그 위에 겹쳐 보이고 있어서 같이 지운다. */
+  border: 0;
+  border-image: none;
+  box-shadow: none;
+  background: url('image/ui2/ui_button_default.png') center / 100% 100% no-repeat;
+  padding: 8px 12px;
+}
+
+/* 탭마다 다른 아이콘 이미지를 썼더니 원본 비율 차이로 계속 크기가 들쭉날쭉했다 —
+   4개 전부 공용 알약(ui_tab_pill) 배경 하나로 통일해서 완전히 같게 맞춘다. */
+.tab-btn { width: 118px; padding: 0 10px; background-size: 100% 100%; background-position: center; }
+
+/* 기본공격 바 전체를 살짝 축소 */
+#hud .basic-attack-hud { width: 210px; }
+#hud .basic-key { width: 25px; height: 30px; font-size: 14px; }
+#hud .basic-label { font-size: 11px; }
+#hud .basic-attack-hud strong { font-size: 10px; }
+#hud .basic-cd-track { height: 7px; }
+
+/* 옵션 화면의 "UI 크기" 슬라이더 3개 — 각 HUD 요소를 통째로 scale()해서 축소/확대한다.
+   위치를 잡는 기존 translate와 같이 써야 해서, 각 요소의 최종 transform 값에 얹는다. */
+.hud-top-left { transform: scale(var(--ui-hud-scale)); transform-origin: top left; }
+#hud .basic-attack-hud { transform: translateX(-50%) scale(var(--ui-basic-scale)); }
+#hud .hotbar { transform: translateX(-50%) scale(var(--ui-hotbar-scale)); }

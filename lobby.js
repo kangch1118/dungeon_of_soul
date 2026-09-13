@@ -136,7 +136,7 @@ function renderCharacterTab() {
     <div class="lobby-section">
       <h3>기본 클래스 / 전투 스타일</h3>
       <div class="job-row" style="margin-bottom:12px;">
-        <div class="portrait-frame">${advanced?`<div class="adv-portrait" style="${advPortraitStyle(advanced)}" role="img" aria-label="${advanced.name}"></div>`:`<img src="${appearanceDef.portrait}" alt="${appearanceDef.name}">`}</div>
+        <div class="portrait-frame">${advanced?advPortraitHtml(advanced):`<img src="${appearanceDef.portrait}" alt="${appearanceDef.name}">`}</div>
         <div>
           <div class="job-name">${appearanceDef.icon} ${advanced?advanced.name:appearanceDef.name}</div>
           <div class="job-tier">${classKit.basicAttack.label} · Q ${classKit.qSkill.name}</div>

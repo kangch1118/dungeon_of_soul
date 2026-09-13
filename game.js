@@ -42,6 +42,9 @@ const options = {
   sfx: 70,
   difficulty: 'normal',
   showFps: false,
+  scaleHud: 100,
+  scaleBasic: 100,
+  scaleHotbar: 100,
 };
 
 const optBgm = document.getElementById('opt-bgm');
@@ -58,6 +61,24 @@ optShowFps.addEventListener('change', () => {
   options.showFps = optShowFps.checked;
   document.getElementById('hud-fps').style.display = options.showFps ? 'block' : 'none';
 });
+
+// 체력/기본공격/스킬 바 UI 크기 슬라이더 — 각각 CSS 변수로 넘겨서 transform:scale()로 적용한다
+// (.hud-top-left / #hud .basic-attack-hud / #hud .hotbar, style.css 맨 아래 참고).
+const UI_SCALE_SLIDERS = [
+  { key: 'scaleHud', cssVar: '--ui-hud-scale', input: document.getElementById('opt-scale-hud'), val: document.getElementById('opt-scale-hud-val') },
+  { key: 'scaleBasic', cssVar: '--ui-basic-scale', input: document.getElementById('opt-scale-basic'), val: document.getElementById('opt-scale-basic-val') },
+  { key: 'scaleHotbar', cssVar: '--ui-hotbar-scale', input: document.getElementById('opt-scale-hotbar'), val: document.getElementById('opt-scale-hotbar-val') },
+];
+function applyUiScale(entry) {
+  document.documentElement.style.setProperty(entry.cssVar, options[entry.key] / 100);
+  entry.val.textContent = options[entry.key] + '%';
+}
+for (const entry of UI_SCALE_SLIDERS) {
+  entry.input.addEventListener('input', () => {
+    options[entry.key] = +entry.input.value;
+    applyUiScale(entry);
+  });
+}
 
 const DIFFICULTY_SCALE = { easy: 0.75, normal: 1, hard: 1.4 };
 
@@ -2065,13 +2086,26 @@ function drawVfxAnims() {
   ctx.restore();
 }
 
+// 골드/경험치 드롭 — HUD 재화 아이콘과 같은 이미지(image/ui/coin.png, gem.png)를 재사용한다.
+// 영혼(soul) 드롭은 아직 전용 이미지가 없어서 기존 이모지로 남겨둔다.
+const pickupImages = { gold: new Image(), exp: new Image() };
+pickupImages.gold.src = 'image/ui/coin.png';
+pickupImages.exp.src = 'image/ui/gem.png';
+
 function drawPickups() {
+  const size = 20; // HUD 상단 재화 아이콘(17px)과 비슷한 크기로
   for (const pk of pickups) {
     const [sx, sy] = worldToScreen(pk.x, pk.y);
-    ctx.font = '18px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(pk.type === 'gold' ? '🪙' : pk.type === 'exp' ? '🔷' : '🔮', sx, sy);
+    const img = pickupImages[pk.type];
+    if (img && img.complete && img.naturalWidth) {
+      const w = size, h = size * (img.naturalHeight / img.naturalWidth);
+      ctx.drawImage(img, sx - w / 2, sy - h / 2, w, h);
+    } else {
+      ctx.font = '18px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(pk.type === 'gold' ? '🪙' : pk.type === 'exp' ? '🔷' : '🔮', sx, sy);
+    }
   }
 }
 
@@ -2267,7 +2301,7 @@ function updateHudPortrait() {
   const advanced = player.adv && ADVANCED_JOBS.find(j => j.id === player.adv.id);
   const appearanceDef = APPEARANCE_POOL.find(a => a.id === meta.appearance) || APPEARANCE_POOL[0];
   hudEls.portraitFrame.innerHTML = advanced
-    ? `<div class="adv-portrait" style="${advPortraitStyle(advanced)}" role="img" aria-label="${advanced.name}"></div>`
+    ? advPortraitHtml(advanced)
     : `<img src="${appearanceDef.portrait}" alt="${appearanceDef.name}">`;
 }
 const hotbarEls = {};
@@ -2290,7 +2324,7 @@ function updateHud() {
   hudEls.basicCdText.textContent = basicRemaining > 0 ? `${basicRemaining.toFixed(1)}초` : '준비';
   hudEls.basicCdFill.style.width = `${clamp(1-basicRemaining/basicInterval,0,1)*100}%`;
   const remain = Math.max(0, Math.ceil(state.stageDuration-state.stageElapsed));
-  hudEls.stageProgress.textContent = state.bossActive ? `보스전 · ${state.boss.phase === 2 ? '2단계' : '1단계'}` : state.waveNotice > 0 ? '추가 공세 접근!' : `공세 ${Math.floor(state.stageElapsed/25)+1} · ${remain}초 · 처치 ${state.killCount}/${state.killTarget}`;
+  hudEls.stageProgress.textContent = state.bossActive ? `보스 처치 · ${state.boss.phase === 2 ? '2단계' : '1단계'}` : remain > 0 || state.killCount < state.killTarget ? `시간 ${remain > 0 ? remain + '초' : '완료'} · 처치 ${Math.min(state.killCount,state.killTarget)}/${state.killTarget}` : '조건 달성 · 남은 적을 정리하세요';
   const hpRatio = clamp(player.hp / player.maxHp, 0, 1);
   hudEls.hpFill.style.width = (hpRatio * 100) + '%';
   hudEls.hpText.textContent = `${Math.ceil(player.hp)}/${player.maxHp}`;
@@ -2305,7 +2339,7 @@ function updateHud() {
 
   const expRatio = clamp(player.exp / player.expToNext, 0, 1);
   hudEls.expFill.style.width = (expRatio * 100) + '%';
-  hudEls.expText.textContent = `Lv.${player.level}`;
+  hudEls.expText.textContent = `${Math.floor(player.exp)} / ${player.expToNext}`;
   hudEls.levelBadge.textContent = player.level;
 
   hudEls.gold.textContent = player.gold;

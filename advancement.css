@@ -5,7 +5,7 @@
 .adv-card.selected{border-color:#f4cf7d;box-shadow:0 0 18px #e7bc5125;}
 .adv-portrait{width:100%;height:100%;background-size:400% 100%;background-position:0 0;background-repeat:no-repeat;}
 .adv-card>.adv-portrait{width:150px;height:200px;align-self:center;}
-.adv-card h3{display:flex;align-items:center;justify-content:center;gap:9px;font-size:20px;margin:0;color:#f4dba3;}
+.adv-card h3{display:flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-card);font-size:20px;font-weight:700;margin:0;color:#f4dba3;}
 .adv-card h3 img{width:38px;height:38px;border-radius:7px;}
 .adv-card p{font-size:12px;line-height:1.65;margin:0;word-break:keep-all;}
 .adv-card .adv-basic{color:#b6dfff;font-size:13px;text-align:center;}

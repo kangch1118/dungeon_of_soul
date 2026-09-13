@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=19-concept">
 <link rel="stylesheet" href="advancement.css">
 </head>
 <body>
@@ -122,6 +122,24 @@
         <label for="opt-showfps"><input type="checkbox" id="opt-showfps"> 화면에 FPS 표시</label>
       </div>
 
+      <div class="option-row">
+        <label for="opt-scale-hud">체력/경험치 UI 크기</label>
+        <input type="range" id="opt-scale-hud" min="70" max="130" value="100">
+        <span id="opt-scale-hud-val">100%</span>
+      </div>
+
+      <div class="option-row">
+        <label for="opt-scale-basic">기본공격 UI 크기</label>
+        <input type="range" id="opt-scale-basic" min="70" max="130" value="100">
+        <span id="opt-scale-basic-val">100%</span>
+      </div>
+
+      <div class="option-row">
+        <label for="opt-scale-hotbar">스킬 바 UI 크기</label>
+        <input type="range" id="opt-scale-hotbar" min="70" max="130" value="100">
+        <span id="opt-scale-hotbar-val">100%</span>
+      </div>
+
       <div class="option-help">
         <h3>조작법</h3>
         <ul>
@@ -152,22 +170,27 @@
           </div>
           <div class="hud-status-body">
             <div class="stage-label">STAGE <span id="hud-stage">1</span></div>
-            <div id="hud-stage-progress" class="stage-progress"></div>
-            <div class="bar hp-bar">
-              <div class="bar-fill hp-fill" id="hud-hp-fill"></div>
-              <span class="bar-text" id="hud-hp-text">100/100</span>
+            <div class="hud-meter-row">
+              <span class="hud-meter-label">체력</span>
+              <div class="bar hp-bar">
+                <div class="bar-fill hp-fill" id="hud-hp-fill"></div>
+              </div>
             </div>
+            <div class="bar-value" id="hud-hp-text">100/100</div>
             <div class="bar shield-bar" id="hud-shield-bar">
               <div class="bar-fill shield-fill" id="hud-shield-fill"></div>
               <span class="bar-text" id="hud-shield-text"></span>
             </div>
-            <div class="bar exp-bar">
-              <div class="bar-fill exp-fill" id="hud-exp-fill"></div>
-              <span class="bar-text" id="hud-exp-text">Lv.1</span>
+            <div class="hud-meter-row">
+              <span class="hud-meter-label">경험치</span>
+              <div class="bar exp-bar">
+                <div class="bar-fill exp-fill" id="hud-exp-fill"></div>
+              </div>
             </div>
+            <div class="bar-value" id="hud-exp-text">Lv.1</div>
           </div>
         </div>
-      </div>
+      <div class="hud-objective"><span class="objective-label">보스 등장 조건</span><div id="hud-stage-progress" class="stage-progress"></div></div></div>
 
       <div class="hud-top-right">
         <div class="currency"><span class="coin-icon">🪙</span><span id="hud-gold">0</span></div>
@@ -183,7 +206,7 @@
 
       <div class="hud-fps" id="hud-fps"></div>
 
-      <div class="basic-attack-hud" title="A 키를 누르고 있으면 준비될 때마다 기본공격합니다."><span>A · 기본공격</span><strong id="basic-cd-text">준비</strong><div class="basic-cd-track"><i id="basic-cd-fill"></i></div></div>
+      <div class="basic-attack-hud" title="A 키를 누르고 있으면 준비될 때마다 기본공격합니다."><kbd class="basic-key">A</kbd><span class="basic-label">기본공격<small>누르고 있으면 연속 공격</small></span><strong id="basic-cd-text">준비</strong><div class="basic-cd-track"><i id="basic-cd-fill"></i></div></div>
       <div class="hotbar" id="hotbar">
         <button type="button" class="slot" data-slot="Q" aria-label="Q 스킬"><span class="slot-icon" id="slot-icon-Q"></span><span class="slot-key">Q</span><span class="slot-cd" id="slot-cd-Q"></span></button>
         <button type="button" class="slot" data-slot="W" aria-label="W 스킬"><span class="slot-icon" id="slot-icon-W"></span><span class="slot-key">W</span><span class="slot-cd" id="slot-cd-W"></span></button>

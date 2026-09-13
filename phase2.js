@@ -132,11 +132,12 @@ window.addEventListener('storage-warning',refreshStorageNotice);refreshStorageNo
 // Persist options only on a completed control change, not on every drag frame.
 try {
   const saved=JSON.parse(localStorage.getItem('dungeon_of_soul_options')||'null');
-  if(saved){for(const k of ['bgm','sfx'])if(Number.isFinite(saved[k]))options[k]=clamp(saved[k],0,100);if(['easy','normal','hard'].includes(saved.difficulty))options.difficulty=saved.difficulty;options.showFps=saved.showFps===true;}
+  if(saved){for(const k of ['bgm','sfx'])if(Number.isFinite(saved[k]))options[k]=clamp(saved[k],0,100);if(['easy','normal','hard'].includes(saved.difficulty))options.difficulty=saved.difficulty;options.showFps=saved.showFps===true;for(const k of ['scaleHud','scaleBasic','scaleHotbar'])if(Number.isFinite(saved[k]))options[k]=clamp(saved[k],70,130);}
 }catch(_){}
 optBgm.value=optBgmVal.textContent=options.bgm;optSfx.value=optSfxVal.textContent=options.sfx;optDifficulty.value=options.difficulty;optShowFps.checked=options.showFps;
 document.getElementById('hud-fps').style.display=options.showFps?'block':'none';
-for(const id of ['opt-bgm','opt-sfx','opt-difficulty','opt-showfps'])document.getElementById(id).addEventListener('change',()=>{try{localStorage.setItem('dungeon_of_soul_options',JSON.stringify(options));}catch(_){setSaveWarning('설정을 저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.');}});
+for(const entry of UI_SCALE_SLIDERS){entry.input.value=options[entry.key];applyUiScale(entry);}
+for(const id of ['opt-bgm','opt-sfx','opt-difficulty','opt-showfps','opt-scale-hud','opt-scale-basic','opt-scale-hotbar'])document.getElementById(id).addEventListener('change',()=>{try{localStorage.setItem('dungeon_of_soul_options',JSON.stringify(options));}catch(_){setSaveWarning('설정을 저장하지 못했습니다. 브라우저 저장 공간을 확인해 주세요.');}});
 
 document.getElementById('storage-retry').addEventListener('click',()=>{saveMeta();refreshStorageNotice();});
 document.getElementById('storage-recover').addEventListener('click',()=>{try{const raw=localStorage.getItem(SAVE_KEY);if(raw)localStorage.setItem(SAVE_KEY+'_recovery',raw);const warning=saveWarning;saveWarning='';if(saveMeta())setSaveWarning('');else if(!saveWarning)saveWarning=warning;refreshStorageNotice();}catch(_){setSaveWarning('복구 전 기록을 보관하지 못해 저장이 보류됩니다. 저장 공간을 확인해 주세요.');}});

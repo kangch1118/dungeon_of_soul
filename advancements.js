@@ -12,6 +12,13 @@ function advImage(id) {
   return advancementImages[id];
 }
 function advPortraitStyle(j){return `background-image:url('${j.motion}');background-size:${2172/ADV_FRAME_EDGES[j.id][1]*100}% 100%;`;}
+// 전직 초상화 마크업 — 전용 정지 이미지(j.portrait)가 있으면 그걸 쓰고, 없으면 기존처럼
+// 전직 모션 스프라이트 첫 프레임을 크롭해서 보여준다(advPortraitStyle).
+function advPortraitHtml(j){
+  return j.portrait
+    ? `<img class="adv-static-portrait" src="${j.portrait}" alt="${j.name}">`
+    : `<div class="adv-portrait" style="${advPortraitStyle(j)}" role="img" aria-label="${j.name}"></div>`;
+}
 function configureAdvancement(p) {
   const j=selectedAdvancement(); if(!j)return;
   advImage(j.id);

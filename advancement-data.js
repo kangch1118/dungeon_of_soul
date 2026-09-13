@@ -1,6 +1,14 @@
 'use strict';
 
 const ADV_ART = 'image/advancements_20260912/';
+// 새로 뽑은 정지 초상화(image/portrait/*.png)가 있는 전직만 등록 — 나머지는 기존처럼
+// 모션 스프라이트 첫 프레임을 크롭해서 쓴다(advPortraitStyle).
+const ADV_PORTRAIT_OVERRIDE = {
+  archmage: 'image/portrait/archmage.png',
+  berserker: 'image/portrait/berserker.png',
+  commander: 'image/portrait/commander.png',
+  dragon: 'image/portrait/dragon.png',
+};
 const ADVANCED_JOBS = [
   {id:'dragon',base:'warrior',name:'용기사',color:'#ff873e',statBonus:{hp:25,atk:5},basic:'용염 검격',passive:'세 번째 기본 공격이 화염을 폭발시킵니다.',q:'용아 돌진',qd:7,e:'용의 포효',cd:25,desc:'전방으로 용의 잔상과 브레스를 내보내 8배 피해를 줍니다.'},
   {id:'berserker',base:'warrior',name:'광전사',color:'#ff4661',statBonus:{hp:35,atk:7},basic:'혈흔 베기',passive:'체력 30% 이하에서 주는 피해가 25% 증가합니다.',q:'피의 참격',qd:6,e:'피의 축복',cd:40,desc:'체력 30% 이하에서 사용. 8초 동안 공격속도 +50%, 흡혈 5%, 혈폭발. 최대체력 20%의 보호막을 얻습니다.'},
@@ -14,7 +22,7 @@ const ADVANCED_JOBS = [
   {id:'paladin',base:'cleric',name:'팔라딘',color:'#ffdf8d',statBonus:{hp:40,def:10},basic:'성스러운 방패',passive:'기본 공격 적중 시 보호막을 소량 회복합니다.',q:'방패 밀치기',qd:7,e:'빛의 성벽',cd:25,desc:'3초 동안 주변 일반 적의 진입을 막고 보호막 25%를 얻습니다. 종료 시 빛 파편 5배 피해와 체력 15% 회복.'},
   {id:'crusader',base:'cleric',name:'성전사',color:'#fff0ae',statBonus:{hp:25,atk:8},basic:'성광 검격',passive:'세 번째 기본 공격에 성스러운 폭발이 추가됩니다.',q:'심판 베기',qd:6,e:'빛의 검',cd:20,desc:'거대한 성검을 내리꽂아 6배 피해. 6초 동안 피해 +25%, 이동속도 +20%, 체력 15% 회복.'},
   {id:'madmonk',base:'cleric',name:'광마',color:'#ef5478',statBonus:{hp:20,atk:7},basic:'혈마권',passive:'적중·처치로 광기 중첩(최대20, 6초)이 쌓여 피해 +1%씩. 처치 시 체력 0.5% 회복. 50처치마다 체력·공격력 +2%(최대5회).',q:'파쇄권',qd:5,e:'혈계 개방',cd:25,desc:'주변에 5배 피해를 주고 광기 20중첩을 얻습니다. 8초 동안 공격속도 +35%, 흡혈 3%.'},
-].map(j=>({...j,tier:1,icon:'✦',cost:{gold:150,soul:8},motion:ADV_ART+j.id+'_motion.png',iconImg:ADV_ART+j.id+'_skill.png',eSkill:{name:j.e,icon:'✦',cdMax:j.cd,desc:j.desc},qSkill:{name:j.q,cdMax:j.qd}}));
+].map(j=>({...j,tier:1,icon:'✦',cost:{gold:150,soul:8},motion:ADV_ART+j.id+'_motion.png',iconImg:ADV_ART+j.id+'_skill.png',portrait:ADV_PORTRAIT_OVERRIDE[j.id]||null,eSkill:{name:j.e,icon:'✦',cdMax:j.cd,desc:j.desc},qSkill:{name:j.q,cdMax:j.qd}}));
 
 function selectedAdvancement(save=meta) {
   return ADVANCED_JOBS.find(j=>j.base===save.appearance && j.id===save.advancements?.selected?.[save.appearance]) || null;
