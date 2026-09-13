@@ -43,7 +43,11 @@ const SFX = {
   // 공격했지만 사거리 안에 대상이 없을 때(헛스윙)
   whiff: { src: "sound/허공.mp3", volume: 0.45, cooldown: 0.25 },
   // 몬스터
-  bat: { src: "sound/bat.mp3", volume: 0.15, cooldown: 0.3 },
+  // 박쥐 — 기존 bat.mp3가 지워져서 새 파일 2종 중 하나를 랜덤으로 재생한다(호출부에서 고름).
+  // 고주파라 시끄럽다는 피드백으로 볼륨을 낮게 잡았다.
+  bat_idle1: { src: "sound/Bat_idle1.ogg", volume: 0.25, cooldown: 0.3 },
+  bat_idle3: { src: "sound/Bat_idle3.ogg.mp3", volume: 0.25, cooldown: 0.3 },
+  bat_die: { src: "sound/Bat_death.ogg", volume: 0.25 },
   monster_atk: { src: "sound/monster.mp3", volume: 0.55, cooldown: 0.3 },
   slime_atk: { src: "sound/poizion_slime.mp3", volume: 0.5, cooldown: 0.3 },
   slime_die: { src: "sound/die_slime.mp3", volume: 0.7 },

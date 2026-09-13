@@ -62,7 +62,7 @@ function updateNormalAttack(e,dt) {
     e.aiTime-=dt;
     if(e.aiTime>0)return;
     e.attackAnim=.4;
-    playSfx(e.monsterType==='bat'?'bat':e.monsterType==='slime'?'slime_atk':'monster_atk');
+    playSfx(e.monsterType==='bat'?(Math.random()<0.5?'bat_idle1':'bat_idle3'):e.monsterType==='slime'?'slime_atk':'monster_atk');
     if(spec.dash){e.aiState='dash';e.aiTime=.35;e.dashHit=false;return;}
     const angle=Math.atan2(player.y-e.y,player.x-e.x);
     if(dist(e.x,e.y,player.x,player.y)<=spec.range+player.radius && Math.cos(angle-e.attackAngle)>=Math.cos(spec.spread/2))hurtPlayer(e.dmg);

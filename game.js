@@ -772,6 +772,7 @@ function killEnemy(e) {
     return;
   }
   if (e.monsterType === 'slime') playSfx('slime_die');
+  if (e.monsterType === 'bat') playSfx('bat_die');
   const goldDrop = Math.round((e.isBoss ? rand(60, 90) : e.isElite ? rand(8, 14) : rand(2, 5)) * player.goldMult);
   const expDrop = e.isBoss ? 40 : e.isElite ? 12 : rand(3, 6);
   pickups.push({ type: 'gold', x: e.x, y: e.y, amount: goldDrop, life: 12 });
