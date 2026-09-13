@@ -390,6 +390,7 @@ const bgTileImages = {};
   bgTileImages[src] = img;
 });
 const bgPatternCache = {};
+
 function getBgPattern(src) {
   const img = bgTileImages[src];
   if (!img || !img.complete || img.naturalWidth === 0) return null;

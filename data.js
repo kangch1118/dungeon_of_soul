@@ -447,6 +447,7 @@ function stageFloorTile(stage) {
 }
 function clampInt(v, min, max) { return Math.max(min, Math.min(max, v)); }
 
+
 const STAGE_WALL_TILES = {
   normal: 'image/wall/wall_01_stone.png',
   vampire: 'image/wall/wall_02_fortress.png',
