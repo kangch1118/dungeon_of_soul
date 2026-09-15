@@ -51,12 +51,13 @@ function drawCombatFeedback() {
 }
 
 function enemyAttackSpec(e) {
-  if(e.monsterType==='skeleton_archer')return {range:360,windup:.85,recovery:1.3,spread:.12,ranged:true};
-  if(e.monsterType==='tree')return {range:320,windup:.85,recovery:2.1,spread:.12,ranged:true};
-  if(e.monsterType==='bat')return {range:230,windup:.55,recovery:1.0,dash:true};
-  if(e.monsterType==='skeleton')return {range:110,windup:.7,recovery:.9,spread:Math.PI*.85};
-  if(e.monsterType==='slime'||e.monsterType==='poison_slime')return {range:48,windup:.35,recovery:.6,spread:Math.PI*2};
-  return {range:62,windup:.32,recovery:.55,spread:Math.PI*.65};
+  const enemyScale=typeof MOBILE_ENEMY_SCALE==='number'?MOBILE_ENEMY_SCALE:1;
+  if(e.monsterType==='skeleton_archer')return {range:360*enemyScale,windup:.85,recovery:1.3,spread:.12,ranged:true};
+  if(e.monsterType==='tree')return {range:320*enemyScale,windup:.85,recovery:2.1,spread:.12,ranged:true};
+  if(e.monsterType==='bat')return {range:230*enemyScale,windup:.55,recovery:1.0,dash:true};
+  if(e.monsterType==='skeleton')return {range:110*enemyScale,windup:.7,recovery:.9,spread:Math.PI*.85};
+  if(e.monsterType==='slime'||e.monsterType==='poison_slime')return {range:48 * (typeof MOBILE_SLIME_SCALE === 'number' ? MOBILE_SLIME_SCALE : 1),windup:.35,recovery:.6,spread:Math.PI*2};
+  return {range:62*enemyScale,windup:.32,recovery:.55,spread:Math.PI*.65};
 }
 function updateNormalAttack(e,dt) {
   const spec=enemyAttackSpec(e);
@@ -78,8 +79,9 @@ function updateNormalAttack(e,dt) {
   if(e.aiState==='dash') {
     const duration=Math.min(dt,e.aiTime),x=e.x,y=e.y;
     const slow=e.slowTimer>0?.5:e.inAura?.65:1;
-    e.x=clamp(e.x+Math.cos(e.attackAngle)*620*slow*duration,e.radius,WORLD_W-e.radius);
-    e.y=clamp(e.y+Math.sin(e.attackAngle)*620*slow*duration,e.radius,WORLD_H-e.radius);
+    const dashSpeed=620*(typeof MOBILE_ENEMY_SCALE==='number'?MOBILE_ENEMY_SCALE:1);
+    e.x=clamp(e.x+Math.cos(e.attackAngle)*dashSpeed*slow*duration,e.radius,WORLD_W-e.radius);
+    e.y=clamp(e.y+Math.sin(e.attackAngle)*dashSpeed*slow*duration,e.radius,WORLD_H-e.radius);
     if(!e.dashHit && segmentDistance(player.x,player.y,x,y,e.x,e.y)<=e.radius+player.radius){hurtPlayer(e.dmg);e.dashHit=true;}
     e.aiTime-=dt;if(e.aiTime<=0){e.aiState='recover';e.aiTime=spec.recovery;}return;
   }
@@ -132,6 +134,16 @@ joystick.addEventListener('pointermove',e=>{if(e.pointerId===joystickPointer)upd
 for(const event of ['pointerup','pointercancel','lostpointercapture'])joystick.addEventListener(event,e=>{if(e.pointerId===joystickPointer){joystickPointer=null;touchMove.x=touchMove.y=0;knob.style.transform='translate(0px,0px)';}});
 attackButton.addEventListener('pointerdown',e=>{if(state.mode!=='playing'||player.dying||attackPointer!==null)return;e.preventDefault();attackPointer=e.pointerId;attackButton.setPointerCapture(e.pointerId);touchAttack=true;attackButton.classList.add('held');});
 for(const event of ['pointerup','pointercancel','lostpointercapture'])attackButton.addEventListener(event,e=>{if(e.pointerId===attackPointer){attackPointer=null;touchAttack=false;attackButton.classList.remove('held');}});
+
+const mobileSkillSlots = document.querySelectorAll('#hotbar .slot');
+for (const slotEl of mobileSkillSlots) {
+  slotEl.addEventListener('pointerdown', e => {
+    if (!isMobileDevice) return;
+    if (state.mode !== 'playing') return;
+    e.preventDefault();
+    useSkill(slotEl.dataset.slot);
+  });
+}
 
 const storageNotice=document.getElementById('storage-notice');
 function refreshStorageNotice(){document.getElementById('storage-message').textContent=saveWarning;storageNotice.hidden=!saveWarning;document.getElementById('storage-recover').hidden=!saveWarning.includes('저장이 보류');}

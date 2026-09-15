@@ -12,64 +12,68 @@
    font-family 목록의 다음 글꼴(Noto Sans KR 등)로 자연스럽게 대체되니, 그때 다시
    전체 텍스트를 스캔해서 서브셋을 다시 만들면 된다. */
 @font-face {
-  font-family: 'KoPubWorld Dotum';
-  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Light.woff2') format('woff2');
+  font-family: "KoPubWorld Dotum";
+  src: url("font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Light.woff2")
+    format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'MaruBuri';
-  src: url('font/maruburi_ttf/MaruBuri-ExtraLight.woff2') format('woff2');
+  font-family: "MaruBuri";
+  src: url("font/maruburi_ttf/MaruBuri-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'MaruBuri';
-  src: url('font/maruburi_ttf/MaruBuri-Light.woff2') format('woff2');
+  font-family: "MaruBuri";
+  src: url("font/maruburi_ttf/MaruBuri-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'MaruBuri';
-  src: url('font/maruburi_ttf/MaruBuri-Regular.woff2') format('woff2');
+  font-family: "MaruBuri";
+  src: url("font/maruburi_ttf/MaruBuri-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'MaruBuri';
-  src: url('font/maruburi_ttf/MaruBuri-SemiBold.woff2') format('woff2');
+  font-family: "MaruBuri";
+  src: url("font/maruburi_ttf/MaruBuri-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'MaruBuri';
-  src: url('font/maruburi_ttf/MaruBuri-Bold.woff2') format('woff2');
+  font-family: "MaruBuri";
+  src: url("font/maruburi_ttf/MaruBuri-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'KoPubWorld Batang';
-  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Batang%20Bold.woff2') format('woff2');
+  font-family: "KoPubWorld Batang";
+  src: url("font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Batang%20Bold.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'KoPubWorld Dotum';
-  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Medium.woff2') format('woff2');
+  font-family: "KoPubWorld Dotum";
+  src: url("font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Medium.woff2")
+    format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'KoPubWorld Dotum';
-  src: url('font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Bold.woff2') format('woff2');
+  font-family: "KoPubWorld Dotum";
+  src: url("font/KOPUBWORLD_TTF_FONTS2026/KoPubWorld%20Dotum%20Bold.woff2")
+    format("woff2");
   font-weight: 700 900;
   font-style: normal;
   font-display: swap;
@@ -87,7 +91,9 @@
   --panel-solid: #101a2e;
   --panel-border: #33456b;
   --panel-border-soft: #26324e;
-  --panel-shadow: 0 0 0 1px #0a1122, inset 0 0 42px rgba(0,0,0,0.5), 0 14px 40px rgba(0,0,0,0.7);
+  --panel-shadow:
+    0 0 0 1px #0a1122, inset 0 0 42px rgba(0, 0, 0, 0.5),
+    0 14px 40px rgba(0, 0, 0, 0.7);
 
   /* 금색 */
   --gold: #d9a441;
@@ -95,7 +101,7 @@
   --gold-mid: #b9863a;
   --gold-dark: #7c5a26;
   --gold-fill: linear-gradient(180deg, #4c3c1f 0%, #2c2616 48%, #1b1710 100%);
-  --gold-glow: 0 0 16px rgba(245,216,145,0.45);
+  --gold-glow: 0 0 16px rgba(245, 216, 145, 0.45);
 
   /* 텍스트 */
   --text: #e2e8f4;
@@ -108,36 +114,79 @@
   --shield: linear-gradient(180deg, #a8e8ff, #2f7fd1);
   --exp: linear-gradient(180deg, #b98bff, #6a2ec7);
   --boss: linear-gradient(180deg, #ff5a5a, #a11414);
-  --gloss: rgba(255,255,255,0.16);
+  --gloss: rgba(255, 255, 255, 0.16);
 
-  --font: 'MaruBuri', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-  --font-card: 'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, sans-serif;
-  --font-display: 'KoPubWorld Dotum', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font: "MaruBuri", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --font-card:
+    "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui,
+    sans-serif;
+  --font-display:
+    "KoPubWorld Dotum", "Noto Sans KR", "Malgun Gothic", sans-serif;
 
   /* 모서리 깎은 팔각형 */
-  --oct: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
+  --oct: polygon(
+    9px 0,
+    calc(100% - 9px) 0,
+    100% 9px,
+    100% calc(100% - 9px),
+    calc(100% - 9px) 100%,
+    9px 100%,
+    0 calc(100% - 9px),
+    0 9px
+  );
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% 26%, #101a30 0%, #0a1120 55%, #060a12 100%);
+  overscroll-behavior: none;
+  background: radial-gradient(
+    ellipse at 50% 26%,
+    #101a30 0%,
+    #0a1120 55%,
+    #060a12 100%
+  );
   color: var(--text);
   font-family: var(--font);
   font-size: 15px;
   font-weight: 500;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0a1120; }
-::-webkit-scrollbar-thumb { background: #33456b; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+#game-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: auto;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1120;
+}
+::-webkit-scrollbar-thumb {
+  background: #33456b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
 
 .screen {
   position: fixed;
@@ -146,35 +195,50 @@ html, body {
   align-items: center;
   justify-content: center;
 }
-.screen.active { display: flex; }
-.hidden { display: none !important; }
+.screen.active {
+  display: flex;
+}
+.hidden {
+  display: none !important;
+}
 
 /* =========================================================================
    금색 장식 프레임 — 패널 네 귀퉁이 브래킷 + 상/하 중앙 다이아 스터드
    ========================================================================= */
-.panel, .modal-inner, .option-panel { position: relative; }
+.panel,
+.modal-inner,
+.option-panel {
+  position: relative;
+}
 
 /* GPT 생성 금속 프레임(image/ui2/ui_panel.png)을 9-slice border-image로 두른다.
    가운데(fill 없음)는 그대로 뚫려 있어 기존 .panel/.lobby-section 자체 background가 비친다. */
-.panel, .modal-inner, .lobby-section {
+.panel,
+.modal-inner,
+.lobby-section {
   border-style: solid;
   border-width: 22px;
-  border-image-source: url('image/ui2/ui_panel.png');
+  border-image-source: url("image/ui2/ui_panel.png");
   border-image-slice: 80 92 fill;
   border-image-width: 22px;
   border-image-repeat: stretch;
 }
-.panel, .modal-inner { padding: 22px 30px; }
+.panel,
+.modal-inner {
+  padding: 22px 30px;
+}
 
 /* =========================================================================
    타이틀 화면
    ========================================================================= */
-#screen-title { flex-direction: column; }
+#screen-title {
+  flex-direction: column;
+}
 
 .title-bg {
   position: absolute;
   inset: 0;
-  background-image: url('image/background_title.jpg');
+  background-image: url("image/background_title.jpg");
   background-size: cover;
   background-position: center 30%;
   filter: brightness(0.75) saturate(1.05);
@@ -183,8 +247,18 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 22%, rgba(0,0,0,0) 0%, rgba(6,10,20,0.4) 60%, rgba(6,10,20,0.9) 100%),
-    linear-gradient(to bottom, rgba(6,10,20,0.15) 0%, rgba(6,10,20,0.3) 45%, rgba(6,10,20,0.96) 100%);
+    radial-gradient(
+      ellipse at 50% 22%,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(6, 10, 20, 0.4) 60%,
+      rgba(6, 10, 20, 0.9) 100%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(6, 10, 20, 0.15) 0%,
+      rgba(6, 10, 20, 0.3) 45%,
+      rgba(6, 10, 20, 0.96) 100%
+    );
 }
 
 .title-content {
@@ -197,33 +271,52 @@ html, body {
   margin-top: auto;
   margin-bottom: 6vh;
   animation: rise 0.9s ease-out;
-  background-image: url('image/ui2/ui_title_emblem.png');
+  background-image: url("image/ui2/ui_title_emblem.png");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: min(640px, 86vw) auto;
-  padding-top: 128px;
+  /* 엠블럼 그림 자체의 폭 기준(container query)으로 잡아야 화면 크기가 바뀌어도
+     크레스트/리본 그림과 같은 비율로 따라 움직인다 — 뷰포트(vw) 기준으로 잡으면
+     그림은 86vw로 줄어드는데 여백은 고정 px이라 모바일에서 비율이 어긋났다. */
+  container-type: inline-size;
+  padding-top: 20cqw;
 }
 @keyframes rise {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .game-logo {
-  font-family: 'KoPubWorld Batang', var(--font-display);
+  font-family: "KoPubWorld Batang", var(--font-display);
   font-weight: 900;
   font-size: clamp(30px, 5.5vw, 52px);
   letter-spacing: 8px;
   margin: 0;
   color: #f6ecd2;
-  text-shadow: 0 0 26px rgba(245,216,145,0.5), 0 4px 14px rgba(0,0,0,0.9);
+  text-shadow:
+    0 0 26px rgba(245, 216, 145, 0.5),
+    0 4px 14px rgba(0, 0, 0, 0.9);
 }
 .game-logo::after {
-  content: '';
+  content: "";
   display: block;
   width: 78%;
   height: 2px;
   margin: 14px auto 0;
-  background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold-bright) 50%, var(--gold) 75%, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold) 25%,
+    var(--gold-bright) 50%,
+    var(--gold) 75%,
+    transparent
+  );
 }
 .game-sub {
   font-family: var(--font-display);
@@ -234,7 +327,12 @@ html, body {
   text-transform: uppercase;
   font-weight: 700;
 }
-.title-buttons { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.title-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
 .title-footer {
   position: relative;
   z-index: 2;
@@ -246,7 +344,8 @@ html, body {
 /* =========================================================================
    버튼 — 모서리 깎은 팔각형 (기본: 네이비 / 주요·활성: 금색 그라디언트)
    ========================================================================= */
-.menu-btn, .img-btn {
+.menu-btn,
+.img-btn {
   position: relative;
   font-family: var(--font);
   font-weight: 700;
@@ -254,13 +353,17 @@ html, body {
   color: var(--gold-bright);
   border: none;
   background-color: #0d1526;
-  background-image: url('image/ui2/ui_button_default.png');
+  background-image: url("image/ui2/ui_button_default.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   clip-path: var(--oct);
   cursor: pointer;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
-  transition: filter 0.12s ease, transform 0.12s ease, box-shadow 0.12s ease, background-image 0.05s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  transition:
+    filter 0.12s ease,
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background-image 0.05s ease;
 }
 .game-sub,
 .menu-btn,
@@ -285,27 +388,51 @@ html, body {
   padding: 10px 24px;
   font-size: 13px;
 }
-.menu-btn:hover, .img-btn:hover {
-  background-image: url('image/ui2/ui_button_hover.png');
+.menu-btn:hover,
+.img-btn:hover {
+  background-image: url("image/ui2/ui_button_hover.png");
   box-shadow: var(--gold-glow);
   transform: translateY(-1px);
 }
-.menu-btn:active, .img-btn:active {
-  background-image: url('image/ui2/ui_button_pressed.png');
+.menu-btn:active,
+.img-btn:active {
+  background-image: url("image/ui2/ui_button_pressed.png");
   transform: translateY(0);
 }
-.menu-btn:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(0.5); }
+.menu-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
 
 /* 금색(주요) 버튼 — 타이틀 시작 / 탐험 시작 / 확인 등. 텍스처는 공용, 발광만 더 강하게. */
-.img-btn, .btn-explore, #btn-option-close, #btn-next-stage, #btn-resume {
+.img-btn,
+.btn-explore,
+#btn-option-close,
+#btn-next-stage,
+#btn-resume {
   color: var(--gold-bright);
   box-shadow: var(--gold-glow);
 }
-.img-btn { padding: 15px 44px; font-size: 16px; letter-spacing: 3px; }
-.img-btn-option { padding: 11px 36px; font-size: 14px; }
-.img-btn:hover, .btn-explore:hover { box-shadow: 0 0 22px rgba(245,216,145,0.6); }
+.img-btn {
+  padding: 15px 44px;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+.img-btn-option {
+  padding: 11px 36px;
+  font-size: 14px;
+}
+.img-btn:hover,
+.btn-explore:hover {
+  box-shadow: 0 0 22px rgba(245, 216, 145, 0.6);
+}
 
-.menu-btn.small { padding: 6px 15px; font-size: 11px; letter-spacing: 0.5px; }
+.menu-btn.small {
+  padding: 6px 15px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
 .menu-btn.ghost {
   background: transparent;
   border-color: var(--panel-border-soft);
@@ -323,18 +450,32 @@ html, body {
   min-width: 340px;
   max-width: 92vw;
 }
-.option-panel h2, .modal-inner h2 {
+.option-panel h2,
+.modal-inner h2 {
   font-weight: 900;
   margin: 0 0 16px;
   text-align: center;
   color: var(--gold-bright);
   letter-spacing: 3px;
-  text-shadow: 0 0 14px rgba(245,216,145,0.3);
+  text-shadow: 0 0 14px rgba(245, 216, 145, 0.3);
 }
 
-.option-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 14px; }
-.option-row label { width: 128px; flex-shrink: 0; color: var(--text-soft); }
-.option-row input[type="range"] { flex: 1; accent-color: var(--gold); }
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+.option-row label {
+  width: 128px;
+  flex-shrink: 0;
+  color: var(--text-soft);
+}
+.option-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--gold);
+}
 .option-row select {
   flex: 1;
   background: #0f1830;
@@ -344,10 +485,23 @@ html, body {
   padding: 4px 6px;
   font-family: var(--font);
 }
-.option-row span { width: 28px; text-align: right; color: var(--gold-bright); }
-.option-checkbox label { width: auto; display: flex; align-items: center; gap: 6px; }
+.option-row span {
+  width: 28px;
+  text-align: right;
+  color: var(--gold-bright);
+}
+.option-checkbox label {
+  width: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-.option-help { margin-top: 12px; border-top: 1px solid var(--panel-border-soft); padding-top: 14px; }
+.option-help {
+  margin-top: 12px;
+  border-top: 1px solid var(--panel-border-soft);
+  padding-top: 14px;
+}
 .option-help h3 {
   margin: 0 0 8px;
   font-size: 13px;
@@ -355,49 +509,102 @@ html, body {
   text-transform: uppercase;
   color: var(--gold);
 }
-.option-help ul { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text-soft); }
-.option-help b { color: var(--gold-bright); }
-.option-actions { margin-top: 20px; text-align: center; }
+.option-help ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+.option-help b {
+  color: var(--gold-bright);
+}
+.option-actions {
+  margin-top: 20px;
+  text-align: center;
+}
 
 /* =========================================================================
    게임 화면 / HUD
    ========================================================================= */
-#screen-game { background: #000; }
+#screen-game {
+  background: #000;
+}
 #game-canvas {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   display: block;
   image-rendering: pixelated;
 }
-#hud { position: absolute; inset: 0; pointer-events: none; font-family: var(--font); }
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font-family: var(--font);
+}
 
-.hud-top-left { position: absolute; top: 16px; left: 16px; width: 270px; }
+.hud-top-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 270px;
+}
 /* 다른 패널(.panel/.modal-inner/.lobby-section)과 같은 금속 프레임(image/ui2/ui_panel.png)을
    두께만 줄여서 두른다 — HUD만 다른 모양(둥근 테두리)이라 붕 떠 보이던 것을 통일했다. */
 .hud-status-panel {
-  display: flex; align-items: flex-start; gap: 10px;
-  background: linear-gradient(160deg, rgba(23,34,60,0.94), rgba(13,21,38,0.94));
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: linear-gradient(
+    160deg,
+    rgba(23, 34, 60, 0.94),
+    rgba(13, 21, 38, 0.94)
+  );
   border-style: solid;
   border-width: 12px;
-  border-image-source: url('image/ui2/ui_panel.png');
+  border-image-source: url("image/ui2/ui_panel.png");
   border-image-slice: 80 92 fill;
   border-image-width: 12px;
   border-image-repeat: stretch;
   padding: 2px 6px 2px 2px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
-.hud-status-body { flex: 1; min-width: 0; }
-.hud-portrait { position: relative; width: 48px; height: 48px; flex-shrink: 0; }
-.hud-portrait .portrait-frame { width: 100%; height: 100%; border-radius: 6px; }
+.hud-status-body {
+  flex: 1;
+  min-width: 0;
+}
+.hud-portrait {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+.hud-portrait .portrait-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
 .hud-level-badge {
-  position: absolute; bottom: -6px; right: -6px;
-  min-width: 20px; height: 20px; padding: 0 4px;
-  display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
-  font-size: 11px; font-weight: 800; color: #241705;
+  font-size: 11px;
+  font-weight: 800;
+  color: #241705;
   background: linear-gradient(145deg, var(--gold-mid), var(--gold-bright));
   border: 1px solid var(--gold-bright);
-  box-shadow: 0 0 6px rgba(245,216,145,0.55), 0 0 0 1px #0a1122;
+  box-shadow:
+    0 0 6px rgba(245, 216, 145, 0.55),
+    0 0 0 1px #0a1122;
 }
 .stage-label {
   font-weight: 800;
@@ -406,97 +613,185 @@ html, body {
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 7px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
-.stage-label span { color: #ffe08a; }
+.stage-label span {
+  color: #ffe08a;
+}
 
 .bar {
   position: relative;
   height: 18px;
   background: #0b1122;
   border: 1px solid #2b3a5c;
-  box-shadow: inset 0 0 7px rgba(0,0,0,0.75);
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.75);
   overflow: hidden;
   margin-bottom: 6px;
   /* 오른쪽 끝을 뾰족하게 (목업 HUD 바) */
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 8px) 0,
+    100% 50%,
+    calc(100% - 8px) 100%,
+    0 100%
+  );
 }
-.bar-fill { position: absolute; inset: 0; width: 100%; transform-origin: left; transition: width 0.25s ease; }
+.bar-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  transform-origin: left;
+  transition: width 0.25s ease;
+}
 .bar-fill::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 42%;
   background: var(--gloss);
 }
-.hp-fill { background: var(--hp); }
-.shield-bar { height: 10px; margin-top: -4px; display: none; }
-.shield-bar.show { display: block; }
-.shield-fill { background: var(--shield); }
-.shield-bar .bar-text { font-size: 9px; }
-.exp-fill { background: var(--exp); }
-.boss-fill { background: var(--boss); }
+.hp-fill {
+  background: var(--hp);
+}
+.shield-bar {
+  height: 10px;
+  margin-top: -4px;
+  display: none;
+}
+.shield-bar.show {
+  display: block;
+}
+.shield-fill {
+  background: var(--shield);
+}
+.shield-bar .bar-text {
+  font-size: 9px;
+}
+.exp-fill {
+  background: var(--exp);
+}
+.boss-fill {
+  background: var(--boss);
+}
 .bar-text {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 11px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   color: #fff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
 }
 
 /* 웹(비터치 기기)에서는 좌측 상단 체력/보호막/경험치 바를 더 크게 보여준다 */
-body:not(.touch-device) .hud-top-left { width: 360px; }
-body:not(.touch-device) .stage-label { font-size: 17px; }
-body:not(.touch-device) .bar { height: 25px; margin-bottom: 8px; }
-body:not(.touch-device) .shield-bar { height: 14px; margin-top: -5px; }
-body:not(.touch-device) .bar-text { font-size: 14px; }
-body:not(.touch-device) .shield-bar .bar-text { font-size: 11px; }
-body:not(.touch-device) .hud-portrait { width: 60px; height: 60px; }
-body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-size: 12px; }
+body:not(.touch-device) .hud-top-left {
+  width: 360px;
+}
+body:not(.touch-device) .stage-label {
+  font-size: 17px;
+}
+body:not(.touch-device) .bar {
+  height: 25px;
+  margin-bottom: 8px;
+}
+body:not(.touch-device) .shield-bar {
+  height: 14px;
+  margin-top: -5px;
+}
+body:not(.touch-device) .bar-text {
+  font-size: 14px;
+}
+body:not(.touch-device) .shield-bar .bar-text {
+  font-size: 11px;
+}
+body:not(.touch-device) .hud-portrait {
+  width: 60px;
+  height: 60px;
+}
+body:not(.touch-device) .hud-level-badge {
+  min-width: 22px;
+  height: 22px;
+  font-size: 12px;
+}
 
 .hud-top-right {
-  position: absolute; top: 16px; right: 16px;
-  display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
 }
 .currency {
   background: linear-gradient(180deg, #17223c, #0d1526);
   border: 1px solid #2b3a5c;
-  box-shadow: 0 0 0 1px #0a1122, 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow:
+    0 0 0 1px #0a1122,
+    0 4px 12px rgba(0, 0, 0, 0.5);
   border-radius: 3px;
   padding: 4px 12px 4px 8px;
   font-size: 14px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-  display: flex; align-items: center; gap: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text);
 }
 
 /* 재화 아이콘 — image/ui/{coin,gem}.png (demo.png HUD에서 크롭) */
-.coin-icon, .soul-icon, .diamond-icon {
+.coin-icon,
+.soul-icon,
+.diamond-icon {
   display: inline-block;
-  width: 17px; height: 17px;
+  width: 17px;
+  height: 17px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   font-size: 0;
   flex-shrink: 0;
 }
-.coin-icon { background-image: url('image/ui/coin.png'); }
-.soul-icon { background-image: url('image/ui/gem.png'); }
-.diamond-icon { background-image: url('image/icon/icon_currency_diamond.png'); }
+.coin-icon {
+  background-image: url("image/ui/coin.png");
+}
+.soul-icon {
+  background-image: url("image/ui/gem.png");
+}
+.diamond-icon {
+  background-image: url("image/icon/icon_currency_diamond.png");
+}
 
 /* GPT 생성 아이콘(image/icon/*.png) — 이모지가 있던 자리에 <img>로 대체할 때 공용 크기 */
-.icon-img { width: 1em; height: 1em; object-fit: contain; vertical-align: -0.15em; }
-.icon-img-inline { width: 1.1em; height: 1.1em; }
+.icon-img {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+  vertical-align: -0.15em;
+}
+.icon-img-inline {
+  width: 1.1em;
+  height: 1.1em;
+}
 
 .hud-boss {
-  position: absolute; top: 16px; left: 50%;
+  position: absolute;
+  top: 16px;
+  left: 50%;
   transform: translateX(-50%);
   width: min(440px, 62vw);
-  display: none; text-align: center;
+  display: none;
+  text-align: center;
 }
-.hud-boss.show { display: block; }
+.hud-boss.show {
+  display: block;
+}
 .boss-name {
   font-weight: 800;
   color: #ffb0b0;
@@ -504,104 +799,169 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 5px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
-.boss-bar { height: 14px; }
+.boss-bar {
+  height: 14px;
+}
 
-.hud-fps { position: absolute; bottom: 20px; left: 16px; font-size: 11px; color: #9be89b; }
+.hud-fps {
+  position: absolute;
+  bottom: 20px;
+  left: 16px;
+  font-size: 11px;
+  color: #9be89b;
+}
 
 .hotbar {
-  position: absolute; bottom: 20px; left: 50%;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
   transform: translateX(-50%);
-  display: flex; gap: 10px;
+  display: flex;
+  gap: 10px;
   padding: 9px 14px;
-  background: linear-gradient(180deg, rgba(23,34,60,0.9), rgba(13,21,38,0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(23, 34, 60, 0.9),
+    rgba(13, 21, 38, 0.9)
+  );
   border: 1px solid #2b3a5c;
-  box-shadow: 0 0 0 1px #0a1122, 0 10px 26px rgba(0,0,0,0.65), inset 0 0 20px rgba(217,164,65,0.06);
-  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 14px 100%, 0 50%);
+  box-shadow:
+    0 0 0 1px #0a1122,
+    0 10px 26px rgba(0, 0, 0, 0.65),
+    inset 0 0 20px rgba(217, 164, 65, 0.06);
+  clip-path: polygon(
+    14px 0,
+    calc(100% - 14px) 0,
+    100% 50%,
+    calc(100% - 14px) 100%,
+    14px 100%,
+    0 50%
+  );
 }
 .slot {
   position: relative;
-  width: 50px; height: 50px;
-  background-image: url('image/ui2/ui_hotbar_slot.png');
+  width: 50px;
+  height: 50px;
+  background-image: url("image/ui2/ui_hotbar_slot.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0.85;
   pointer-events: auto;
   cursor: default;
-  transition: filter 0.15s ease, opacity 0.15s ease;
+  transition:
+    filter 0.15s ease,
+    opacity 0.15s ease;
 }
-.slot:hover { filter: brightness(1.25) drop-shadow(0 0 6px rgba(217,164,65,0.6)); }
-.slot.active { opacity: 1; filter: drop-shadow(0 0 4px rgba(245,216,145,0.5)); }
+.slot:hover {
+  filter: brightness(1.25) drop-shadow(0 0 6px rgba(217, 164, 65, 0.6));
+}
+.slot.active {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px rgba(245, 216, 145, 0.5));
+}
 /* 스킬 아이콘을 슬롯의 주인공으로 — 키 글자는 오른쪽 아래 작은 배지로 뺐다 */
 .slot-icon {
   font-size: 26px;
   line-height: 1;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
 }
 .slot-key {
   position: absolute;
-  right: 3px; bottom: 1px;
+  right: 3px;
+  bottom: 1px;
   font-size: 10px;
   color: var(--gold-bright);
   font-weight: 800;
-  background: rgba(4,8,16,0.75);
+  background: rgba(4, 8, 16, 0.75);
   border-radius: 3px;
   padding: 0 3px;
   line-height: 1.4;
   pointer-events: none;
 }
 .slot-cd {
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   border-radius: 6px;
-  background: rgba(4,8,16,0.6);
+  background: rgba(4, 8, 16, 0.6);
   /* 슬롯 배경(육각 프레임)과 같은 모양으로 잘라서, 쿨타임 중일 때만 사각형
      덩어리로 꽉 차 보이며 다른 슬롯보다 커 보이던 것을 맞춘다. */
   clip-path: polygon(50% 2%, 95% 26%, 95% 74%, 50% 98%, 5% 74%, 5% 26%);
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
   font-weight: 800;
   color: var(--gold-bright);
 }
 
 .corner-btn {
-  position: absolute; bottom: 20px; right: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
   pointer-events: auto;
   background-color: #131f37;
-  background-image: url('image/ui2/ui_pause_frame.png');
+  background-image: url("image/ui2/ui_pause_frame.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: none;
   border-radius: 50%;
   color: var(--gold-bright);
-  width: 42px; height: 42px;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
   font-size: 14px;
 }
-.corner-btn:hover { filter: brightness(1.25) drop-shadow(0 0 6px rgba(217,164,65,0.6)); }
-.corner-btn-controls { right: 70px; font-size: 16px; font-weight: 800; }
+.corner-btn:hover {
+  filter: brightness(1.25) drop-shadow(0 0 6px rgba(217, 164, 65, 0.6));
+}
+.corner-btn-controls {
+  right: 70px;
+  font-size: 16px;
+  font-weight: 800;
+}
 
 /* =========================================================================
    조작법 안내 모달
    ========================================================================= */
-.controls-guide { display: flex; flex-direction: column; gap: 16px; margin: 4px 0 20px; text-align: left; }
-.controls-row { display: flex; align-items: center; gap: 8px; }
+.controls-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 4px 0 20px;
+  text-align: left;
+}
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .key-cap {
   flex-shrink: 0;
-  min-width: 36px; height: 36px;
+  min-width: 36px;
+  height: 36px;
   padding: 0 6px;
-  display: flex; align-items: center; justify-content: center;
-  background-image: url('image/vfx2/ui_control_keycap.png');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("image/vfx2/ui_control_keycap.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: none;
   color: var(--gold-bright);
   font-weight: 800;
   font-size: 14px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.85);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
 }
-.key-cap-wide { min-width: 56px; padding: 0 10px; font-size: 12px; }
+.key-cap-wide {
+  min-width: 56px;
+  padding: 0 10px;
+  font-size: 12px;
+}
 .key-cluster {
   flex-shrink: 0;
   display: grid;
@@ -610,21 +970,42 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   gap: 3px;
   grid-template-areas: ". up ." "left down right";
 }
-.key-cluster .key-cap { min-width: 0; width: 100%; height: 100%; font-size: 12px; }
-.controls-desc { display: flex; flex-direction: column; gap: 2px; margin-left: 6px; }
-.controls-desc b { color: var(--gold-bright); font-size: 13px; }
-.controls-desc span { color: var(--text-soft); font-size: 12px; }
+.key-cluster .key-cap {
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+}
+.controls-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-left: 6px;
+}
+.controls-desc b {
+  color: var(--gold-bright);
+  font-size: 13px;
+}
+.controls-desc span {
+  color: var(--text-soft);
+  font-size: 12px;
+}
 
 /* =========================================================================
    모달
    ========================================================================= */
 .modal {
-  position: absolute; inset: 0;
-  background: rgba(4,7,14,0.8);
-  display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 7, 14, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 10;
 }
-.modal.hidden { display: none; }
+.modal.hidden {
+  display: none;
+}
 .modal-inner {
   background: var(--panel-grad);
   box-shadow: var(--panel-shadow);
@@ -632,10 +1013,22 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   min-width: 320px;
   max-width: 92vw;
 }
-.modal-sub { color: var(--text-soft); font-size: 13px; margin: 0 0 18px; }
-.gameover-title { color: #ff5a5a !important; text-shadow: 0 0 18px rgba(220,38,38,0.5); }
+.modal-sub {
+  color: var(--text-soft);
+  font-size: 13px;
+  margin: 0 0 18px;
+}
+.gameover-title {
+  color: #ff5a5a !important;
+  text-shadow: 0 0 18px rgba(220, 38, 38, 0.5);
+}
 
-.card-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.card-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .skill-card {
   width: 150px;
   padding: 16px 12px;
@@ -643,87 +1036,338 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   border: 1px solid #33456b;
   cursor: pointer;
   clip-path: var(--oct);
-  transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
 }
 .skill-card:hover {
   transform: translateY(-4px);
   border-color: var(--gold-bright);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.55), var(--gold-glow);
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.55),
+    var(--gold-glow);
 }
-.skill-card.locked { opacity: 0.45; cursor: not-allowed; }
-.skill-card .card-icon { font-size: 28px; margin-bottom: 8px; }
-.skill-card .card-name { font-weight: 800; font-size: 14px; color: var(--gold-bright); margin-bottom: 6px; }
-.skill-card .card-desc { font-size: 12px; color: var(--text-soft); line-height: 1.5; }
+.skill-card.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.skill-card .card-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.skill-card .card-name {
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--gold-bright);
+  margin-bottom: 6px;
+}
+.skill-card .card-desc {
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
 .skill-card .card-tag {
   display: inline-block;
   margin-top: 8px;
   font-size: 10px;
   padding: 2px 8px;
   border-radius: 3px;
-  background: rgba(217,164,65,0.14);
-  border: 1px solid rgba(217,164,65,0.3);
+  background: rgba(217, 164, 65, 0.14);
+  border: 1px solid rgba(217, 164, 65, 0.3);
   color: var(--gold-bright);
 }
 
 /* 레벨업 전용 장식: 로비의 다른 skill-card에는 영향을 주지 않는다. */
-#levelup-modal { overflow-y: auto; padding: 20px 12px; }
-#levelup-modal .modal-inner { width: min(850px, 100%); min-width: 0; max-width: 100%; max-height: 100%; overflow-y: auto; }
-#levelup-modal .card-row { gap: 12px; padding: 12px 8px 24px; }
-#levelup-modal .skill-card {
-  position: relative; display: flex; flex-direction: column; align-items: center;
-  width: clamp(170px, 24vw, 230px); min-height: 310px; aspect-ratio: 2 / 3;
-  padding: 48px 24px 32px; border: 0; clip-path: none;
-  background: #101827 url('image/levelup_design_20260912/card_ornate_gold.png') center / 100% 100% no-repeat;
-  color: var(--text-soft); font: inherit; text-align: center;
-  animation: levelup-enter .35s ease-out backwards;
-  animation-delay: calc(var(--card-index) * 65ms);
-  transition: transform .18s ease, filter .18s ease;
+#levelup-modal {
+  overflow-y: auto;
+  padding: 20px 12px;
 }
-#levelup-modal .skill-card:hover:not(:disabled) { transform: translateY(-5px); filter: brightness(1.16); }
-#levelup-modal .skill-card:focus-visible { outline: 2px solid #ffe4a2; outline-offset: 3px; }
-#levelup-modal .skill-card:disabled { cursor: default; }
-#levelup-modal .skill-card.selected { filter: brightness(1.22); }
-#levelup-modal .card-icon { position: relative; display: grid; place-items: center; width: 92px; height: 92px; flex-shrink: 0; margin: 0 0 16px; font-size: 46px; }
-#levelup-modal .card-icon span, #levelup-modal .levelup-icon { position: relative; z-index: 1; }
-#levelup-modal .levelup-icon { width: 82px; height: 82px; object-fit: contain; }
-#levelup-modal .levelup-halo { position: absolute; width: 116px; height: 116px; opacity: .4; pointer-events: none; animation: levelup-halo 35s linear infinite; }
-#levelup-modal .card-name { font-size: 17px; margin-bottom: 12px; color: #ffe0a0; }
-#levelup-modal .card-desc { font-size: 13px; line-height: 1.6; }
-#levelup-modal .card-tag { margin-top: auto; }
-#levelup-modal .levelup-burst { position: absolute; width: 100%; top: 12%; left: 0; opacity: 0; pointer-events: none; }
-#levelup-modal .selected .levelup-burst { animation: levelup-flash .48s ease-out forwards; }
-@keyframes levelup-enter { from { opacity: 0; transform: translateY(15px) scale(.96); } to { opacity: 1; transform: none; } }
-@keyframes levelup-halo { to { transform: rotate(360deg); } }
-@keyframes levelup-flash { 0% { opacity: 0; transform: scale(.4); } 20% { opacity: 1; } 100% { opacity: 0; transform: scale(1.4); } }
+#levelup-modal .modal-inner {
+  width: min(850px, 100%);
+  min-width: 0;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+#levelup-modal .card-row {
+  gap: 12px;
+  padding: 12px 8px 24px;
+}
+#levelup-modal .skill-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(170px, 24vw, 230px);
+  min-height: 310px;
+  aspect-ratio: 2 / 3;
+  padding: 48px 24px 32px;
+  border: 0;
+  clip-path: none;
+  background: #101827 url("image/levelup_design_20260912/card_ornate_gold.png")
+    center / 100% 100% no-repeat;
+  color: var(--text-soft);
+  font: inherit;
+  text-align: center;
+  animation: levelup-enter 0.35s ease-out backwards;
+  animation-delay: calc(var(--card-index) * 65ms);
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+#levelup-modal .skill-card:hover:not(:disabled) {
+  transform: translateY(-5px);
+  filter: brightness(1.16);
+}
+#levelup-modal .skill-card:focus-visible {
+  outline: 2px solid #ffe4a2;
+  outline-offset: 3px;
+}
+#levelup-modal .skill-card:disabled {
+  cursor: default;
+}
+#levelup-modal .skill-card.selected {
+  filter: brightness(1.22);
+}
+#levelup-modal .card-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  flex-shrink: 0;
+  margin: 0 0 16px;
+  font-size: 46px;
+}
+#levelup-modal .card-icon span,
+#levelup-modal .levelup-icon {
+  position: relative;
+  z-index: 1;
+}
+#levelup-modal .levelup-icon {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+}
+#levelup-modal .levelup-halo {
+  position: absolute;
+  width: 116px;
+  height: 116px;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: levelup-halo 35s linear infinite;
+}
+#levelup-modal .card-name {
+  font-size: 17px;
+  margin-bottom: 12px;
+  color: #ffe0a0;
+}
+#levelup-modal .card-desc {
+  font-size: 13px;
+  line-height: 1.6;
+}
+#levelup-modal .card-tag {
+  margin-top: auto;
+}
+#levelup-modal .levelup-burst {
+  position: absolute;
+  width: 100%;
+  top: 12%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+#levelup-modal .selected .levelup-burst {
+  animation: levelup-flash 0.48s ease-out forwards;
+}
+@keyframes levelup-enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes levelup-halo {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes levelup-flash {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
 @media (max-width: 600px) {
-  #levelup-modal .modal-inner { padding: 18px 4px; border-width: 12px; border-image-width: 12px; }
-  #levelup-modal .card-row { flex-wrap: nowrap; gap: 6px; padding-inline: 2px; }
-  #levelup-modal .skill-card { width: calc((100% - 12px) / 3); min-width: 0; min-height: 255px; padding: 36px 10px 26px; aspect-ratio: auto; }
-  #levelup-modal .card-icon { width: 52px; height: 60px; font-size: 30px; margin-bottom: 12px; }
-  #levelup-modal .levelup-icon { width: 52px; height: 52px; }
-  #levelup-modal .levelup-halo { width: 68px; height: 68px; }
-  #levelup-modal .card-name { font-size: 13px; }
-  #levelup-modal .card-desc { font-size: 11px; overflow-wrap: anywhere; }
+  #levelup-modal .modal-inner {
+    padding: 18px 4px;
+    border-width: 12px;
+    border-image-width: 12px;
+  }
+  #levelup-modal .card-row {
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding-inline: 2px;
+  }
+  #levelup-modal .skill-card {
+    width: calc((100% - 12px) / 3);
+    min-width: 0;
+    min-height: 255px;
+    padding: 36px 10px 26px;
+    aspect-ratio: auto;
+  }
+  #levelup-modal .card-icon {
+    width: 52px;
+    height: 60px;
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  #levelup-modal .levelup-icon {
+    width: 52px;
+    height: 52px;
+  }
+  #levelup-modal .levelup-halo {
+    width: 68px;
+    height: 68px;
+  }
+  #levelup-modal .card-name {
+    font-size: 13px;
+  }
+  #levelup-modal .card-desc {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+}
+@media (pointer: coarse) and (max-width: 900px), (max-width: 600px) {
+  #screen-title .title-content {
+    margin-bottom: 3vh;
+  }
+  #screen-title .title-buttons {
+    width: min(82vw, 300px);
+  }
+  #screen-title .img-btn {
+    width: 100%;
+    min-height: 46px;
+  }
+  #hud {
+    transform: scale(0.92);
+    transform-origin: top left;
+  }
+  .touch-device #touch-controls {
+    opacity: 1;
+  }
+  .mobile-optimized #hud {
+    transform: scale(0.85);
+    transform-origin: top left;
+  }
+  .mobile-optimized .touch-device .hotbar {
+    bottom: 160px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  #levelup-modal .skill-card, #levelup-modal .levelup-halo, #levelup-modal .selected .levelup-burst { animation: none; transition: none; }
+  #levelup-modal .skill-card,
+  #levelup-modal .levelup-halo,
+  #levelup-modal .selected .levelup-burst {
+    animation: none;
+    transition: none;
+  }
 }
 
-.stage-progress { color: #dfca9c; font-size: 12px; margin: 4px 0 8px; text-shadow: 0 1px 3px #000; }
-.basic-attack-hud { position: absolute; bottom: 108px; left: 50%; transform: translateX(-50%); width: 190px; padding: 7px 10px; background: #10192ee8; border: 1px solid #b79650; border-radius: 6px; font-size: 12px; color: #d6c29b; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
-.basic-attack-hud strong { color: #ffe5a7; font-variant-numeric: tabular-nums; }
-.basic-cd-track { height: 4px; background: #303846; width: 100%; overflow: hidden; border-radius: 3px; }
-.basic-cd-track i { display: block; height: 100%; width: 100%; background: linear-gradient(90deg,#bd8637,#fff0ad); }
-.clear-summary { font-size: 14px; line-height: 2; color: var(--text-soft); margin-bottom: 20px; }
-.clear-summary b { color: var(--gold-bright); }
-.pause-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+.stage-progress {
+  color: #dfca9c;
+  font-size: 12px;
+  margin: 4px 0 8px;
+  text-shadow: 0 1px 3px #000;
+}
+.basic-attack-hud {
+  position: absolute;
+  bottom: 108px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 190px;
+  padding: 7px 10px;
+  background: #10192ee8;
+  border: 1px solid #b79650;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #d6c29b;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.basic-attack-hud strong {
+  color: #ffe5a7;
+  font-variant-numeric: tabular-nums;
+}
+.basic-cd-track {
+  height: 4px;
+  background: #303846;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.basic-cd-track i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #bd8637, #fff0ad);
+}
+.clear-summary {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-soft);
+  margin-bottom: 20px;
+}
+.clear-summary b {
+  color: var(--gold-bright);
+}
+.pause-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
 
 /* 일시정지 — 지금까지 선택한 카드 목록 */
-#pause-modal .modal-inner { width: min(640px, 100%); }
-.pause-cards { margin-bottom: 6px; }
-.pause-cards-title { font-size: 12px; color: var(--text-soft); letter-spacing: 1px; margin: 0 0 10px; text-transform: uppercase; }
-.pause-card-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; max-height: 240px; overflow-y: auto; padding: 4px 2px; }
-.pause-card-empty { font-size: 12px; color: var(--text-soft); margin: 0; }
+#pause-modal .modal-inner {
+  width: min(640px, 100%);
+}
+.pause-cards {
+  margin-bottom: 6px;
+}
+.pause-cards-title {
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 1px;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+.pause-card-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 4px 2px;
+}
+.pause-card-empty {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin: 0;
+}
 .pause-card {
   width: 82px;
   min-height: 92px;
@@ -739,53 +1383,124 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   border-image-slice: 16% 14%;
   border-image-width: 10px;
   border-image-repeat: stretch;
-  border-image-source: url('image/ui2/ui_card_common.png');
+  border-image-source: url("image/ui2/ui_card_common.png");
 }
-.pause-card-icon { width: 34px; height: 34px; margin: 0 0 4px; display: grid; place-items: center; font-size: 20px; flex-shrink: 0; }
-.pause-card-icon img { width: 100%; height: 100%; object-fit: contain; }
+.pause-card-icon {
+  width: 34px;
+  height: 34px;
+  margin: 0 0 4px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.pause-card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 .pause-card-name {
-  font-size: 10px; color: var(--gold-bright); line-height: 1.3;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-  overflow: hidden; word-break: keep-all; min-height: 2.6em;
+  font-size: 10px;
+  color: var(--gold-bright);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: keep-all;
+  min-height: 2.6em;
 }
-.pause-card-count { font-size: 10px; color: var(--text-soft); margin-top: auto; padding-top: 2px; font-variant-numeric: tabular-nums; }
+.pause-card-count {
+  font-size: 10px;
+  color: var(--text-soft);
+  margin-top: auto;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
 
 /* =========================================================================
    터치 기기 보정 (이동은 방향키 전용 — 조이스틱 없음)
    ========================================================================= */
-.touch-device .slot { width: 58px; height: 58px; }
-.touch-device .slot-icon { font-size: 30px; }
-.touch-device .hotbar { bottom: 26px; gap: 14px; }
-.touch-device .corner-btn { width: 48px; height: 48px; font-size: 17px; }
-.touch-device .hud-status-panel { padding: 6px 8px 6px 6px; gap: 7px; }
-.touch-device .hud-portrait { width: 38px; height: 38px; }
-.touch-device .hud-level-badge { min-width: 16px; height: 16px; font-size: 9px; bottom: -4px; right: -4px; }
+.touch-device .slot {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  touch-action: manipulation;
+}
+.touch-device .slot-icon {
+  font-size: 30px;
+}
+.touch-device .hotbar {
+  bottom: 22px;
+  gap: 12px;
+  padding: 10px 16px;
+  transform: translateX(-50%) scale(1.02);
+}
+.touch-device .corner-btn {
+  width: 52px;
+  height: 52px;
+  font-size: 17px;
+}
+.touch-device .hud-status-panel {
+  padding: 6px 8px 6px 6px;
+  gap: 7px;
+}
+.touch-device .hud-portrait {
+  width: 38px;
+  height: 38px;
+}
+.touch-device .hud-level-badge {
+  min-width: 16px;
+  height: 16px;
+  font-size: 9px;
+  bottom: -4px;
+  right: -4px;
+}
 
 /* =========================================================================
    로비 화면
    ========================================================================= */
-#screen-lobby { align-items: stretch; justify-content: stretch; background: var(--bg-deep); }
+#screen-lobby {
+  align-items: stretch;
+  justify-content: stretch;
+  background: var(--bg-deep);
+}
 
 .lobby-bg {
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(180deg, rgba(7,11,20,0.55) 0%, rgba(7,11,20,0.85) 100%),
-    url('image/background_lobby.jpg') center 35% / cover;
+    linear-gradient(
+      180deg,
+      rgba(7, 11, 20, 0.55) 0%,
+      rgba(7, 11, 20, 0.85) 100%
+    ),
+    url("image/background_lobby.jpg") center 35% / cover;
   filter: saturate(0.9) brightness(0.72);
 }
 
 .lobby-frame {
   position: relative;
   z-index: 1;
-  width: 100%; height: 100%;
-  display: flex; flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 18px clamp(14px, 4vw, 48px);
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(7,11,20,0.5) 0%, rgba(7,11,20,0.12) 42%, rgba(7,11,20,0.55) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(7, 11, 20, 0.5) 0%,
+    rgba(7, 11, 20, 0.12) 42%,
+    rgba(7, 11, 20, 0.55) 100%
+  );
 }
 
 .lobby-header {
-  display: flex; align-items: center; gap: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
   margin-bottom: 14px;
   flex-wrap: wrap;
   padding-bottom: 12px;
@@ -797,14 +1512,25 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   color: var(--gold-bright);
   letter-spacing: 3px;
   font-size: 20px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
 }
-.lobby-currency { display: flex; gap: 10px; margin-left: auto; }
-.currency.locked { opacity: 0.5; }
+.lobby-currency {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+.currency.locked {
+  opacity: 0.5;
+}
 
 /* 탭 4개를 전부 같은 크기로 고정한다 — 텍스트 길이에 따라 버튼 폭이 제각각이면
    장식 이미지가 탭마다 다른 비율로 늘어나서 모양이 삐뚤어 보인다. */
-.tab-nav { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.tab-nav {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
 .tab-btn {
   position: relative;
   width: 175px;
@@ -815,7 +1541,7 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   font-family: var(--font);
   font-weight: 700;
   background-color: transparent;
-  background-image: url('image/ui2/ui_tab_pill_inactive.png');
+  background-image: url("image/ui2/ui_tab_pill_inactive.png");
   background-size: cover;
   background-position: left center;
   background-repeat: no-repeat;
@@ -826,22 +1552,39 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   font-size: 14px;
   letter-spacing: 1px;
   cursor: pointer;
-  transition: color 0.15s ease, filter 0.15s ease;
+  transition:
+    color 0.15s ease,
+    filter 0.15s ease;
 }
-.tab-btn:hover { color: var(--text); filter: brightness(1.15); }
+.tab-btn:hover {
+  color: var(--text);
+  filter: brightness(1.15);
+}
 .tab-btn.active {
-  background-image: url('image/ui2/ui_tab_pill_active.png');
+  background-image: url("image/ui2/ui_tab_pill_active.png");
   color: var(--gold-bright);
-  filter: drop-shadow(0 0 6px rgba(245,216,145,0.4));
+  filter: drop-shadow(0 0 6px rgba(245, 216, 145, 0.4));
 }
 
-.tab-content { flex: 1; min-height: 0; overflow-y: auto; padding-right: 6px; }
-.tab-pane { display: none; }
-.tab-pane.active { display: block; animation: rise 0.35s ease-out; }
+.tab-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+.tab-pane {
+  display: none;
+}
+.tab-pane.active {
+  display: block;
+  animation: rise 0.35s ease-out;
+}
 
 .lobby-section {
   position: relative;
-  box-shadow: inset 0 0 36px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.5);
+  box-shadow:
+    inset 0 0 36px rgba(0, 0, 0, 0.55),
+    0 8px 24px rgba(0, 0, 0, 0.5);
   padding: 16px 20px;
   margin-bottom: 16px;
 }
@@ -857,18 +1600,34 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
 }
 
 /* --- 캐릭터 탭 --- */
-.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
 .stat-item {
-  background: rgba(6,10,20,0.5);
+  background: rgba(6, 10, 20, 0.5);
   border: 1px solid var(--panel-border-soft);
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 13px;
 }
-.stat-item .stat-label { color: var(--text-dim); margin-right: 6px; }
-.stat-item .stat-value { color: var(--gold-bright); font-weight: 700; }
+.stat-item .stat-label {
+  color: var(--text-dim);
+  margin-right: 6px;
+}
+.stat-item .stat-value {
+  color: var(--gold-bright);
+  font-weight: 700;
+}
 
-.level-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
 .level-row .lv-badge {
   font-weight: 800;
   background: var(--gold-fill);
@@ -878,32 +1637,62 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   color: var(--gold-bright);
   font-size: 14px;
 }
-.level-row .bar { flex: 1; min-width: 160px; margin-bottom: 0; clip-path: none; border-radius: 3px; }
+.level-row .bar {
+  flex: 1;
+  min-width: 160px;
+  margin-bottom: 0;
+  clip-path: none;
+  border-radius: 3px;
+}
 
-.job-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.job-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 .job-current {
-  display: flex; align-items: center; gap: 12px;
-  background: rgba(6,10,20,0.5);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(6, 10, 20, 0.5);
   border: 1px solid var(--panel-border);
   border-radius: 6px;
   padding: 10px 16px;
 }
-.job-current .job-icon { font-size: 24px; }
-.job-current .job-name { font-weight: 800; color: var(--gold-bright); }
-.job-current .job-tier { font-size: 11px; color: var(--text-dim); letter-spacing: 1px; }
+.job-current .job-icon {
+  font-size: 24px;
+}
+.job-current .job-name {
+  font-weight: 800;
+  color: var(--gold-bright);
+}
+.job-current .job-tier {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
 
 /* 직업/외형 초상화 — image/portrait/*.png (classmoving.png 크롭) */
 .portrait-frame {
-  width: 66px; height: 66px;
+  width: 66px;
+  height: 66px;
   flex-shrink: 0;
   border: 2px solid var(--gold);
-  box-shadow: 0 0 0 1px #0a1122, var(--gold-glow);
+  box-shadow:
+    0 0 0 1px #0a1122,
+    var(--gold-glow);
   border-radius: 4px;
   overflow: hidden;
   background: linear-gradient(145deg, #1a2744, #0d1526);
   image-rendering: pixelated;
 }
-.portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 .appearance-portrait {
   width: 100%;
@@ -917,37 +1706,73 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
 }
 
 /* --- 장비 탭 --- */
-.equip-slots { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.equip-slots {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
 .equip-slot-box {
   width: 120px;
   background: linear-gradient(145deg, #16213b, #0b1220);
   padding: 12px 8px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.12s ease, filter 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease;
   /* 보유 장비 카드(.item-card)와 같은 등급 프레임 — 장착칸은 항상 common 톤 */
   border-style: solid;
   border-width: 12px;
   border-image-slice: 16% 14%;
   border-image-width: 12px;
   border-image-repeat: stretch;
-  border-image-source: url('image/ui2/ui_card_common.png');
+  border-image-source: url("image/ui2/ui_card_common.png");
 }
-.equip-slot-box:hover { transform: translateY(-2px); filter: brightness(1.15); }
-.equip-slot-box .slot-cat { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; letter-spacing: 1px; }
-.equip-slot-box .slot-icon-big { font-size: 30px; }
-.equip-slot-box .slot-item-name { font-size: 12px; color: var(--text); margin-top: 4px; }
-.equip-slot-box .slot-item-lv { font-size: 10px; color: var(--gold-bright); }
-.equip-slot-box.empty { opacity: 0.55; cursor: default; }
-.equip-slot-box.empty:hover { transform: none; filter: none; }
+.equip-slot-box:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+.equip-slot-box .slot-cat {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+.equip-slot-box .slot-icon-big {
+  font-size: 30px;
+}
+.equip-slot-box .slot-item-name {
+  font-size: 12px;
+  color: var(--text);
+  margin-top: 4px;
+}
+.equip-slot-box .slot-item-lv {
+  font-size: 10px;
+  color: var(--gold-bright);
+}
+.equip-slot-box.empty {
+  opacity: 0.55;
+  cursor: default;
+}
+.equip-slot-box.empty:hover {
+  transform: none;
+  filter: none;
+}
 
-.item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 12px;
+}
 .item-card {
   background: linear-gradient(145deg, #16213b, #0b1220);
   padding: 10px 8px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.12s ease, filter 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease;
   position: relative;
   /* 등급별 프레임(image/ui2/ui_card_*.png) — 9-slice border-image, 기본은 일반 등급 */
   border-style: solid;
@@ -955,30 +1780,60 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   border-image-slice: 16% 14%;
   border-image-width: 14px;
   border-image-repeat: stretch;
-  border-image-source: url('image/ui2/ui_card_common.png');
+  border-image-source: url("image/ui2/ui_card_common.png");
 }
-.item-card.rarity-rare { border-image-source: url('image/ui2/ui_card_rare.png'); }
-.item-card.rarity-epic { border-image-source: url('image/ui2/ui_card_epic.png'); }
-.item-card.rarity-legendary { border-image-source: url('image/ui2/ui_card_legendary.png'); }
-.item-card:hover { transform: translateY(-3px); filter: brightness(1.15); }
-.item-card .item-icon { font-size: 26px; }
-.item-card .item-name { font-size: 11px; margin-top: 4px; color: var(--text-soft); }
-.item-card .item-rarity { font-size: 10px; margin-top: 2px; font-weight: 700; }
+.item-card.rarity-rare {
+  border-image-source: url("image/ui2/ui_card_rare.png");
+}
+.item-card.rarity-epic {
+  border-image-source: url("image/ui2/ui_card_epic.png");
+}
+.item-card.rarity-legendary {
+  border-image-source: url("image/ui2/ui_card_legendary.png");
+}
+.item-card:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+.item-card .item-icon {
+  font-size: 26px;
+}
+.item-card .item-name {
+  font-size: 11px;
+  margin-top: 4px;
+  color: var(--text-soft);
+}
+.item-card .item-rarity {
+  font-size: 10px;
+  margin-top: 2px;
+  font-weight: 700;
+}
 .item-card .item-equipped-badge {
-  position: absolute; top: 4px; right: 4px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
   font-size: 9px;
   background: var(--gold-fill);
   border: 1px solid var(--gold);
   color: var(--gold-bright);
-  border-radius: 3px; padding: 1px 5px; font-weight: 700;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-weight: 700;
 }
-.item-card.locked { opacity: 0.4; cursor: not-allowed; }
+.item-card.locked {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 /* --- 상점 탭 --- */
-.shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
 .shop-card {
   background: linear-gradient(160deg, #17223c, #0b1220);
-  box-shadow: inset 0 0 26px rgba(0,0,0,0.5);
+  box-shadow: inset 0 0 26px rgba(0, 0, 0, 0.5);
   padding: 20px 18px;
   text-align: center;
   border-style: solid;
@@ -986,21 +1841,51 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   border-image-slice: 16% 14%;
   border-image-width: 14px;
   border-image-repeat: stretch;
-  border-image-source: url('image/ui2/ui_card_common.png');
+  border-image-source: url("image/ui2/ui_card_common.png");
 }
-.shop-card .shop-icon { font-size: 36px; margin-bottom: 8px; }
-.shop-card .shop-name { font-weight: 800; color: var(--gold-bright); margin-bottom: 6px; }
-.shop-card .shop-desc { font-size: 12px; color: var(--text-soft); margin-bottom: 12px; min-height: 32px; }
-.shop-card .shop-cost { font-size: 13px; color: var(--gold-bright); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
-
+.shop-card .shop-icon {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+.shop-card .shop-name {
+  font-weight: 800;
+  color: var(--gold-bright);
+  margin-bottom: 6px;
+}
+.shop-card .shop-desc {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+  min-height: 32px;
+}
+.shop-card .shop-cost {
+  font-size: 13px;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+  font-variant-numeric: tabular-nums;
+}
 
 /* --- 게임 탭 --- */
-.game-tab-summary { font-size: 14px; line-height: 2; color: var(--text-soft); margin-bottom: 18px; }
-.game-tab-summary b { color: var(--gold-bright); }
-.btn-explore { padding: 14px 40px; font-size: 15px; }
+.game-tab-summary {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-soft);
+  margin-bottom: 18px;
+}
+.game-tab-summary b {
+  color: var(--gold-bright);
+}
+.btn-explore {
+  padding: 14px 40px;
+  font-size: 15px;
+}
 
 /* --- 공용 잠금 안내 --- */
-.lock-note { font-size: 12px; color: #ff9a9a; margin-top: 8px; }
+.lock-note {
+  font-size: 12px;
+  color: #ff9a9a;
+  margin-top: 8px;
+}
 
 /* =========================================================================
    스킬 툴팁
@@ -1013,223 +1898,1294 @@ body:not(.touch-device) .hud-level-badge { min-width: 22px; height: 22px; font-s
   background: linear-gradient(160deg, #17223c, #0d1526);
   border: 1px solid var(--gold-mid);
   border-radius: 5px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.9), 0 0 0 1px #0a1122;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.9),
+    0 0 0 1px #0a1122;
   padding: 10px 14px;
   max-width: 220px;
   z-index: 60;
 }
-.skill-tooltip.hidden { display: none; }
-.skill-tooltip .tooltip-name { font-weight: 800; color: var(--gold-bright); font-size: 13px; margin-bottom: 4px; white-space: nowrap; }
-.skill-tooltip .tooltip-desc { color: var(--text-soft); font-size: 12px; line-height: 1.5; }
-.skill-tooltip .tooltip-cd { color: var(--text-dim); font-size: 11px; margin-top: 6px; }
+.skill-tooltip.hidden {
+  display: none;
+}
+.skill-tooltip .tooltip-name {
+  font-weight: 800;
+  color: var(--gold-bright);
+  font-size: 13px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+.skill-tooltip .tooltip-desc {
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.skill-tooltip .tooltip-cd {
+  color: var(--text-dim);
+  font-size: 11px;
+  margin-top: 6px;
+}
 
 /* Touch controls remain below modal overlays and never steal desktop input. */
-#touch-controls {display:none;position:absolute;inset:0;pointer-events:none;z-index:3;}
-.touch-device #touch-controls {display:block;}
-#touch-joystick {position:absolute;left:max(18px,env(safe-area-inset-left));bottom:max(30px,env(safe-area-inset-bottom));width:112px;height:112px;border:2px solid #a58d56;border-radius:50%;background:rgba(20,30,45,.72);pointer-events:auto;touch-action:none;display:grid;place-items:center;}
-#touch-knob {width:46px;height:46px;border-radius:50%;background:#827450;border:2px solid #efd997;pointer-events:none;}
-#touch-attack {position:absolute;right:max(22px,env(safe-area-inset-right));bottom:max(38px,env(safe-area-inset-bottom));width:78px;height:78px;border-radius:50%;border:2px solid #e4c576;background:#283443;color:#ffe5a0;font:bold 18px sans-serif;pointer-events:auto;touch-action:none;}
-#touch-attack.held {background:#71603d;}
-.touch-device .hotbar {bottom:174px;gap:8px;}
-.touch-device .basic-attack-hud {bottom:264px;}
-.touch-device .corner-btn {bottom:125px;}
-.slot {font:inherit;color:inherit;padding:0;touch-action:manipulation;background-color:transparent;border:0;appearance:none;}
-button.skill-card {color:inherit;font:inherit;}
-button:focus-visible,[role=button]:focus-visible {outline:3px solid #ffe49a;outline-offset:3px;}
-#storage-notice {position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:1000;background:#5a281e;color:#fff2d6;border:1px solid #ffc576;border-radius:6px;padding:10px 16px;max-width:90vw;}
-@media(max-height:500px){.touch-device .hotbar{bottom:105px;left:70%;}.touch-device .basic-attack-hud{bottom:190px;left:70%;}.touch-device .corner-btn{bottom:auto;top:12px;}#touch-joystick{bottom:18px;width:96px;height:96px;}#touch-attack{bottom:16px;width:70px;height:70px;}}
+#touch-controls {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.touch-device #touch-controls {
+  display: block;
+}
+#touch-joystick {
+  position: absolute;
+  left: max(18px, env(safe-area-inset-left));
+  bottom: max(30px, env(safe-area-inset-bottom));
+  width: 132px;
+  height: 132px;
+  border: 2px solid #a58d56;
+  border-radius: 50%;
+  background: rgba(20, 30, 45, 0.72);
+  pointer-events: auto;
+  touch-action: none;
+  display: grid;
+  place-items: center;
+}
+#touch-knob {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #827450;
+  border: 2px solid #efd997;
+  pointer-events: none;
+}
+#touch-attack {
+  position: absolute;
+  right: max(22px, env(safe-area-inset-right));
+  bottom: max(38px, env(safe-area-inset-bottom));
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  border: 2px solid #e4c576;
+  background: #283443;
+  color: #ffe5a0;
+  font: bold 18px sans-serif;
+  pointer-events: auto;
+  touch-action: none;
+}
+#touch-attack.held {
+  background: #71603d;
+}
+.touch-device .hotbar {
+  bottom: 26px;
+  gap: 10px;
+  left: 50%;
+}
+.touch-device .basic-attack-hud {
+  bottom: 120px;
+}
+.touch-device .corner-btn {
+  bottom: 106px;
+}
+.slot {
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  touch-action: manipulation;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+}
+button.skill-card {
+  color: inherit;
+  font: inherit;
+}
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid #ffe49a;
+  outline-offset: 3px;
+}
+#storage-notice {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: #5a281e;
+  color: #fff2d6;
+  border: 1px solid #ffc576;
+  border-radius: 6px;
+  padding: 10px 16px;
+  max-width: 90vw;
+}
+@media (max-height: 500px) {
+  .touch-device .hotbar {
+    bottom: 105px;
+    left: 70%;
+  }
+  .touch-device .basic-attack-hud {
+    bottom: 190px;
+    left: 70%;
+  }
+  .touch-device .corner-btn {
+    bottom: auto;
+    top: 12px;
+  }
+  #touch-joystick {
+    bottom: 18px;
+    width: 96px;
+    height: 96px;
+  }
+  #touch-attack {
+    bottom: 16px;
+    width: 70px;
+    height: 70px;
+  }
+}
 
-@media(max-height:500px){.touch-device .hud-top-right{right:140px;}}
-.touch-help{display:none}.touch-device .touch-help{display:block}
+@media (max-height: 500px) {
+  .touch-device .hud-top-right {
+    right: 140px;
+  }
+}
+.touch-help {
+  display: none;
+}
+.touch-device .touch-help {
+  display: block;
+}
 /* HUD: resource labels, separate stage objective, and compact pause menu. */
-body:not(.touch-device) .hud-top-left { width: 360px; }
-.hud-status-panel { padding: 8px; gap: 14px; }
-.hud-status-body .stage-label { margin-bottom: 10px; letter-spacing: 2px; }
+body:not(.touch-device) .hud-top-left {
+  width: 360px;
+}
+.hud-status-panel {
+  padding: 8px;
+  gap: 14px;
+}
+.hud-status-body .stage-label {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
 /* 라벨을 바 왼쪽에, 수치는 바 아래 중앙에 두는 배치(레퍼런스 목업 기준) */
-.hud-meter-row { display:flex; align-items:center; gap:10px; margin:5px 2px 0; }
-.hud-meter-label { flex:0 0 auto; min-width:44px; color:#ebd5a6; font-size:12px; font-weight:700; white-space:nowrap; }
-.hud-meter-row .bar { flex:1; margin-bottom:0; }
+.hud-meter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 2px 0;
+}
+.hud-meter-label {
+  flex: 0 0 auto;
+  min-width: 44px;
+  color: #ebd5a6;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.hud-meter-row .bar {
+  flex: 1;
+  margin-bottom: 0;
+}
 .bar-value {
-  text-align:center; margin:2px 2px 6px;
-  font-size:12px; font-weight:700; color:#fff;
-  font-variant-numeric:tabular-nums;
-  text-shadow:0 1px 2px rgba(0,0,0,0.95);
+  text-align: center;
+  margin: 2px 2px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95);
 }
-#hud .hud-status-body .bar { clip-path:none; border-radius:3px; border:1px solid #8e713d; box-shadow:0 0 0 1px #080d17,inset 0 2px 7px #000; }
-#hud .hud-status-body .hp-fill { background:linear-gradient(90deg,#861e35,#d83754,#ee6b79); }
-#hud .hud-status-body .exp-fill { background:linear-gradient(90deg,#294b83,#527cbe,#91bce8); }
-#hud .hud-status-body .exp-bar { height:18px; margin-bottom:2px; }
-#hud .hud-status-body .exp-bar .bar-text { font-size:10px; }
-.hud-objective { position:absolute; left:16px; top:196px; width:360px; padding:8px 12px; background:#0c1423eb; border-left:2px solid #bd9650; }
-.objective-label { font-size:10px; color:#b79b65; letter-spacing:1px; }
-.hud-objective .stage-progress { margin:4px 0 0; font-size:12px; }
-.basic-attack-hud { width:270px; padding:10px 12px; gap:8px; align-items:center; border-radius:3px; border:1px solid #b79650; box-shadow:inset 0 0 0 3px #111b2a,0 3px 12px #0008; background:linear-gradient(135deg,#253147,#0c1422); }
-.basic-key { display:grid; place-items:center; width:32px; height:32px; font:800 18px var(--font); color:#ffe1a0; border:1px solid #c49a50; background:linear-gradient(#443921,#19191b); box-shadow:0 2px 0 #705529; }
-.basic-label { flex:1; font-weight:700; color:#eee0c4; }
-.basic-label small { display:block; margin-top:3px; font-size:9px; font-weight:400; color:#9aa8bf; }
-.basic-attack-hud .basic-cd-track { height:5px; border:1px solid #574627; }
-#pause-modal { padding:16px; }
-#pause-modal .modal-inner { width:420px; min-width:0; max-width:100%; max-height:calc(100dvh - 32px); overflow-y:auto; padding:24px 18px; }
-#pause-modal h2 { margin:4px 0 24px; }
-#pause-modal .pause-card-row { max-height:210px; }
-#pause-modal .pause-card-empty { padding:18px 0; }
-#pause-modal .pause-actions { gap:12px; margin-top:24px; }
-#pause-modal .menu-btn { min-height:48px; width:100%; padding:10px 14px; background-size:100% 100%; }
-#pause-modal #btn-resume { filter:brightness(1.15); }
-.touch-device .hud-objective { width:270px; top:190px; }
-.touch-device .basic-attack-hud { width:230px; padding:7px 9px; }
-@media(max-height:500px) { .hud-objective { top:174px; } .touch-device .hud-objective { top:174px; } #pause-modal .modal-inner { padding:10px 14px; } #pause-modal .pause-actions { gap:6px; margin-top:12px; } }
-#hud .hud-top-left .hud-objective { position:static; width:100%; margin-top:6px; }
+#hud .hud-status-body .bar {
+  clip-path: none;
+  border-radius: 3px;
+  border: 1px solid #8e713d;
+  box-shadow:
+    0 0 0 1px #080d17,
+    inset 0 2px 7px #000;
+}
+#hud .hud-status-body .hp-fill {
+  background: linear-gradient(90deg, #861e35, #d83754, #ee6b79);
+}
+#hud .hud-status-body .exp-fill {
+  background: linear-gradient(90deg, #294b83, #527cbe, #91bce8);
+}
+#hud .hud-status-body .exp-bar {
+  height: 18px;
+  margin-bottom: 2px;
+}
+#hud .hud-status-body .exp-bar .bar-text {
+  font-size: 10px;
+}
+.hud-objective {
+  position: absolute;
+  left: 16px;
+  top: 196px;
+  width: 360px;
+  padding: 8px 12px;
+  background: #0c1423eb;
+  border-left: 2px solid #bd9650;
+}
+.objective-label {
+  font-size: 10px;
+  color: #b79b65;
+  letter-spacing: 1px;
+}
+.hud-objective .stage-progress {
+  margin: 4px 0 0;
+  font-size: 12px;
+}
+.basic-attack-hud {
+  width: 270px;
+  padding: 10px 12px;
+  gap: 8px;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid #b79650;
+  box-shadow:
+    inset 0 0 0 3px #111b2a,
+    0 3px 12px #0008;
+  background: linear-gradient(135deg, #253147, #0c1422);
+}
+.basic-key {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  font: 800 18px var(--font);
+  color: #ffe1a0;
+  border: 1px solid #c49a50;
+  background: linear-gradient(#443921, #19191b);
+  box-shadow: 0 2px 0 #705529;
+}
+.basic-label {
+  flex: 1;
+  font-weight: 700;
+  color: #eee0c4;
+}
+.basic-label small {
+  display: block;
+  margin-top: 3px;
+  font-size: 9px;
+  font-weight: 400;
+  color: #9aa8bf;
+}
+.basic-attack-hud .basic-cd-track {
+  height: 5px;
+  border: 1px solid #574627;
+}
+#pause-modal {
+  padding: 16px;
+}
+#pause-modal .modal-inner {
+  width: 420px;
+  min-width: 0;
+  max-width: 100%;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: 24px 18px;
+}
+#pause-modal h2 {
+  margin: 4px 0 24px;
+}
+#pause-modal .pause-card-row {
+  max-height: 210px;
+}
+#pause-modal .pause-card-empty {
+  padding: 18px 0;
+}
+#pause-modal .pause-actions {
+  gap: 12px;
+  margin-top: 24px;
+}
+#pause-modal .menu-btn {
+  min-height: 48px;
+  width: 100%;
+  padding: 10px 14px;
+  background-size: 100% 100%;
+}
+#pause-modal #btn-resume {
+  filter: brightness(1.15);
+}
+.touch-device .hud-objective {
+  width: 270px;
+  top: 190px;
+}
+.touch-device .basic-attack-hud {
+  width: 230px;
+  padding: 7px 9px;
+}
+@media (max-height: 500px) {
+  .hud-objective {
+    top: 174px;
+  }
+  .touch-device .hud-objective {
+    top: 174px;
+  }
+  #pause-modal .modal-inner {
+    padding: 10px 14px;
+  }
+  #pause-modal .pause-actions {
+    gap: 6px;
+    margin-top: 12px;
+  }
+}
+#hud .hud-top-left .hud-objective {
+  position: static;
+  width: 100%;
+  margin-top: 6px;
+}
 /* Generated gold/enamel HUD frame; live text and fills stay in the DOM. */
-#hud .hud-status-panel, #hud .basic-attack-hud {
-  border:16px solid #bfa36b;
-  border-image: url('image/ui_hud_20260913/frame.png') 145 fill / 16px / 0 stretch;
-  border-radius:0; background:#091320;
-  box-shadow:0 4px 14px #0009;
+#hud .hud-status-panel,
+#hud .basic-attack-hud {
+  border: 16px solid #bfa36b;
+  border-image: url("image/ui_hud_20260913/frame.png") 145 fill / 16px / 0
+    stretch;
+  border-radius: 0;
+  background: #091320;
+  box-shadow: 0 4px 14px #0009;
 }
-#hud .hud-status-panel { align-items:center; padding:3px 2px; gap:12px; }
-#hud .hud-portrait { width:72px; height:72px; }
-#hud .hud-portrait .portrait-frame { border-radius:0; border:0; image-rendering:auto; box-shadow:none; }
-#hud .hud-level-badge { min-width:25px; height:25px; right:-6px; bottom:-5px; border:2px ridge #dfc17d; background:linear-gradient(145deg,#51452d,#151b22); color:#ffe4a8; font-size:13px; }
-#hud .hud-status-body .stage-label { font-size:15px; text-align:center; color:#f1dbac; letter-spacing:3px; margin-bottom:6px; padding-bottom:5px; border-bottom:1px solid #91744280; }
-#hud .hud-meter-label { margin:4px 1px; font-size:10px; color:#ead5a9; }
-#hud .hud-status-body .bar { border:2px ridge #d4b77c; border-radius:2px; background:#060c14; box-shadow:0 0 0 1px #211a13,inset 0 2px 5px #000; height:23px; margin-bottom:5px; }
-#hud .hud-status-body .bar-fill { box-shadow:inset 0 1px 1px #fff9,inset 0 -3px 4px #0009; background-size:auto; }
-#hud .hud-status-body .hp-fill { background:linear-gradient(175deg,transparent 45%,#ff899433 46%,transparent 65%),linear-gradient(0deg,#8a001b,#ef1537 50%,#ff6d79 54%,#b40023); }
-#hud .hud-status-body .exp-fill { background:linear-gradient(175deg,transparent 45%,#b9f7ff66 46%,transparent 65%),linear-gradient(0deg,#064580,#09a4e6 50%,#8aeaff 54%,#1371ac); }
-#hud .hud-status-body .bar-text { font-size:12px; text-shadow:0 1px 3px #000,0 0 3px #000; }
-#hud .hud-status-body .exp-bar { height:18px; margin-bottom:0; }
-#hud .hud-status-body .shield-bar { height:16px; margin-top:0; }
-@media(max-width:600px) { #hud .hud-top-left { width:min(300px,calc(100vw - 90px)); } #hud .hud-portrait { width:52px; height:52px; } #hud .hud-status-panel { gap:8px; border-image-width:12px; border-width:12px; } #hud .hud-status-body .stage-label { font-size:12px; letter-spacing:1px; } }
+#hud .hud-status-panel {
+  align-items: center;
+  padding: 3px 2px;
+  gap: 12px;
+}
+#hud .hud-portrait {
+  width: 72px;
+  height: 72px;
+}
+#hud .hud-portrait .portrait-frame {
+  border-radius: 0;
+  border: 0;
+  image-rendering: auto;
+  box-shadow: none;
+}
+#hud .hud-level-badge {
+  min-width: 25px;
+  height: 25px;
+  right: -6px;
+  bottom: -5px;
+  border: 2px ridge #dfc17d;
+  background: linear-gradient(145deg, #51452d, #151b22);
+  color: #ffe4a8;
+  font-size: 13px;
+}
+#hud .hud-status-body .stage-label {
+  font-size: 15px;
+  text-align: center;
+  color: #f1dbac;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #91744280;
+}
+#hud .hud-meter-label {
+  margin: 4px 1px;
+  font-size: 10px;
+  color: #ead5a9;
+}
+#hud .hud-status-body .bar {
+  border: 2px ridge #d4b77c;
+  border-radius: 2px;
+  background: #060c14;
+  box-shadow:
+    0 0 0 1px #211a13,
+    inset 0 2px 5px #000;
+  height: 23px;
+  margin-bottom: 5px;
+}
+#hud .hud-status-body .bar-fill {
+  box-shadow:
+    inset 0 1px 1px #fff9,
+    inset 0 -3px 4px #0009;
+  background-size: auto;
+}
+#hud .hud-status-body .hp-fill {
+  background:
+    linear-gradient(175deg, transparent 45%, #ff899433 46%, transparent 65%),
+    linear-gradient(0deg, #8a001b, #ef1537 50%, #ff6d79 54%, #b40023);
+}
+#hud .hud-status-body .exp-fill {
+  background:
+    linear-gradient(175deg, transparent 45%, #b9f7ff66 46%, transparent 65%),
+    linear-gradient(0deg, #064580, #09a4e6 50%, #8aeaff 54%, #1371ac);
+}
+#hud .hud-status-body .bar-text {
+  font-size: 12px;
+  text-shadow:
+    0 1px 3px #000,
+    0 0 3px #000;
+}
+#hud .hud-status-body .exp-bar {
+  height: 18px;
+  margin-bottom: 0;
+}
+#hud .hud-status-body .shield-bar {
+  height: 16px;
+  margin-top: 0;
+}
+@media (max-width: 600px) {
+  #hud .hud-top-left {
+    width: min(300px, calc(100vw - 90px));
+  }
+  #hud .hud-portrait {
+    width: 52px;
+    height: 52px;
+  }
+  #hud .hud-status-panel {
+    gap: 8px;
+    border-image-width: 12px;
+    border-width: 12px;
+  }
+  #hud .hud-status-body .stage-label {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+}
 /* Face-focused HUD portraits and skill/basic-attack size hierarchy. */
-#hud .hud-portrait .portrait-frame { position:relative; }
+#hud .hud-portrait .portrait-frame {
+  position: relative;
+}
 /* 초상화 원본(image/portrait/*.png)이 이미 얼굴 위주로 알맞게 잘려 있어서 억지로
    확대할 필요가 없다 — 그냥 자연스럽게 꽉 채워서 중앙 정렬만 한다. */
-#hud .hud-portrait .portrait-frame > img:not(.adv-static-portrait) { width:100%; height:100%; object-fit:cover; object-position:center; }
+#hud .hud-portrait .portrait-frame > img:not(.adv-static-portrait) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 /* 전직 정지 초상화(image/portrait/*.png)는 이미 얼굴 위주로 꽉 차게 잘려 있어서
    위 확대 보정이 필요 없다 — 오히려 과하게 확대돼 잘려 보이므로 제외한다. */
-#hud .hud-portrait .portrait-frame > img.adv-static-portrait { width:100%; height:100%; object-fit:cover; }
-#hud .hud-portrait .adv-portrait { transform:scale(2.5); transform-origin:50% 16%; }
-#hud .hud-level-badge { right:auto; left:-6px; }
-body:not(.touch-device) #hud .hotbar { gap:12px; padding:10px 16px; }
-body:not(.touch-device) #hud .hotbar .slot { width:66px; height:66px; }
-body:not(.touch-device) #hud .hotbar .slot-icon { font-size:34px; }
-body:not(.touch-device) #hud .hotbar .slot-key { font-size:12px; right:4px; bottom:3px; }
+#hud .hud-portrait .portrait-frame > img.adv-static-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#hud .hud-portrait .adv-portrait {
+  transform: scale(2.5);
+  transform-origin: 50% 16%;
+}
+#hud .hud-level-badge {
+  right: auto;
+  left: -6px;
+}
+body:not(.touch-device) #hud .hotbar {
+  gap: 12px;
+  padding: 10px 16px;
+}
+body:not(.touch-device) #hud .hotbar .slot {
+  width: 66px;
+  height: 66px;
+}
+body:not(.touch-device) #hud .hotbar .slot-icon {
+  font-size: 34px;
+}
+body:not(.touch-device) #hud .hotbar .slot-key {
+  font-size: 12px;
+  right: 4px;
+  bottom: 3px;
+}
 /* Skill tray uses the same generated metal/enamel frame as the HUD. */
 #hud .hotbar {
-  clip-path:none;
-  border:14px solid #baa16b;
-  border-image:url('image/ui_hud_20260913/frame.png') 145 fill / 14px / 0 stretch;
-  background:#091320;
-  box-shadow:0 6px 18px #000b;
-  padding:5px 8px;
-  gap:12px;
+  clip-path: none;
+  border: 14px solid #baa16b;
+  border-image: url("image/ui_hud_20260913/frame.png") 145 fill / 14px / 0
+    stretch;
+  background: #091320;
+  box-shadow: 0 6px 18px #000b;
+  padding: 5px 8px;
+  gap: 12px;
 }
-body:not(.touch-device) #hud .hotbar { padding:5px 8px; }
-body:not(.touch-device) #hud .basic-attack-hud { bottom:132px; }
-#hud .basic-attack-hud { width:226px; grid-template-columns:29px 1fr auto; gap:5px; border-width:12px; border-image-width:12px; }
-#hud .basic-key { width:27px; height:32px; font-size:16px; }
-#hud .basic-label { font-size:11px; }
-#hud .basic-label small { display:none; }
-#hud .basic-cd-track { height:6px; }
-body:not(.touch-device) #hud .basic-attack-hud { bottom:118px; }
-#hud .basic-attack-hud { width:280px; padding:0 2px; gap:7px; display:grid; grid-template-columns:36px 1fr auto; }
-#hud .basic-key { grid-row:1 / 3; height:39px; width:34px; border:2px ridge #bea16a; background:linear-gradient(145deg,#55534a,#12161c 65%); box-shadow:inset 0 0 2px #22262b; text-shadow:0 2px 2px #000; }
-#hud .basic-label { font-size:12px; }
-#hud .basic-label small { font-size:8px; }
-#hud .basic-attack-hud strong { font-size:11px; color:#f6d68d; }
-#hud .basic-cd-track { grid-column:2 / 4; height:8px; border:1px solid #c4ab74; border-radius:1px; background:#050a11; }
-#hud .basic-cd-track i { background:linear-gradient(0deg,#8e5b15,#efb845 48%,#ffeb9b 55%,#ae7c26); box-shadow:inset 0 1px 1px #fff9; }
-.touch-device #hud .hotbar { border-width:10px; border-image-width:10px; padding:3px 5px; gap:8px; }
+body:not(.touch-device) #hud .hotbar {
+  padding: 5px 8px;
+}
+body:not(.touch-device) #hud .basic-attack-hud {
+  bottom: 132px;
+}
+#hud .basic-attack-hud {
+  width: 226px;
+  grid-template-columns: 29px 1fr auto;
+  gap: 5px;
+  border-width: 12px;
+  border-image-width: 12px;
+}
+#hud .basic-key {
+  width: 27px;
+  height: 32px;
+  font-size: 16px;
+}
+#hud .basic-label {
+  font-size: 11px;
+}
+#hud .basic-label small {
+  display: none;
+}
+#hud .basic-cd-track {
+  height: 6px;
+}
+body:not(.touch-device) #hud .basic-attack-hud {
+  bottom: 118px;
+}
+#hud .basic-attack-hud {
+  width: 280px;
+  padding: 0 2px;
+  gap: 7px;
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+}
+#hud .basic-key {
+  grid-row: 1 / 3;
+  height: 39px;
+  width: 34px;
+  border: 2px ridge #bea16a;
+  background: linear-gradient(145deg, #55534a, #12161c 65%);
+  box-shadow: inset 0 0 2px #22262b;
+  text-shadow: 0 2px 2px #000;
+}
+#hud .basic-label {
+  font-size: 12px;
+}
+#hud .basic-label small {
+  font-size: 8px;
+}
+#hud .basic-attack-hud strong {
+  font-size: 11px;
+  color: #f6d68d;
+}
+#hud .basic-cd-track {
+  grid-column: 2 / 4;
+  height: 8px;
+  border: 1px solid #c4ab74;
+  border-radius: 1px;
+  background: #050a11;
+}
+#hud .basic-cd-track i {
+  background: linear-gradient(0deg, #8e5b15, #efb845 48%, #ffeb9b 55%, #ae7c26);
+  box-shadow: inset 0 1px 1px #fff9;
+}
+.touch-device #hud .hotbar {
+  border-width: 10px;
+  border-image-width: 10px;
+  padding: 3px 5px;
+  gap: 8px;
+}
 /* Original concept artwork sampled as live gauge textures. */
-#hud .hud-status-panel, #hud .basic-attack-hud, #hud .hotbar {
-  border-image-width:18px;
-  border-image-slice:125 fill;
-  background-color:#08101b;
-  box-shadow:0 0 0 1px #34291a,0 5px 16px #000b;
+#hud .hud-status-panel,
+#hud .basic-attack-hud,
+#hud .hotbar {
+  border-image-width: 18px;
+  border-image-slice: 125 fill;
+  background-color: #08101b;
+  box-shadow:
+    0 0 0 1px #34291a,
+    0 5px 16px #000b;
 }
-#hud .hud-status-panel { gap:12px; }
-#hud .hud-status-body .stage-label { font-family:Georgia,var(--font); font-size:17px; color:#f3dfaf; text-shadow:0 2px 2px #000; border-bottom:1px solid #b5975970; }
-#hud .hud-status-body .bar { border:3px ridge #d5bd89; border-radius:0; height:25px; clip-path:polygon(8px 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,8px 100%,0 50%); }
-#hud .hud-status-body .bar-fill { background-image:url('image/ui_hud_20260913/concept.png'); background-repeat:no-repeat; box-shadow:inset 0 1px 2px #fff9,inset 0 -2px 3px #0007; }
-#hud .hud-status-body .hp-fill { background-size:2300px 885px; background-position:-900px -180px; background-color:#b80022; }
-#hud .hud-status-body .exp-fill { background-size:2300px 885px; background-position:-900px -353px; background-color:#039ad1; }
-#hud .hud-status-body .shield-fill { background-image:linear-gradient(#c5efff,#397caf); }
-#hud .hud-status-body .exp-bar { height:20px; }
-#hud .hud-status-body .bar-text { color:#fff5df; }
-#hud .hud-meter-label { color:#f1d8a4; font-size:11px; text-shadow:0 1px 2px #000; }
-#hud .basic-attack-hud { grid-template-columns:29px 28px 1fr auto; width:242px; }
-#hud .basic-attack-hud::before { content:''; grid-column:2; grid-row:1 / 3; width:28px; height:34px; background:url('image/ui_hud_20260913/concept.png') -96px -95px / 380px 146px no-repeat; }
-#hud .basic-key { grid-column:1; }
-#hud .basic-label { grid-column:3; grid-row:1; color:#f1dab0; }
-#hud .basic-attack-hud strong { grid-column:4; grid-row:1; }
-#hud .basic-cd-track { grid-column:3 / 5; }
-#hud .basic-cd-track i { background:#d5a335 url('image/ui_hud_20260913/concept.png') -920px -753px / 2300px 885px no-repeat; }
-#hud .hotbar { border-image-width:18px; }
+#hud .hud-status-panel {
+  gap: 12px;
+}
+#hud .hud-status-body .stage-label {
+  font-family: Georgia, var(--font);
+  font-size: 17px;
+  color: #f3dfaf;
+  text-shadow: 0 2px 2px #000;
+  border-bottom: 1px solid #b5975970;
+}
+#hud .hud-status-body .bar {
+  border: 3px ridge #d5bd89;
+  border-radius: 0;
+  height: 25px;
+  clip-path: polygon(
+    8px 0,
+    calc(100% - 8px) 0,
+    100% 50%,
+    calc(100% - 8px) 100%,
+    8px 100%,
+    0 50%
+  );
+}
+#hud .hud-status-body .bar-fill {
+  background-image: url("image/ui_hud_20260913/concept.png");
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 1px 2px #fff9,
+    inset 0 -2px 3px #0007;
+}
+#hud .hud-status-body .hp-fill {
+  background-size: 2300px 885px;
+  background-position: -900px -180px;
+  background-color: #b80022;
+}
+#hud .hud-status-body .exp-fill {
+  background-size: 2300px 885px;
+  background-position: -900px -353px;
+  background-color: #039ad1;
+}
+#hud .hud-status-body .shield-fill {
+  background-image: linear-gradient(#c5efff, #397caf);
+}
+#hud .hud-status-body .exp-bar {
+  height: 20px;
+}
+#hud .hud-status-body .bar-text {
+  color: #fff5df;
+}
+#hud .hud-meter-label {
+  color: #f1d8a4;
+  font-size: 11px;
+  text-shadow: 0 1px 2px #000;
+}
+#hud .basic-attack-hud {
+  grid-template-columns: 29px 28px 1fr auto;
+  width: 242px;
+}
+#hud .basic-attack-hud::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / 3;
+  width: 28px;
+  height: 34px;
+  background: url("image/ui_hud_20260913/concept.png") -96px -95px / 380px 146px
+    no-repeat;
+}
+#hud .basic-key {
+  grid-column: 1;
+}
+#hud .basic-label {
+  grid-column: 3;
+  grid-row: 1;
+  color: #f1dab0;
+}
+#hud .basic-attack-hud strong {
+  grid-column: 4;
+  grid-row: 1;
+}
+#hud .basic-cd-track {
+  grid-column: 3 / 5;
+}
+#hud .basic-cd-track i {
+  background: #d5a335 url("image/ui_hud_20260913/concept.png") -920px -753px /
+    2300px 885px no-repeat;
+}
+#hud .hotbar {
+  border-image-width: 18px;
+}
 
 /* A(기본공격) 키는 조이스틱 노브, 그 옆 스킬 아이콘 자리는 공용 버튼 텍스처를 배경으로 쓴다
    (image/ui2 — 여기저기 흩어진 임시 그라디언트/스프라이트 배경을 정리). */
 #hud .basic-key {
   border: 0;
   box-shadow: none;
-  background: url('image/ui2/ui_joystick_knob.png') center / 100% 100% no-repeat;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  background: url("image/ui2/ui_joystick_knob.png") center / 100% 100% no-repeat;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 #hud .basic-attack-hud::before {
-  content: '';
-  background: url('image/ui2/ui_button_default.png') center / cover no-repeat;
+  content: "";
+  background: url("image/ui2/ui_button_default.png") center / cover no-repeat;
   border-radius: 3px;
 }
 
 /* 기본공격 바 안쪽 내용물이 왼쪽(A) 여백은 좁고 오른쪽(준비) 여백은 넓어 보였다
    — A/아이콘 쪽은 오른쪽으로, 문구/게이지 쪽은 왼쪽으로 당겨 중앙에 맞춘다. */
-#hud .basic-attack-hud { padding: 0 3px 0 7px; gap: 5px; }
+#hud .basic-attack-hud {
+  padding: 0 3px 0 7px;
+  gap: 5px;
+}
 
 /* 타이틀 로고 글자가 금장 엠블럼 장식(양옆 검) 밖으로 삐져나갔다 —
    엠블럼과 같은 폭으로 맞추고 살짝 줄여서 안쪽 여백 안에 들어오게 한다. */
-.title-content { width: min(640px, 86vw); }
-.game-logo { width: 100%; text-align: center; font-size: clamp(24px, 4.4vw, 42px); letter-spacing: 6px; }
+.title-content {
+  width: min(640px, 86vw);
+}
+/* 글자 크기/자간도 엠블럼 그림과 같은 컨테이너(cqw) 기준으로 스케일 — vw 기준이던
+   이전 값은 그림은 86vw로 줄어드는데 글자는 그보다 덜 줄어(4.4vw 하한 24px) 리본
+   폭보다 글자가 커 보이는 문제가 있었다. */
+.game-logo {
+  width: 100%;
+  text-align: center;
+  font-size: 8.1cqw;
+  letter-spacing: 1.25cqw;
+}
 
 /* 기본공격 바 — A 옆에 있던 빈 장식 칸(칼 아이콘 지운 자리) 완전히 제거하고
    문구/게이지/상태를 그 자리로 당긴다. */
-#hud .basic-attack-hud::before { display: none; }
-#hud .basic-attack-hud { grid-template-columns: 29px 1fr auto; }
-#hud .basic-label { grid-column: 2; }
-#hud .basic-attack-hud strong { grid-column: 3; }
-#hud .basic-cd-track { grid-column: 2 / 4; }
+#hud .basic-attack-hud::before {
+  display: none;
+}
+#hud .basic-attack-hud {
+  grid-template-columns: 29px 1fr auto;
+}
+#hud .basic-label {
+  grid-column: 2;
+}
+#hud .basic-attack-hud strong {
+  grid-column: 3;
+}
+#hud .basic-cd-track {
+  grid-column: 2 / 4;
+}
 
 /* HUD 초상화는 좀 더 키우고, 패널 전체 크기는 살짝 줄여서 초상화 비중을 키운다. */
-#hud .hud-portrait { width: 86px; height: 86px; }
-body:not(.touch-device) #hud .hud-top-left { width: 350px; }
+#hud .hud-portrait {
+  width: 86px;
+  height: 86px;
+}
+body:not(.touch-device) #hud .hud-top-left {
+  width: 350px;
+}
 /* 체력/경험치 바를 가로로 더 길게, 세로는 살짝 낮게 */
-#hud .hud-status-body .bar { height: 22px; }
+#hud .hud-status-body .bar {
+  height: 22px;
+}
 
 /* 개별 스킬 슬롯이 아니라 핫바 전체를 감싸는 큰 사각 배경 쪽을 image/ui2/ui_button_default.png로
    교체 — 슬롯(육각 프레임)은 원래대로 되돌린다. */
-.slot { background-image: url('image/ui2/ui_hotbar_slot.png'); background-size: 100% 100%; background-position: center; }
+.slot {
+  background-image: url("image/ui2/ui_hotbar_slot.png");
+  background-size: 100% 100%;
+  background-position: center;
+}
 #hud .hotbar {
   /* 금테 + 양끝 다이아몬드 전부 살아있는 원본 그대로 배경으로 쓴다.
      예전 규칙이 남긴 box-shadow(1px 얇은 외곽선)가 그 위에 겹쳐 보이고 있어서 같이 지운다. */
   border: 0;
   border-image: none;
   box-shadow: none;
-  background: url('image/ui2/ui_button_default.png') center / 100% 100% no-repeat;
+  background: url("image/ui2/ui_button_default.png") center / 100% 100%
+    no-repeat;
   padding: 8px 12px;
 }
 
 /* 탭마다 다른 아이콘 이미지를 썼더니 원본 비율 차이로 계속 크기가 들쭉날쭉했다 —
    4개 전부 공용 알약(ui_tab_pill) 배경 하나로 통일해서 완전히 같게 맞춘다. */
-.tab-btn { width: 118px; padding: 0 10px; background-size: 100% 100%; background-position: center; }
+.tab-btn {
+  width: 118px;
+  padding: 0 10px;
+  background-size: 100% 100%;
+  background-position: center;
+}
 
 /* 기본공격 바 전체를 살짝 축소 */
-#hud .basic-attack-hud { width: 210px; }
-#hud .basic-key { width: 25px; height: 30px; font-size: 14px; }
-#hud .basic-label { font-size: 11px; }
-#hud .basic-attack-hud strong { font-size: 10px; }
-#hud .basic-cd-track { height: 7px; }
+#hud .basic-attack-hud {
+  width: 210px;
+}
+#hud .basic-key {
+  width: 25px;
+  height: 30px;
+  font-size: 14px;
+}
+#hud .basic-label {
+  font-size: 11px;
+}
+#hud .basic-attack-hud strong {
+  font-size: 10px;
+}
+#hud .basic-cd-track {
+  height: 7px;
+}
 
 /* 옵션 화면의 "UI 크기" 슬라이더 3개 — 각 HUD 요소를 통째로 scale()해서 축소/확대한다.
    위치를 잡는 기존 translate와 같이 써야 해서, 각 요소의 최종 transform 값에 얹는다. */
-.hud-top-left { transform: scale(var(--ui-hud-scale)); transform-origin: top left; }
-#hud .basic-attack-hud { transform: translateX(-50%) scale(var(--ui-basic-scale)); }
-#hud .hotbar { transform: translateX(-50%) scale(var(--ui-hotbar-scale)); }
+.hud-top-left {
+  transform: scale(var(--ui-hud-scale));
+  transform-origin: top left;
+}
+#hud .basic-attack-hud {
+  transform: translateX(-50%) scale(var(--ui-basic-scale));
+}
+#hud .hotbar {
+  transform: translateX(-50%) scale(var(--ui-hotbar-scale));
+}
+
+/* 모바일 전투 시야 확보: HUD는 낮게, 조작 패드는 손가락이 누르기 충분하게 유지한다. */
+@media (pointer: coarse) and (max-width: 900px) {
+  .mobile-optimized #hud {
+    transform: scale(0.78);
+  }
+
+  .mobile-optimized .touch-device .hotbar {
+    bottom: 142px;
+    gap: 4px;
+    padding: 2px 4px;
+  }
+
+  .mobile-optimized .touch-device .slot {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+  }
+
+  .mobile-optimized .touch-device .slot-icon {
+    font-size: 26px;
+  }
+
+  .mobile-optimized .touch-device .basic-attack-hud {
+    bottom: 108px;
+    width: 184px;
+  }
+
+  .mobile-optimized #touch-joystick {
+    width: 112px;
+    height: 112px;
+  }
+
+  .mobile-optimized #touch-knob {
+    width: 48px;
+    height: 48px;
+  }
+
+  .mobile-optimized #touch-attack {
+    width: 82px;
+    height: 82px;
+    font-size: 16px;
+  }
+}
+
+/* 좁은 viewport에서는 터치 판별 여부와 관계없이 모바일 HUD를 사용한다. */
+@media (max-width: 600px) {
+  #hud,
+  .mobile-optimized #hud {
+    transform: none;
+    transform-origin: top left;
+  }
+
+  #hud .hud-top-left,
+  body:not(.touch-device) #hud .hud-top-left {
+    width: min(258px, calc(100vw - 110px));
+  }
+
+  #hud .hud-status-panel {
+    gap: 5px;
+    padding: 3px 5px 3px 4px;
+    border-width: 9px;
+    border-image-width: 12px;
+  }
+
+  #hud .hud-portrait {
+    width: 44px;
+    height: 44px;
+  }
+
+  #hud .hud-status-body .stage-label {
+    font-size: 13px;
+    margin-bottom: 3px;
+    padding-bottom: 2px;
+  }
+
+  #hud .hud-meter-label {
+    min-width: 25px;
+    margin: 2px 0;
+    font-size: 9px;
+  }
+
+  #hud .hud-meter-row {
+    gap: 4px;
+    margin: 2px 0 0;
+  }
+
+  #hud .hud-status-body .bar {
+    height: 12px;
+    border-width: 2px;
+  }
+
+  #hud .hud-status-body .exp-bar {
+    height: 10px;
+  }
+
+  #hud .bar-value {
+    margin: 1px 0 2px;
+    font-size: 9px;
+  }
+
+  #hud .hud-objective {
+    font-size: 10px;
+    margin-top: 2px;
+  }
+
+  #hud .hud-top-right {
+    gap: 3px;
+    right: 8px;
+    top: 8px;
+  }
+
+  #hud .currency {
+    min-width: 36px;
+    padding: 2px 4px;
+    font-size: 11px;
+  }
+
+  #hud .basic-attack-hud {
+    bottom: 102px;
+    width: 180px;
+    min-height: 40px;
+    border-width: 8px;
+    border-image-width: 12px;
+    grid-template-columns: 28px 1fr auto;
+    gap: 4px;
+  }
+
+  #hud .basic-key {
+    width: 26px;
+    height: 29px;
+    font-size: 13px;
+  }
+
+  #hud .basic-label,
+  #hud .basic-attack-hud strong {
+    font-size: 10px;
+  }
+
+  #hud .basic-cd-track {
+    height: 5px;
+  }
+
+  #hud .hotbar {
+    bottom: 20px;
+    gap: 2px;
+    padding: 2px 4px;
+    border-width: 8px;
+    border-image-width: 12px;
+  }
+
+  #hud .hotbar .slot,
+  body:not(.touch-device) #hud .hotbar .slot {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    min-height: 46px;
+  }
+
+  #hud .hotbar .slot-icon,
+  body:not(.touch-device) #hud .hotbar .slot-icon {
+    font-size: 23px;
+  }
+
+  #hud .hotbar .slot-key,
+  body:not(.touch-device) #hud .hotbar .slot-key {
+    font-size: 9px;
+    right: 2px;
+    bottom: 1px;
+  }
+
+  .touch-device #touch-joystick {
+    width: 104px;
+    height: 104px;
+    left: max(14px, env(safe-area-inset-left));
+    bottom: max(18px, env(safe-area-inset-bottom));
+  }
+
+  .touch-device #touch-knob {
+    width: 44px;
+    height: 44px;
+  }
+
+  .touch-device #touch-attack {
+    width: 76px;
+    height: 76px;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(24px, env(safe-area-inset-bottom));
+    font-size: 15px;
+  }
+
+  #skill-tooltip,
+  .touch-device #skill-tooltip {
+    display: none !important;
+  }
+}
+
+/* 모바일 로비: 고정 폭 탭과 넓은 카드 그리드를 화면 폭에 맞춘다. */
+@media (max-width: 600px) {
+  .lobby-frame {
+    padding: 10px 10px 14px;
+  }
+
+  .lobby-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+  }
+
+  .lobby-title {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .lobby-currency {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-left: 0;
+    font-size: 11px;
+  }
+
+  .lobby-currency .currency {
+    min-width: 0;
+    padding: 3px 6px;
+  }
+
+  #btn-lobby-title {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .tab-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .tab-btn {
+    width: 100%;
+    height: 42px;
+    padding: 0 6px;
+    font-size: 12px;
+    letter-spacing: 0;
+    background-size: 100% 100%;
+  }
+
+  .tab-content {
+    padding-right: 2px;
+    overscroll-behavior: contain;
+  }
+
+  .lobby-section {
+    padding: 10px 10px;
+    margin-bottom: 8px;
+  }
+
+  .lobby-section h3 {
+    margin-bottom: 8px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding-left: 6px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .stat-item {
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  .level-row,
+  .job-row {
+    gap: 7px;
+  }
+
+  .level-row .lv-badge {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .level-row .bar {
+    min-width: 90px;
+  }
+
+  .job-current {
+    gap: 7px;
+    padding: 7px 9px;
+  }
+
+  .job-current .job-icon {
+    font-size: 20px;
+  }
+
+  .portrait-frame {
+    width: 52px;
+    height: 52px;
+  }
+
+  .equip-slots {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .equip-slot-box {
+    width: calc(33.333% - 4px);
+    padding: 8px 4px;
+    border-width: 8px;
+    border-image-width: 8px;
+  }
+
+  .equip-slot-box .slot-cat,
+  .equip-slot-box .slot-item-name {
+    font-size: 9px;
+  }
+
+  .equip-slot-box .slot-icon-big {
+    font-size: 22px;
+  }
+
+  .item-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .item-card {
+    padding: 7px 4px;
+    border-width: 8px;
+    border-image-width: 8px;
+  }
+
+  .item-card .item-icon {
+    font-size: 21px;
+  }
+
+  .item-card .item-name {
+    font-size: 9px;
+    overflow-wrap: anywhere;
+  }
+
+  .shop-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .shop-card {
+    padding: 12px 10px;
+    border-width: 8px;
+    border-image-width: 8px;
+  }
+
+  .shop-card .shop-icon {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .game-tab-summary {
+    font-size: 12px;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .btn-explore {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* 모바일 최종 압축: 스킬 슬롯만 작아지고 나머지 HUD가 남던 문제를 함께 정리한다. */
+@media (max-width: 600px) {
+  #hud .hud-top-left,
+  body:not(.touch-device) #hud .hud-top-left {
+    width: 220px;
+  }
+
+  #hud .hud-status-panel {
+    gap: 4px;
+    padding: 2px 3px 2px 2px;
+    border-width: 7px;
+    border-image-width: 9px;
+  }
+
+  #hud .hud-portrait {
+    width: 34px;
+    height: 34px;
+  }
+
+  #hud .hud-level-badge {
+    min-width: 15px;
+    height: 15px;
+    padding: 0 2px;
+    font-size: 8px;
+  }
+
+  #hud .hud-status-body .stage-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    padding-bottom: 1px;
+  }
+
+  #hud .hud-meter-row {
+    gap: 3px;
+    margin-top: 1px;
+  }
+
+  #hud .hud-meter-label {
+    min-width: 22px;
+    margin: 1px 0;
+    font-size: 8px;
+  }
+
+  #hud .hud-status-body .bar {
+    height: 9px;
+    border-width: 1px;
+  }
+
+  #hud .hud-status-body .exp-bar {
+    height: 7px;
+  }
+
+  #hud .bar-value {
+    margin: 0 0 1px;
+    font-size: 8px;
+  }
+
+  #hud .hud-top-left .hud-objective {
+    margin-top: 2px;
+    padding: 4px 6px;
+    font-size: 8px;
+  }
+
+  #hud .hud-top-left .objective-label,
+  #hud .hud-top-left .stage-progress {
+    font-size: 8px;
+  }
+
+  #hud .basic-attack-hud {
+    bottom: 100px;
+    width: 150px;
+    min-height: 32px;
+    padding: 0 2px;
+    border-width: 6px;
+    border-image-width: 9px;
+    grid-template-columns: 24px 1fr auto;
+    gap: 3px;
+  }
+
+  #hud .basic-key {
+    width: 22px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  #hud .basic-label,
+  #hud .basic-attack-hud strong {
+    font-size: 8px;
+  }
+
+  #hud .basic-cd-track {
+    height: 4px;
+  }
+
+  #hud .corner-btn {
+    top: 72px;
+    bottom: auto;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  #hud .corner-btn-controls {
+    right: 50px;
+  }
+
+  #hud #btn-pause {
+    right: 10px;
+  }
+
+  body:not(.touch-device) #hud .basic-attack-hud {
+    bottom: 84px;
+  }
+
+  .touch-device #hud .basic-attack-hud {
+    bottom: 170px;
+  }
+}

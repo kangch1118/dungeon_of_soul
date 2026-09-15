@@ -109,19 +109,52 @@ document.getElementById('btn-option-close').addEventListener('click', () => {
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 
+const isMobileDevice = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)
+  || navigator.maxTouchPoints > 0
+  || window.matchMedia('(pointer: coarse)').matches;
+const MOBILE_RENDER_SCALE = isMobileDevice ? Math.min(0.9, Math.max(0.72, window.innerWidth / 420)) : 1;
+const MOBILE_PARTICLE_LIMIT = isMobileDevice ? 28 : 60;
+const MOBILE_ENEMY_LIMIT = isMobileDevice ? 34 : 55;
+const MOBILE_LOW_POWER = isMobileDevice && (window.matchMedia('(prefers-reduced-motion: reduce)').matches || navigator.hardwareConcurrency <= 4);
+const IS_COMPACT_VIEWPORT = isMobileDevice || window.innerWidth <= 600;
+const GLOBAL_VISUAL_SCALE = IS_COMPACT_VIEWPORT ? 0.60 : 0.82;
+const MOBILE_GAMEPLAY_SCALE = IS_COMPACT_VIEWPORT ? 0.92 : 1;
+const MOBILE_ENEMY_SCALE = IS_COMPACT_VIEWPORT ? 0.92 : 1;
+const MOBILE_SLIME_SCALE = IS_COMPACT_VIEWPORT ? 0.78 : 1;
+
+function scaledVisualSize(value) {
+  return value * GLOBAL_VISUAL_SCALE;
+}
+
+function scaledGameplayValue(value) {
+  return Number.isFinite(value) ? value * MOBILE_GAMEPLAY_SCALE : value;
+}
+
 let vignetteGradient = null; // 리사이즈할 때만 다시 만든다 (매 프레임 생성하면 비용이 큼)
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const viewportW = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+  const viewportH = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+  const safeWidth = Math.max(360, Math.round(viewportW));
+  const safeHeight = Math.max(520, Math.round(viewportH));
+  const targetScale = isMobileDevice ? Math.min(1, Math.max(0.7, 420 / Math.max(safeWidth, 420))) : 1;
+  const targetWidth = Math.max(320, Math.round(safeWidth * MOBILE_RENDER_SCALE * targetScale));
+  const targetHeight = Math.max(480, Math.round(safeHeight * MOBILE_RENDER_SCALE * targetScale));
+  canvas.width = targetWidth;
+  canvas.height = targetHeight;
+  canvas.style.width = `${safeWidth}px`;
+  canvas.style.height = `${safeHeight}px`;
+  ctx.imageSmoothingEnabled = !isMobileDevice;
+  if (isMobileDevice) document.body.classList.add('mobile-optimized');
   vignetteGradient = null;
 }
 window.addEventListener('resize', resizeCanvas);
+if (window.visualViewport) window.visualViewport.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
 const WORLD_W = 2600;
 const WORLD_H = 2600;
 // 플레이어가 못 따라잡으면 몬스터가 무한정 쌓여서 렉으로 이어질 수 있어 안전장치로 상한을 둔다.
-const MAX_LIVE_ENEMIES = 55;
+const MAX_LIVE_ENEMIES = MOBILE_ENEMY_LIMIT;
 
 /* -------------------------------------------------------------------------
    3. 입력
@@ -306,7 +339,7 @@ function newPlayer() {
     x: WORLD_W / 2, y: WORLD_H / 2,
     radius: 16,
     facing: { x: 0, y: 1 },
-    speed: cs.speed,
+    speed: scaledGameplayValue(cs.speed),
     hp: cs.hp, maxHp: cs.hp,
     shield: shieldMax, shieldMax,
     shieldRegenDelay: classKit.shieldRegenDelay || 0,
@@ -318,7 +351,7 @@ function newPlayer() {
     goldMult: cs.goldMult, soulMult: cs.soulMult,
     atk: cs.atk,
     basicAttack: classKit.basicAttack,
-    atkInterval: classKit.basicAttack.interval, atkTimer: 0, atkRange: classKit.basicAttack.range,
+    atkInterval: classKit.basicAttack.interval, atkTimer: 0, atkRange: scaledGameplayValue(classKit.basicAttack.range),
     projectileCount: 1, pierce: 0,
     critChance: cs.critChance, critMult: cs.critMult,
     def: cs.def, dmgReductionChance: cs.dmgReductionChance, dmgReductionAmount: cs.dmgReductionAmount,
@@ -344,9 +377,9 @@ function newPlayer() {
     id: q.id, cd: 0, cdMax: q.cdMax, dmgMult: q.dmgMult,
     name: q.name, icon: q.icon, iconImg: ICON_IMAGES.classQ[q.id], desc: q.desc,
     // 스킬별 고유 파라미터도 그대로 실어둔다 (useClassSkillQ 에서 읽어 씀)
-    range: q.range, width: q.width, speed: q.speed,
-    splashMult: q.splashMult, splashRadius: q.splashRadius,
-    burnDps: q.burnDps, burnRadius: q.burnRadius, burnDur: q.burnDur,
+    range: scaledGameplayValue(q.range), width: scaledGameplayValue(q.width), speed: q.speed,
+    splashMult: q.splashMult, splashRadius: scaledGameplayValue(q.splashRadius),
+    burnDps: q.burnDps, burnRadius: scaledGameplayValue(q.burnRadius), burnDur: q.burnDur,
     count: q.count, coneDeg: q.coneDeg, pierce: q.pierce,
     dur: q.dur, extraHits: q.extraHits, healPerSec: q.healPerSec,
     vfx: q.vfx, vfxAnim: q.vfxAnim, groundVfxAnim: q.groundVfxAnim,
@@ -356,7 +389,7 @@ function newPlayer() {
   if (weaponSkill) {
     p.skills.W = {
       id: 'weaponW', cd: 0, cdMax: weaponSkill.cdMax, dmgMult: weaponSkill.dmgMult,
-      name: weaponSkill.name, icon: weaponSkill.icon, iconImg: ICON_IMAGES.equipment[meta.equippedWeapon], desc: weaponSkill.desc, radius: weaponSkill.radius || 150,
+      name: weaponSkill.name, icon: weaponSkill.icon, iconImg: ICON_IMAGES.equipment[meta.equippedWeapon], desc: weaponSkill.desc, radius: scaledGameplayValue(weaponSkill.radius || 150),
       vfx: weaponSkill.vfx, groundVfx: weaponSkill.groundVfx, effect: weaponSkill.effect,
     };
   }
@@ -366,7 +399,7 @@ function newPlayer() {
     const e = jobNode.eSkill;
     p.skills.E = {
       id: 'jobE', cd: 0, cdMax: e.cdMax, dmgMult: e.dmgMult, shots: e.shots,
-      name: e.name, icon: e.icon, iconImg: ICON_IMAGES.job[jobNode.id + '_E'], desc: e.desc, radius: e.radius || 150,
+      name: e.name, icon: e.icon, iconImg: ICON_IMAGES.job[jobNode.id + '_E'], desc: e.desc, radius: scaledGameplayValue(e.radius || 150),
       vfx: e.vfx, vfxAnim: e.vfxAnim, vfxBurst: e.vfxBurst, effect: e.effect,
     };
   }
@@ -573,7 +606,7 @@ function spawnNormalEnemy(forcedType, position) {
     x: position ? position.x : x, y: position ? position.y : y,
     radius: monsterType === 'tree' ? 31 : isElite ? 24 : 18,
     renderSize: monsterType === 'tree' ? 172 : undefined,
-    speed: rand(monsterType === 'tree' ? 55 : monsterType === 'bat' ? 135 : 70, monsterType === 'tree' ? 75 : monsterType === 'bat' ? 165 : 110) * (isElite ? 0.9 : 1) * (1 + Math.min(10,state.stage - 1) * 0.02),
+    speed: rand(monsterType === 'tree' ? 55 : monsterType === 'bat' ? 135 : 70, monsterType === 'tree' ? 75 : monsterType === 'bat' ? 165 : 110) * (monsterType === 'slime' || monsterType === 'poison_slime' ? 1 : MOBILE_ENEMY_SCALE) * (isElite ? 0.9 : 1) * (1 + Math.min(10,state.stage - 1) * 0.02),
     hp: (isElite ? 70 : monsterType === 'tree' ? 30 : 22) * mult,
     maxHp: (isElite ? 70 : monsterType === 'tree' ? 30 : 22) * mult,
     dmg: (isElite ? 14 : monsterType === 'tree' ? 4 : 8) * mult,
@@ -1500,8 +1533,9 @@ function update(dt) {
     if(e.aiState && e.aiState!=='idle'){updateNormalAttack(e,dt);continue;}
 
     const d = dist(e.x, e.y, player.x, player.y);
-    const desired = e.radius + player.radius - 4;
-    if (e.monsterType === 'slime' || e.monsterType === 'poison_slime') {
+    const isSlime = e.monsterType === 'slime' || e.monsterType === 'poison_slime';
+    const desired = (e.radius + player.radius - 4) * (isSlime ? MOBILE_SLIME_SCALE : MOBILE_ENEMY_SCALE);
+    if (isSlime) {
       // 짧게 웅크린 뒤 방향을 고정하고 전진한다. 공중에선 접촉 공격을 하지 않는다.
       e.hopTime -= dt;
       if (!e.hopping && e.hopTime <= 0 && d > desired) {
@@ -1511,7 +1545,7 @@ function update(dt) {
       if (e.hopping) {
         e.hopAge += dt;
         e.height = Math.sin(Math.min(1,e.hopAge/.38)*Math.PI)*22;
-        const step = e.speed * 1.8 * (e.slowTimer > 0 ? .5 : e.inAura ? .65 : 1) * dt;
+        const step = e.speed * 1.8 * MOBILE_SLIME_SCALE * (e.slowTimer > 0 ? .5 : e.inAura ? .65 : 1) * dt;
         e.x = clamp(e.x + Math.cos(e.hopAngle)*step,20,WORLD_W-20);
         e.y = clamp(e.y + Math.sin(e.hopAngle)*step,20,WORLD_H-20);
         if(e.hopAge >= .38){e.hopping=false;e.height=0;e.hopTime=rand(.45,.8);}
@@ -1593,6 +1627,9 @@ function update(dt) {
   floatTexts = floatTexts.filter(f => f.life > 0);
   for (const pt of particles) { pt.x += pt.vx * dt; pt.y += pt.vy * dt; pt.life -= dt; }
   particles = particles.filter(p => p.life > 0);
+  if (particles.length > MOBILE_PARTICLE_LIMIT) {
+    particles.splice(0, particles.length - MOBILE_PARTICLE_LIMIT);
+  }
 
   // 카메라
   state.camera.x = clamp(player.x - canvas.width / 2, 0, Math.max(0, WORLD_W - canvas.width));
@@ -1744,6 +1781,7 @@ function drawPlayer() {
   const stateImg = animSet && animSet[player.animState] && animSet[player.animState][player.animDir];
   const heroImg = playerSpriteImages[meta.appearance];
   const atlasImg = appearanceImages[meta.appearance] || appearanceImages.warrior;
+  const visualRadius = scaledVisualSize(player.radius);
 
   ctx.save();
   if (player.invuln > 0 && !player.dying) ctx.globalAlpha = 0.55 + 0.3 * Math.sin(performance.now() / 40);
@@ -1751,9 +1789,9 @@ function drawPlayer() {
   // 바닥 그림자 (사망 연출 중에는 넓적하게 눕는 그림자로)
   ctx.beginPath();
   if (player.dying) {
-    ctx.ellipse(sx, sy + player.radius * 0.5, player.radius * 1.6, player.radius * 0.5, 0, 0, Math.PI * 2);
+    ctx.ellipse(sx, sy + visualRadius * 0.5, visualRadius * 1.6, visualRadius * 0.5, 0, 0, Math.PI * 2);
   } else {
-    ctx.ellipse(sx, sy + player.radius * 0.7, player.radius * 0.95, player.radius * 0.36, 0, 0, Math.PI * 2);
+    ctx.ellipse(sx, sy + visualRadius * 0.7, visualRadius * 0.95, visualRadius * 0.36, 0, 0, Math.PI * 2);
   }
   ctx.fillStyle = 'rgba(0,0,0,0.4)';
   ctx.fill();
@@ -1763,17 +1801,17 @@ function drawPlayer() {
     const frameCount = PLAYER_ANIM_FRAMES[player.animState];
     const frame = clamp(player.animFrame, 0, frameCount - 1);
     const { cellW, cellH, refBodyH } = animMeta;
-    const desiredBodyH = player.radius * 6.6; // 기존 단일포즈 연출과 같은 체감 크기
+    const desiredBodyH = visualRadius * 6.6; // 기존 단일포즈 연출과 같은 체감 크기
     const scale = desiredBodyH / refBodyH;
     const drawW = cellW * scale;
     const drawH = cellH * scale;
 
-    ctx.translate(sx, sy + player.radius * 0.68);
+    ctx.translate(sx, sy + visualRadius * 0.68);
     if (player.animFlip) ctx.scale(-1, 1);
     ctx.drawImage(stateImg, frame * cellW, 0, cellW, cellH, -drawW / 2, -drawH, drawW, drawH);
   } else if (heroImg && heroImg.complete && heroImg.naturalWidth > 0) {
     // classmoving.png 클래스 일러스트(단일 포즈) — 절차적 걷기/공격 모션
-    const drawH = player.radius * 6.6;
+    const drawH = visualRadius * 6.6;
     const drawW = drawH * (heroImg.naturalWidth / heroImg.naturalHeight);
     const t = performance.now() / 1000;
 
@@ -1781,39 +1819,39 @@ function drawPlayer() {
     let bob = 0, tilt = 0, stride = 0;
     if (player.moving) {
       const phase = t * 9;
-      bob = Math.abs(Math.sin(phase)) * player.radius * 0.22;
+      bob = Math.abs(Math.sin(phase)) * visualRadius * 0.22;
       tilt = Math.sin(phase * 0.5) * 0.09;          // 좌우 기울임
-      stride = Math.sin(phase) * player.radius * 0.12; // 앞뒤 흔들림
+      stride = Math.sin(phase) * visualRadius * 0.12; // 앞뒤 흔들림
     } else {
-      bob = Math.sin(t * 2.2) * player.radius * 0.05; // 정지 시 호흡
+      bob = Math.sin(t * 2.2) * visualRadius * 0.05; // 정지 시 호흡
     }
 
     // 공격: facing 방향으로 짧게 돌진(런지) + 스케일 펀치
     let lungeX = 0, lungeY = 0, punch = 1;
     if (player.attackLunge > 0) {
       const k = player.attackLunge / 0.16;          // 1 -> 0
-      const amt = Math.sin(k * Math.PI) * player.radius * 0.9;
+      const amt = Math.sin(k * Math.PI) * visualRadius * 0.9;
       const f = player.facing || { x: 1, y: 0 };
       lungeX = f.x * amt;
       lungeY = f.y * amt * 0.5;
       punch = 1 + Math.sin(k * Math.PI) * 0.08;
     }
 
-    ctx.translate(sx + lungeX, sy + player.radius * 0.5 + bob + lungeY);
+    ctx.translate(sx + lungeX, sy + visualRadius * 0.5 + bob + lungeY);
     ctx.rotate(tilt);
     ctx.scale(punch, punch);
     if (player.animFlip) ctx.scale(-1, 1);
     ctx.drawImage(heroImg, -drawW / 2 + stride, -drawH, drawW, drawH);
   } else if (atlasImg && atlasImg.complete && atlasImg.naturalWidth > 0) {
-    const drawH = player.radius * 6.2;
+    const drawH = visualRadius * 6.2;
     const drawW = drawH * (APPEARANCE_FRAME_W / APPEARANCE_FRAME_H);
     const sxTex = (ANIM_DIR_COL[player.animDir] + player.animFrame) * APPEARANCE_FRAME_W;
-    ctx.translate(sx, sy + player.radius * 0.55);
+    ctx.translate(sx, sy + visualRadius * 0.55);
     if (player.animFlip) ctx.scale(-1, 1);
     ctx.drawImage(atlasImg, sxTex, 0, APPEARANCE_FRAME_W, APPEARANCE_FRAME_H, -drawW / 2, -drawH, drawW, drawH);
   } else {
     ctx.beginPath();
-    ctx.arc(sx, sy, player.radius, 0, Math.PI * 2);
+    ctx.arc(sx, sy, visualRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#5fd0ff';
     ctx.fill();
   }
@@ -1877,14 +1915,15 @@ function drawEnemies() {
     if (e.dead) continue;
     if (e.isTotem) { drawTotem(e); continue; }
     const [sx, sy] = worldToScreen(e.x, e.y);
+    const visualRadius = scaledVisualSize(e.radius);
 
     // 바닥 그림자 — 스프라이트 발 위치(footAnchor)에 맞춰서 그려야 붕 떠 보이지 않는다
     // 판정 원(e.radius)과 실제 그려지는 몸집(e.renderSize)이 분리된 개체는 그림자 폭도
     // 판정이 아니라 그려지는 크기를 따라가야 한다 — 안 그러면 큰 몸집 아래 그림자만 작아서
     // 공중에 뜬 것처럼 보인다.
-    const shadowY = e.bossId==='slime_king' ? sy+86+(e.height||0) : sy + e.radius * (e.isBoss ? 0.35 : 0.4);
-    const shadowRx = e.bossId==='slime_king' ? e.renderSize * 0.34 : e.renderSize ? e.renderSize * 0.30 : e.radius * 0.95;
-    const shadowRy = e.bossId==='slime_king' ? e.renderSize * 0.12 : e.renderSize ? e.renderSize * 0.10 : e.radius * 0.34;
+    const shadowY = e.bossId==='slime_king' ? sy+86+(e.height||0) : sy + visualRadius * (e.isBoss ? 0.35 : 0.4);
+    const shadowRx = e.bossId==='slime_king' ? scaledVisualSize(e.renderSize || 0) * 0.34 : e.renderSize ? scaledVisualSize(e.renderSize) * 0.30 : visualRadius * 0.95;
+    const shadowRy = e.bossId==='slime_king' ? scaledVisualSize(e.renderSize || 0) * 0.12 : e.renderSize ? scaledVisualSize(e.renderSize) * 0.10 : visualRadius * 0.34;
     ctx.beginPath();
     ctx.ellipse(sx, shadowY, shadowRx, shadowRy, 0, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(0,0,0,0.42)';
@@ -1894,8 +1933,8 @@ function drawEnemies() {
     ctx.translate(sx, sy);
     if (e.facing < 0) ctx.scale(-1, 1);
 
-    const size = e.renderSize || (e.isBoss ? e.radius * 4.4 : e.radius * 3.6);
-    const footAnchor = e.radius * (e.isBoss ? 0.35 : 0.4);   // 스프라이트 하단(발) 위치
+    const size = scaledVisualSize(e.renderSize || (e.isBoss ? e.radius * 4.4 : e.radius * 3.6));
+    const footAnchor = visualRadius * (e.isBoss ? 0.35 : 0.4);   // 스프라이트 하단(발) 위치
     // 셀 안에서 캐릭터 발밑에 투명 여백이 있으면 그대로 그릴 때 그림자보다 위에 붕 떠 보인다.
     // 실제 불투명 픽셀의 하단 비율(bottomRatio)만큼만 그려서 "진짜 발"이 footAnchor에 오게 한다.
     const bottomRatio = e.isBoss ? .88 : (monsterOpaqueBottom[e.monsterType] != null ? monsterOpaqueBottom[e.monsterType] : 0.92);
@@ -1938,7 +1977,7 @@ function drawEnemies() {
         } else if (e.isElite) {
           ctx.filter = 'none';
           drawImg = getEliteSprite(img) || img;
-          const glowR = e.radius * 1.8;
+          const glowR = visualRadius * 1.8;
           ctx.fillStyle = getGlowGradient(glowR, 'rgba(120,200,255,0.4)', 'rgba(120,200,255,0)');
           ctx.beginPath();
           ctx.arc(0, drawTopY + size * bottomRatio * 0.5, glowR, 0, Math.PI * 2);
@@ -1955,7 +1994,7 @@ function drawEnemies() {
 
     if (!drawn) {
       ctx.beginPath();
-      ctx.arc(0, 0, e.radius, 0, Math.PI * 2);
+      ctx.arc(0, 0, visualRadius, 0, Math.PI * 2);
       ctx.fillStyle = e.isBoss ? '#a53df0' : e.isElite ? '#4a9be0' : '#3fae4a';
       ctx.fill();
     }
@@ -1963,10 +2002,10 @@ function drawEnemies() {
 
     // 체력바 — 스프라이트 실제 불투명 상단 위로 띄운다 (보스는 상단 HUD 바 사용)
     if (!e.isBoss) {
-      const w = Math.max(e.radius * 2, 30);
+      const w = Math.max(visualRadius * 2, 30);
       const hpRatio = clamp(e.hp / e.maxHp, 0, 1);
       const topRatio = monsterOpaqueTop[e.monsterType] != null ? monsterOpaqueTop[e.monsterType] : 0.14;
-      const headY = drawn ? spriteTopY + size * topRatio : sy - e.radius;
+      const headY = drawn ? spriteTopY + size * topRatio : sy - visualRadius;
       const barY = headY - 9;
       ctx.fillStyle = 'rgba(0,0,0,0.55)';
       ctx.fillRect(sx - w / 2, barY, w, 5);
@@ -1996,28 +2035,29 @@ function drawProjectiles() {
   for (const pr of projectiles) {
     const [sx, sy] = worldToScreen(pr.x, pr.y);
     const angle = Math.atan2(pr.vy, pr.vx);
+    const visualRadius = scaledVisualSize(pr.radius);
 
     if (pr.advCard) {
-      ctx.save();ctx.globalCompositeOperation='source-over';ctx.translate(sx,sy);ctx.rotate(angle+Math.PI/2);ctx.fillStyle='#f9e9ff';ctx.fillRect(-7,-11,14,22);ctx.strokeStyle='#d99af9';ctx.lineWidth=2;ctx.strokeRect(-7,-11,14,22);ctx.fillStyle='#843ba4';ctx.fillRect(-3,-4,6,8);ctx.restore();continue;
+      ctx.save();ctx.globalCompositeOperation='source-over';ctx.translate(sx,sy);ctx.rotate(angle+Math.PI/2);ctx.fillStyle='#f9e9ff';ctx.fillRect(-7*GLOBAL_VISUAL_SCALE,-11*GLOBAL_VISUAL_SCALE,14*GLOBAL_VISUAL_SCALE,22*GLOBAL_VISUAL_SCALE);ctx.strokeStyle='#d99af9';ctx.lineWidth=2*GLOBAL_VISUAL_SCALE;ctx.strokeRect(-7*GLOBAL_VISUAL_SCALE,-11*GLOBAL_VISUAL_SCALE,14*GLOBAL_VISUAL_SCALE,22*GLOBAL_VISUAL_SCALE);ctx.fillStyle='#843ba4';ctx.fillRect(-3*GLOBAL_VISUAL_SCALE,-4*GLOBAL_VISUAL_SCALE,6*GLOBAL_VISUAL_SCALE,8*GLOBAL_VISUAL_SCALE);ctx.restore();continue;
     }
     if (pr.kind === 'fireball') {
       const img = vfxImages.q_fireball;
       if (img && img.complete && img.naturalWidth) {
-        drawRotatedSprite(img, sx, sy, angle, pr.radius * 7);
+        drawRotatedSprite(img, sx, sy, angle, visualRadius * 7);
         continue;
       }
-      const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, pr.radius * 3.2);
+      const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, visualRadius * 3.2);
       grad.addColorStop(0, 'rgba(255,210,140,0.95)');
       grad.addColorStop(0.5, 'rgba(255,120,40,0.65)');
       grad.addColorStop(1, 'rgba(255,60,20,0)');
       ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.arc(sx, sy, pr.radius * 3.2, 0, Math.PI * 2);
+      ctx.arc(sx, sy, visualRadius * 3.2, 0, Math.PI * 2);
       ctx.fill();
     } else if (pr.kind === 'shuriken') {
       const img = vfxImages.q_shuriken;
       if (img && img.complete && img.naturalWidth) {
-        drawRotatedSprite(img, sx, sy, (performance.now() / 250) % (Math.PI * 2), pr.radius * 4.4);
+        drawRotatedSprite(img, sx, sy, (performance.now() / 250) % (Math.PI * 2), visualRadius * 4.4);
         continue;
       }
       ctx.save();
@@ -2027,8 +2067,8 @@ function drawProjectiles() {
       ctx.beginPath();
       for (let i = 0; i < 4; i++) {
         const a1 = i * Math.PI / 2, a2 = a1 + Math.PI / 4;
-        ctx.lineTo(Math.cos(a1) * pr.radius * 1.7, Math.sin(a1) * pr.radius * 1.7);
-        ctx.lineTo(Math.cos(a2) * pr.radius * 0.5, Math.sin(a2) * pr.radius * 0.5);
+        ctx.lineTo(Math.cos(a1) * visualRadius * 1.7, Math.sin(a1) * visualRadius * 1.7);
+        ctx.lineTo(Math.cos(a2) * visualRadius * 0.5, Math.sin(a2) * visualRadius * 0.5);
       }
       ctx.closePath();
       ctx.fill();
@@ -2037,15 +2077,15 @@ function drawProjectiles() {
       // 마법사 기본공격 마력탄
       const img = vfxImages.attack_arcane_bolt;
       if (img && img.complete && img.naturalWidth) {
-        drawRotatedSprite(img, sx, sy, angle, pr.radius * 6.2);
+        drawRotatedSprite(img, sx, sy, angle, visualRadius * 6.2);
         continue;
       }
-      const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, pr.radius * 2.4);
+      const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, visualRadius * 2.4);
       grad.addColorStop(0, 'rgba(255,240,180,0.95)');
       grad.addColorStop(1, 'rgba(255,180,60,0)');
       ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.arc(sx, sy, pr.radius * 2.4, 0, Math.PI * 2);
+      ctx.arc(sx, sy, visualRadius * 2.4, 0, Math.PI * 2);
       ctx.fill();
     }
   }
@@ -2064,6 +2104,7 @@ const GROUND_VFX_SPOTS = [
 function drawGroundEffects() {
   for (const gz of groundEffects) {
     const [sx, sy] = worldToScreen(gz.x, gz.y);
+    const visualRadius = scaledVisualSize(gz.radius);
     const frames = gz.vfxAnimKey && vfxAnimImages[gz.vfxAnimKey];
     const img = frames ? frames[(gz.vfxFrame || 0) % frames.length] : (gz.vfxImage && vfxImages[gz.vfxImage]);
     if (img && img.complete && img.naturalWidth) {
@@ -2072,12 +2113,12 @@ function drawGroundEffects() {
       // 겹쳐 그리면 어두운 바닥 위에서 실제 불빛처럼 두드러진다.
       ctx.globalCompositeOperation = 'lighter';
       ctx.globalAlpha = clamp(gz.life / 2, 0.55, 0.9);
-      const baseSize = gz.radius * 1.6;
+      const baseSize = visualRadius * 1.6;
       const baseH = baseSize * (img.naturalHeight / img.naturalWidth);
       const spots = gz.vfxAnimKey ? GROUND_VFX_SPOTS : GROUND_VFX_SPOTS.slice(0, 1);
       for (const spot of spots) {
         const w = baseSize * spot.scale, h = baseH * spot.scale;
-        ctx.drawImage(img, sx + spot.dx * gz.radius - w / 2, sy + spot.dy * gz.radius - h / 2, w, h);
+        ctx.drawImage(img, sx + spot.dx * visualRadius - w / 2, sy + spot.dy * visualRadius - h / 2, w, h);
       }
       ctx.restore();
     } else {
@@ -2085,7 +2126,7 @@ function drawGroundEffects() {
       ctx.globalAlpha = clamp(gz.life / 2, 0.3, 0.65);
       ctx.fillStyle = gz.color || 'rgba(255,122,61,0.28)';
       ctx.beginPath();
-      ctx.arc(sx, sy, gz.radius, 0, Math.PI * 2);
+      ctx.arc(sx, sy, visualRadius, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
@@ -2113,7 +2154,7 @@ pickupImages.gold.src = 'image/ui/coin.png';
 pickupImages.exp.src = 'image/ui/gem.png';
 
 function drawPickups() {
-  const size = 20; // HUD 상단 재화 아이콘(17px)과 비슷한 크기로
+  const size = scaledVisualSize(20); // HUD 상단 재화 아이콘(17px)과 비슷한 크기로
   for (const pk of pickups) {
     const [sx, sy] = worldToScreen(pk.x, pk.y);
     const img = pickupImages[pk.type];
@@ -2143,7 +2184,7 @@ function drawParticles() {
         ctx.globalAlpha = clamp(pt.life / pt.vfxSwingMaxLife, 0, 1);
         ctx.translate(sx, sy);
         ctx.rotate(pt.vfxSwingAngle);
-        const scale = pt.vfxSwingLength / img.naturalWidth;
+        const scale = (pt.vfxSwingLength * GLOBAL_VISUAL_SCALE) / img.naturalWidth;
         const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
         ctx.drawImage(img, 0, -h / 2, w, h);
         ctx.restore();
@@ -2155,7 +2196,7 @@ function drawParticles() {
       const img = vfxImages[pt.vfxBurstKey];
       if (img && img.complete && img.naturalWidth) {
         const t = 1 - clamp(pt.life / pt.vfxBurstMaxLife, 0, 1);
-        const size = (pt.vfxBurstSize || 140) * (0.5 + 0.5 * t);
+        const size = (scaledVisualSize(pt.vfxBurstSize || 140)) * (0.5 + 0.5 * t);
         const h = size * (img.naturalHeight / img.naturalWidth);
         ctx.globalAlpha = clamp(pt.life / pt.vfxBurstMaxLife, 0, 1);
         const py = pt.vfxBurstAnchor === 'bottom' ? sy - h : sy - h / 2;
@@ -2170,7 +2211,7 @@ function drawParticles() {
       ctx.fillStyle = pt.color;
       ctx.beginPath();
       ctx.moveTo(sx, sy);
-      ctx.arc(sx, sy, pt.arc.radius, pt.arc.angle - pt.arc.spread / 2, pt.arc.angle + pt.arc.spread / 2);
+      ctx.arc(sx, sy, scaledVisualSize(pt.arc.radius), pt.arc.angle - pt.arc.spread / 2, pt.arc.angle + pt.arc.spread / 2);
       ctx.closePath();
       ctx.fill();
     } else if (pt.line) {
@@ -2180,29 +2221,29 @@ function drawParticles() {
       ctx.translate(sx, sy);
       ctx.rotate(pt.line.angle);
       ctx.fillStyle = pt.color;
-      ctx.fillRect(-pt.line.length / 2, -pt.line.width / 2, pt.line.length, pt.line.width);
+      ctx.fillRect(-(pt.line.length * GLOBAL_VISUAL_SCALE) / 2, -(pt.line.width * GLOBAL_VISUAL_SCALE) / 2, pt.line.length * GLOBAL_VISUAL_SCALE, pt.line.width * GLOBAL_VISUAL_SCALE);
       ctx.restore();
     } else if (pt.ring) {
       const img = pt.vfxKey && vfxImages[pt.vfxKey];
       if (img && img.complete && img.naturalWidth) {
         const t = 1 - clamp(pt.life / 0.35, 0, 1);
-        const size = pt.ring * 2 * (0.5 + 0.5 * t);
+        const size = scaledVisualSize(pt.ring) * 2 * (0.5 + 0.5 * t);
         const h = size * (img.naturalHeight / img.naturalWidth);
         ctx.globalAlpha = clamp(pt.life / 0.35, 0, 1);
         ctx.drawImage(img, sx - size / 2, sy - h / 2, size, h);
       } else {
         ctx.strokeStyle = pt.color;
         ctx.globalAlpha = clamp(pt.life / 0.35, 0, 1);
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 4 * GLOBAL_VISUAL_SCALE;
         ctx.beginPath();
-        ctx.arc(sx, sy, pt.ring, 0, Math.PI * 2);
+        ctx.arc(sx, sy, scaledVisualSize(pt.ring), 0, Math.PI * 2);
         ctx.stroke();
       }
     } else {
       ctx.fillStyle = pt.color;
       ctx.globalAlpha = clamp(pt.life / 0.4, 0, 1);
       ctx.beginPath();
-      ctx.arc(sx, sy, 3, 0, Math.PI * 2);
+      ctx.arc(sx, sy, scaledVisualSize(3), 0, Math.PI * 2);
       ctx.fill();
     }
   }
@@ -2447,6 +2488,7 @@ function positionSkillTooltip(slotEl) {
 document.querySelectorAll('#hotbar .slot').forEach(slotEl => {
   const key = slotEl.dataset.slot;
   slotEl.addEventListener('mouseenter', () => {
+    if (isMobileDevice) return;
     hoveredSlot = key;
     refreshSkillTooltip(key);
     positionSkillTooltip(slotEl);
