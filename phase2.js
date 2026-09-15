@@ -51,9 +51,11 @@ function drawCombatFeedback() {
 }
 
 function enemyAttackSpec(e) {
+  if(e.monsterType==='skeleton_archer')return {range:360,windup:.85,recovery:1.3,spread:.12,ranged:true};
+  if(e.monsterType==='tree')return {range:320,windup:.85,recovery:2.1,spread:.12,ranged:true};
   if(e.monsterType==='bat')return {range:230,windup:.55,recovery:1.0,dash:true};
   if(e.monsterType==='skeleton')return {range:110,windup:.7,recovery:.9,spread:Math.PI*.85};
-  if(e.monsterType==='slime')return {range:48,windup:.35,recovery:.6,spread:Math.PI*2};
+  if(e.monsterType==='slime'||e.monsterType==='poison_slime')return {range:48,windup:.35,recovery:.6,spread:Math.PI*2};
   return {range:62,windup:.32,recovery:.55,spread:Math.PI*.65};
 }
 function updateNormalAttack(e,dt) {
@@ -62,8 +64,13 @@ function updateNormalAttack(e,dt) {
     e.aiTime-=dt;
     if(e.aiTime>0)return;
     e.attackAnim=.4;
-    playSfx(e.monsterType==='bat'?(Math.random()<0.5?'bat_idle1':'bat_idle3'):e.monsterType==='slime'?'slime_atk':'monster_atk');
+    playSfx(e.monsterType==='bat'?(Math.random()<0.5?'bat_idle1':'bat_idle3'):(e.monsterType==='slime'||e.monsterType==='poison_slime')?'slime_atk':'monster_atk');
     if(spec.dash){e.aiState='dash';e.aiTime=.35;e.dashHit=false;return;}
+    if(spec.ranged){
+      if(e.monsterType==='tree') makeHazard(e,'bullet',{delay:0,duration:1.6,radius:11,speed:210,angle:e.attackAngle,leafArrow:true,slow:1.4});
+      else makeHazard(e,'bullet',{delay:0,duration:1.8,radius:6,speed:320,angle:e.attackAngle,archerArrow:true});
+      e.aiState='recover';e.aiTime=spec.recovery;return;
+    }
     const angle=Math.atan2(player.y-e.y,player.x-e.x);
     if(dist(e.x,e.y,player.x,player.y)<=spec.range+player.radius && Math.cos(angle-e.attackAngle)>=Math.cos(spec.spread/2))hurtPlayer(e.dmg);
     e.aiState='recover';e.aiTime=spec.recovery;return;

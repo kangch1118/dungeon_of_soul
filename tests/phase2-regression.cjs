@@ -13,7 +13,7 @@ const server=http.createServer((req,res)=>{const url=decodeURIComponent(new URL(
   fresh();check('only selected class requested',Object.keys(playerAnimImages).join()==='warrior');
   const valid={...defaultMeta(),gold:321,charLevel:9,charExp:12,equipment:{starter_dagger:{level:0},shadow_robe:{level:10}},equippedArmor:'shadow_robe'};
   check('valid save preserved',JSON.stringify(normalizeMeta(valid))===JSON.stringify(valid));
-  const recovered=normalizeMeta({gold:-9,charLevel:null,job:null,pets:null,equipment:null,appearance:'missing'});check('malformed nested save normalized',recovered.gold===0&&recovered.job.tier1===null&&recovered.appearance==='warrior');
+  const recovered=normalizeMeta({gold:-9,charLevel:null,advancements:null,pets:null,equipment:null,appearance:'missing'});check('malformed nested save normalized',recovered.gold===0&&recovered.advancements.owned.length===0&&recovered.appearance==='warrior');
   meta=valid;check('upgraded speed applied',Math.abs(getComputedStats().speed-BASE_STATS.speed*1.176)<.001);
   const setItem=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw new Error('quota')};check('save failure returns false',saveMeta()===false);check('visible save failure',!document.getElementById('storage-notice').hidden);Storage.prototype.setItem=setItem;check('save retry clears error',saveMeta()&&!saveWarning);
   for(const type of ['goblin','skeleton','bat']){

@@ -100,71 +100,18 @@ const PET_POOL = [
 ];
 
 // ---------------------------------------------------------------------
-// 직업 트리 (캐릭터탭 전직)
-// base(Lv1) -> tier1(Lv5, 택1) -> tier2(Lv15, tier1의 심화판)
-// Q = 직업 고유 강공격, E = 전직으로 얻는 직업 스킬
+// 전직 전 기본 상태 — 전직(ADVANCED_JOBS, advancement-data.js)을 선택하면
+// selectedAdvancement()가 이 값을 대체한다.
 // ---------------------------------------------------------------------
-const JOB_BASE = {
-  id: 'base', name: '견습 모험가', tier: 0,
+const BASE_JOB_NODE = {
+  id: 'base', name: '견습 모험가', icon: '🌱', tier: 0,
   statBonus: {},
   qSkill: { name: '강타', icon: '👊', cdMax: 4, dmgMult: 2.2 },
   eSkill: null,
 };
 
-const JOB_TIER1 = [
-  {
-    id: 'warrior', name: '전사', tier: 1, reqLevel: 5, cost: { gold: 150, soul: 8 },
-    icon: '⚔️', desc: '체력과 방어력에 특화된 근접 직업',
-    statBonus: { hp: 20, def: 6 },
-    qSkill: { name: '파괴의 일격', icon: '🗡️', cdMax: 4, dmgMult: 2.8 },
-    eSkill: { effect: 'dash', name: '돌진 베기', icon: '🌪️', desc: '전방 180 거리로 돌진하며 경로의 적을 한 번씩 타격', cdMax: 12, dmgMult: 3.5, radius: 150, vfx: 'e_dash_trail', vfxBurst: 'e_earth_shockwave' },
-  },
-  {
-    id: 'archer', name: '궁수', tier: 1, reqLevel: 5, cost: { gold: 150, soul: 8 },
-    icon: '🏹', desc: '공격력과 치명타에 특화된 원거리 직업',
-    statBonus: { atk: 4, critChance: 0.06 },
-    qSkill: { name: '관통의 화살', icon: '🏹', cdMax: 3.5, dmgMult: 2.4 },
-    eSkill: { name: '연속 사격', icon: '🎯', desc: '사거리 340 안의 적에게 화살 5발을 순차 발사 (대상이 하나면 집중)', cdMax: 12, shots: 5, dmgMult: 1.2, radius: 340, vfx: 'e_arrow_fall' },
-  },
-  {
-    id: 'mage', name: '마법사', tier: 1, reqLevel: 5, cost: { gold: 150, soul: 8 },
-    icon: '🔮', desc: '광역 마법 피해에 특화된 직업',
-    statBonus: { atk: 6, hp: 10 },
-    qSkill: { name: '마력탄', icon: '✨', cdMax: 4, dmgMult: 2.6, radius: 70 },
-    eSkill: { name: '마나 폭발', icon: '💥', desc: '넓은 범위에 마법 피해', cdMax: 12, dmgMult: 3.0, radius: 220, vfx: 'e_mana_burst' },
-  },
-];
-
-const JOB_TIER2 = [
-  {
-    id: 'warrior2', name: '광전사', tier: 2, reqLevel: 15, upgradeOf: 'warrior', cost: { gold: 500, soul: 25 },
-    icon: '💢', desc: '전사의 심화 전직 — 압도적인 힘',
-    statBonus: { hp: 45, def: 15 },
-    qSkill: { name: '파멸의 강타', icon: '🗡️', cdMax: 3.5, dmgMult: 3.8 },
-    eSkill: { name: '대지 분쇄', icon: '🌪️', desc: '강력한 광역 충격파', cdMax: 10, dmgMult: 5.5, radius: 190, vfx: 'e_dash_trail', vfxBurst: 'e_earth_shockwave' },
-  },
-  {
-    id: 'archer2', name: '저격수', tier: 2, reqLevel: 15, upgradeOf: 'archer', cost: { gold: 500, soul: 25 },
-    icon: '🎯', desc: '궁수의 심화 전직 — 정밀함의 극치',
-    statBonus: { atk: 9, critChance: 0.1 },
-    qSkill: { name: '관통의 화살', icon: '🏹', cdMax: 3, dmgMult: 3.4 },
-    eSkill: { name: '화살비', icon: '🎯', desc: '사거리 380 안의 적에게 화살 8발을 나누어 발사 (대상이 하나면 집중)', cdMax: 10, shots: 8, dmgMult: 1.4, radius: 380, vfx: 'e_arrow_fall' },
-  },
-  {
-    id: 'mage2', name: '대마법사', tier: 2, reqLevel: 15, upgradeOf: 'mage', cost: { gold: 500, soul: 25 },
-    icon: '🌌', desc: '마법사의 심화 전직 — 재앙급 마법',
-    statBonus: { atk: 13, hp: 25 },
-    qSkill: { name: '마력탄', icon: '✨', cdMax: 3.2, dmgMult: 3.2, radius: 90 },
-    eSkill: { name: '메테오', icon: '☄️', desc: '거대한 운석을 소환해 광역 피해', cdMax: 11, dmgMult: 5.0, radius: 260, vfx: 'e_meteor', vfxAnim: 'e_meteor_explosion' },
-  },
-];
-
-function getJobNode(jobState) {
-  const advanced = selectedAdvancement();
-  if (advanced) return advanced;
-  if (jobState.tier2) return JOB_TIER2.find(j => j.id === jobState.tier2);
-  if (jobState.tier1) return JOB_TIER1.find(j => j.id === jobState.tier1);
-  return JOB_BASE;
+function getJobNode() {
+  return selectedAdvancement() || BASE_JOB_NODE;
 }
 
 // ---------------------------------------------------------------------
@@ -206,14 +153,14 @@ const APPEARANCE_POOL = [
 
 // ---------------------------------------------------------------------
 // 플레이어 모션 스프라이트 — image/player_anim/{class}_{state}_{dir}.png
-// GPT 생성 원본(image/generated_full_20260911/)을 Pillow로 균등분할 + 발밑 기준선
+// GPT 생성 원본(archive/unused-assets/image/generated_full_20260911/)을 Pillow로 균등분할 + 발밑 기준선
 // 정렬한 결과물이다(각 클래스별 캔버스 크기(cellW/cellH)가 달라도 refBodyH로
 // 실제 캐릭터 높이를 통일해서 그린다 — drawPlayer() 참고).
 // direction은 down/side/up 3종만 있고, 왼쪽 이동은 side를 좌우반전해서 쓴다.
 // ---------------------------------------------------------------------
 const PLAYER_ANIM_DIRS = ['down', 'side', 'up'];
 const PLAYER_ANIM_FRAMES = { idle: 4, walk: 6, attack: 6, hit: 3, death: 8 };
-const PLAYER_ANIM_FPS = { idle: 2.5, walk: 10, death: 8 };
+const PLAYER_ANIM_FPS = { idle: 2.5, walk: 7, death: 8 };
 // 대기 0번 프레임(정지 자세)을 몇 배 더 오래 붙잡고 있을지 — 프레임이 4장뿐이라 그냥 균등하게
 // 돌리면 쉬지 않고 씰룩거리는 것처럼 보여서, 대부분은 가만히 있다가 가끔 숨쉬듯 움직이게 한다.
 // 나머지 프레임(1~3번)도 idle fps를 낮춰서(2.5fps=0.4초/프레임) 천천히 왕복(ping-pong)시킨다.
@@ -271,22 +218,10 @@ const ICON_IMAGES = {
     rogueQ: 'image/icon/icon_q_shuriken.png',
     clericQ: 'image/icon/icon_q_spirit.png',
   },
-  // 전직 트리(강타/E스킬) — `${jobId}_Q` / `${jobId}_E` 기준. 상위 전직이 하위와
-  // 같은 이모지를 쓰는 경우 그대로 같은 이미지를 재사용한다(원본도 그렇게 생성함).
+  // 전직 전 기본 상태(BASE_JOB_NODE)의 Q 아이콘. 전직 아이콘은
+  // ADVANCED_JOBS[x].iconImg(advancement-data.js)를 직접 쓴다.
   job: {
     base_Q: 'image/icon/icon_skill_smash.png',
-    warrior_Q: 'image/icon/icon_skill_destruction.png',
-    warrior_E: 'image/icon/icon_skill_earth_shatter.png',
-    warrior2_Q: 'image/icon/icon_skill_destruction.png',
-    warrior2_E: 'image/icon/icon_skill_earth_shatter.png',
-    archer_Q: 'image/icon/icon_skill_piercing_arrow.png',
-    archer_E: 'image/icon/icon_skill_arrow_rain.png',
-    archer2_Q: 'image/icon/icon_skill_piercing_arrow.png',
-    archer2_E: 'image/icon/icon_skill_arrow_rain.png',
-    mage_Q: 'image/icon/icon_skill_magic_bolt.png',
-    mage_E: 'image/icon/icon_skill_mana_burst.png',
-    mage2_Q: 'image/icon/icon_skill_magic_bolt.png',
-    mage2_E: 'image/icon/icon_skill_meteor.png',
   },
   currency: {
     diamond: 'image/icon/icon_currency_diamond.png',
@@ -303,10 +238,12 @@ function iconHtml(src, emojiFallback, extraClass) {
 // ---------------------------------------------------------------------
 // 전투 이펙트(VFX) — image/vfx2/*.png (image/vfx/ 생성 원본을 축소한 실사용본).
 // 정지 이미지는 VFX, 여러 장짜리(터짐/장판) 애니메이션은 VFX_ANIM에 프레임 배열로 둔다.
-// 각 스킬 정의(CLASS_KITS/EQUIPMENT_POOL/JOB_TIER*)의 vfx/vfxAnim/vfxBurst/groundVfx*
+// 각 스킬 정의(CLASS_KITS/EQUIPMENT_POOL/ADVANCED_JOBS)의 vfx/vfxAnim/vfxBurst/groundVfx*
 // 필드가 이 키를 가리킨다 — game.js가 실제로 그린다.
 // ---------------------------------------------------------------------
 const VFX = {
+  slime_king_land_splash: 'image/effects_boss_20260914/slime_king_land_splash.png',
+  slime_king_ring_texture: 'image/effects_boss_20260914/slime_king_ring_texture.png',
   attack_sword_swoosh: 'image/vfx2/attack_sword_swoosh.png',
   attack_arcane_bolt: 'image/vfx2/attack_arcane_bolt.png',
   attack_dagger_spark: 'image/vfx2/attack_dagger_spark.png',
@@ -401,18 +338,27 @@ const CLASS_KITS = {
 const MONSTER_FRAME = 256;
 const MONSTER_FRAMES = 4;
 const MONSTER_TYPES = {
+  poison_slime: { name: '독 슬라임', walk: 'image/poison_slime_20260914/walk_strip_256.png', attack: 'image/poison_slime_20260914/attack_strip_256.png' },
+  skeleton_archer: { name: '스켈레톤 궁병', walk: 'image/skeleton_archer_20260914/walk_strip_256.png', attack: 'image/skeleton_archer_20260914/attack_strip_256.png' },
+  tree: { name: '나무 몬스터', walk: 'image/tree_monster_20260914/walk_strip_256.png', attack: 'image/tree_monster_20260914/attack_strip_256.png' },
   slime:    { name: '슬라임',   walk: 'image/slime_walk_strip_256.png',    attack: 'image/slime_attack_strip_256.png' },
   bat:      { name: '박쥐',     walk: 'image/bat_walk_strip_256.png',      attack: 'image/bat_attack_strip_256.png' },
   goblin:   { name: '고블린',   walk: 'image/goblin_walk_strip_256.png',   attack: 'image/goblin_attack_strip_256.png' },
   skeleton: { name: '스켈레톤', walk: 'image/skeleton_walk_strip_256.png', attack: 'image/skeleton_attack_strip_256.png' },
+  demon_archer: { name: '마족 궁수', walk: 'image/monsters_ready_20260914/demon_archer/walk_strip_256.png', attack: 'image/monsters_ready_20260914/demon_archer/attack_strip_256.png' },
+  fallen_mace: { name: '타락한 철퇴병', walk: 'image/monsters_ready_20260914/fallen_mace/walk_strip_256.png', attack: 'image/monsters_ready_20260914/fallen_mace/attack_strip_256.png' },
+  demon_warrior: { name: '마족 전사', walk: 'image/monsters_ready_20260914/demon_warrior/walk_strip_256.png', attack: 'image/monsters_ready_20260914/demon_warrior/attack_strip_256.png' },
+  corrupt_official: { name: '탐관오리', walk: 'image/monsters_ready_20260914/corrupt_official/walk_strip_256.png', attack: 'image/monsters_ready_20260914/corrupt_official/attack_strip_256.png' },
+  demon_slime: { name: '악마 슬라임', walk: 'image/monsters_ready_20260914/demon_slime/walk_strip_256.png', attack: 'image/monsters_ready_20260914/demon_slime/attack_strip_256.png' },
+  succubus: { name: '서큐버스', walk: 'image/monsters_ready_20260914/succubus/walk_strip_256.png', attack: 'image/monsters_ready_20260914/succubus/attack_strip_256.png' },
 };
 
-function stageMonsterPool(stage) {
-  if (stage <= 1) return ['slime'];
-  if (stage === 2) return ['slime', 'bat'];
+function stageMonsterPool(stage, progress = 1) {
+  if (stage <= 1) return progress >= 0.5 ? ['slime', 'slime', 'tree'] : ['slime', 'slime'];
+  if (stage === 2) return ['slime', 'bat', 'poison_slime'];
   if (stage === 3) return ['bat', 'goblin'];
-  if (stage === 4) return ['goblin', 'skeleton'];
-  return ['goblin', 'skeleton', 'bat'];
+  if (stage === 4) return ['goblin', 'skeleton', 'skeleton_archer'];
+  return ['goblin', 'skeleton', 'bat', 'skeleton_archer'];
 }
 
 // 스테이지마다 고유 보스 등장. 8스테이지부터 7종을 순환한다.
@@ -434,12 +380,23 @@ function bossTierForStage(stage) {
 // 스테이지 배경 — image/floor/*.png(시임리스 바닥 타일), image/wall/*.png(벽 타일)
 // stageMonsterPool()과 동일한 등급 기준으로 바이옴을 맞춘다.
 // ---------------------------------------------------------------------
+// 지역 이름만 지정한다. 배경 선택과 스테이지 진행 규칙은 기존대로 유지한다.
+const STAGE_NAMES = {
+  1: '이끼 낀 습지 던전',
+  2: '어두운 동굴',
+  3: '고블린 소굴',
+  4: '지하 묘지',
+  5: '부패한 왕도',
+  6: '왕도 초입',
+  7: '성내',
+};
+
 const STAGE_FLOOR_TILES = [
   'image/floor/floor_01_moss.png',    // 1: 슬라임 — 이끼 낀 습지 던전
   'image/floor/floor_02_cave.png',    // 2: 슬라임+박쥐 — 어두운 동굴
   'image/floor/floor_03_goblin.png',  // 3: 박쥐+고블린 — 고블린 소굴
   'image/floor/floor_04_crypt.png',   // 4: 고블린+스켈레톤 — 지하 묘지
-  'image/floor/floor_05_vampire.png', // 5+: 뱀파이어 성채
+  'image/floor/floor_05_vampire.png', // 5: 부패한 왕도, 6: 왕도 초입, 7: 성내 — 기존 배경 공용
 ];
 function stageFloorTile(stage) {
   const idx = clampInt(stage - 1, 0, STAGE_FLOOR_TILES.length - 1);

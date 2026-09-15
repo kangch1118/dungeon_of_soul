@@ -1,0 +1,42 @@
+﻿{
+    "cellSize":  256,
+    "baseline":  232,
+    "animations":  {
+                       "walk":  {
+                                    "frames":  8,
+                                    "compatibilityIndices":  [
+                                                                 0,
+                                                                 2,
+                                                                 4,
+                                                                 6
+                                                             ]
+                                },
+                       "attack":  {
+                                      "frames":  4,
+                                      "compatibilityIndices":  [
+                                                                   0,
+                                                                   1,
+                                                                   2,
+                                                                   3
+                                                               ]
+                                  },
+                       "hit":  {
+                                   "frames":  3,
+                                   "compatibilityIndices":  [
+                                                                0,
+                                                                1,
+                                                                2,
+                                                                2
+                                                            ]
+                               },
+                       "death":  {
+                                     "frames":  3,
+                                     "compatibilityIndices":  [
+                                                                  0,
+                                                                  1,
+                                                                  2,
+                                                                  2
+                                                              ]
+                                 }
+                   }
+}

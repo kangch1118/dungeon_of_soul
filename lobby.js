@@ -79,7 +79,7 @@ function rarityChip(rarityId) {
 function renderCharacterTab() {
   const el = document.getElementById('tab-character');
   const cs = getComputedStats();
-  const jobNode = getJobNode(meta.job);
+  const jobNode = getJobNode();
   const advanced = selectedAdvancement();
   const baseKit = CLASS_KITS[meta.appearance] || CLASS_KITS.mage;
   const classKit = advanced ? {...baseKit,basicAttack:{...baseKit.basicAttack,label:advanced.basic,desc:advanced.passive},qSkill:{...baseKit.qSkill,name:advanced.q,desc:advQDescription(advanced.id)}} : baseKit;
@@ -90,20 +90,7 @@ function renderCharacterTab() {
   const expNext = charExpToNext(meta.charLevel);
   const expRatio = Math.min(1, meta.charExp / expNext) * 100;
 
-  let jobButtonsHtml = '';
-  if (canChooseTier1()) {
-    jobButtonsHtml = `<button class="menu-btn small" id="btn-open-job">1차 전직하기</button>`;
-  } else if (canChooseTier2()) {
-    jobButtonsHtml = `<button class="menu-btn small" id="btn-open-job">2차 전직하기</button>`;
-  } else if (!meta.job.tier1) {
-    jobButtonsHtml = `<span class="lock-note">캐릭터 Lv.5 달성 시 1차 전직 가능</span>`;
-  } else if (!meta.job.tier2) {
-    jobButtonsHtml = `<span class="lock-note">캐릭터 Lv.15 달성 시 2차 전직 가능</span>`;
-  } else {
-    jobButtonsHtml = `<span class="lock-note" style="color:#9be89b;">최종 전직 완료</span>`;
-  }
-
-  jobButtonsHtml = `<button class="menu-btn small" id="btn-open-job">${advanced?'전직 변경 / 확인':'전직 3종 살펴보기'}</button>`;
+  const jobButtonsHtml = `<button class="menu-btn small" id="btn-open-job">${advanced?'전직 변경 / 확인':'전직 3종 살펴보기'}</button>`;
   el.innerHTML = `
     <div class="lobby-section">
       <h3>레벨 / 성장</h3>
@@ -203,60 +190,6 @@ function renderLobbyCurrency() {
 
 const jobModal = document.getElementById('job-modal');
 document.getElementById('btn-job-cancel').addEventListener('click', () => jobModal.classList.add('hidden'));
-
-function openLegacyJobModal() {
-  const row = document.getElementById('job-card-row');
-  row.innerHTML = '';
-
-  if (canChooseTier1()) {
-    document.getElementById('job-modal-sub').textContent = '1차 전직 — 직업을 선택하세요';
-    JOB_TIER1.forEach(job => {
-      const affordable = meta.gold >= job.cost.gold && meta.soul >= job.cost.soul;
-      const card = document.createElement('button');
-      card.type = 'button';
-      card.className = 'skill-card' + (affordable ? '' : ' locked');
-      card.innerHTML = `
-        <div class="card-icon">${iconHtml(ICON_IMAGES.job[job.id + '_Q'], job.icon)}</div>
-        <div class="card-name">${job.name}</div>
-        <div class="card-desc">${job.desc}<br>${Object.entries(job.statBonus).map(([k,v]) => statLabel(k) + " +" + (["critChance","lifesteal","speedMult"].includes(k) ? (v*100).toFixed(0)+"%" : v)).join(" · ")}<br>선택 후 변경 불가<br>E: ${job.eSkill.name} — ${job.eSkill.desc}</div>
-        <div class="card-tag">🪙${job.cost.gold} 🔮${job.cost.soul}</div>
-      `;
-      card.addEventListener('click', () => {
-        if (!affordable) return;
-        if (chooseTier1(job.id)) {
-          jobModal.classList.add('hidden');
-          renderCharacterTab();
-          renderLobbyCurrency();
-        }
-      });
-      row.appendChild(card);
-    });
-  } else if (canChooseTier2()) {
-    document.getElementById('job-modal-sub').textContent = '2차 전직 — 심화 전직';
-    const job = JOB_TIER2.find(j => j.upgradeOf === meta.job.tier1);
-    const affordable = meta.gold >= job.cost.gold && meta.soul >= job.cost.soul;
-    const card = document.createElement('button');
-    card.type = 'button';
-    card.className = 'skill-card' + (affordable ? '' : ' locked');
-    card.innerHTML = `
-      <div class="card-icon">${iconHtml(ICON_IMAGES.job[job.id + '_Q'], job.icon)}</div>
-      <div class="card-name">${job.name}</div>
-      <div class="card-desc">${job.desc}<br>${Object.entries(job.statBonus).map(([k,v]) => statLabel(k) + " +" + (["critChance","lifesteal","speedMult"].includes(k) ? (v*100).toFixed(0)+"%" : v)).join(" · ")}<br>선택 후 변경 불가<br>E: ${job.eSkill.name} — ${job.eSkill.desc}</div>
-      <div class="card-tag">🪙${job.cost.gold} 🔮${job.cost.soul}</div>
-    `;
-    card.addEventListener('click', () => {
-      if (!affordable) return;
-      if (chooseTier2()) {
-        jobModal.classList.add('hidden');
-        renderCharacterTab();
-        renderLobbyCurrency();
-      }
-    });
-    row.appendChild(card);
-  }
-
-  jobModal.classList.remove('hidden');
-}
 
 /* -------------------------------------------------------------------------
    장비 탭
@@ -511,7 +444,7 @@ function showGachaModal(result, kind) {
 
 function renderGameTab() {
   const el = document.getElementById('tab-game');
-  const jobNode = getJobNode(meta.job);
+  const jobNode = getJobNode();
   const advanced = selectedAdvancement(),baseKit=CLASS_KITS[meta.appearance] || CLASS_KITS.mage;
   const classKit=advanced?{basicAttack:{label:advanced.basic},qSkill:{name:advanced.q}}:baseKit;
   const appearanceInfo = APPEARANCE_POOL.find(a => a.id === meta.appearance);

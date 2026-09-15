@@ -139,6 +139,11 @@ window.addEventListener('keydown', (e) => {
     if (e.key.toLowerCase() === 'e') useSkill('E');
     if (e.key.toLowerCase() === 'r') useSkill('R');
   }
+
+  if (state.mode === 'levelup' && !e.repeat && ['1','2','3'].includes(e.key)) {
+    const card = cardRow.children[Number(e.key) - 1];
+    if (card && !card.disabled) card.click();
+  }
 });
 window.addEventListener('keyup', (e) => { keys[e.key.toLowerCase()] = false; });
 function clearInput() { for (const key in keys) delete keys[key]; if(typeof resetTouchControls === 'function')resetTouchControls(); }
@@ -307,6 +312,7 @@ function newPlayer() {
     shieldRegenDelay: classKit.shieldRegenDelay || 0,
     shieldRegenPerSec: classKit.shieldRegenPerSec || 0,
     timeSinceDamage: 999,
+    slowTimer: 0,
     level: 1, exp: 0, expToNext: 20,
     gold: 0, soul: 0,
     goldMult: cs.goldMult, soulMult: cs.soulMult,
@@ -562,14 +568,15 @@ function spawnNormalEnemy(forcedType, position) {
   let x = clamp(player.x + Math.cos(angle) * spawnDist, 20, WORLD_W - 20);
   let y = clamp(player.y + Math.sin(angle) * spawnDist, 20, WORLD_H - 20);
 
-  const monsterType = forcedType || pick(stageMonsterPool(state.stage));
+  const monsterType = forcedType || pick(stageMonsterPool(state.stage, state.stageElapsed / state.stageDuration));
   const e = {
     x: position ? position.x : x, y: position ? position.y : y,
-    radius: isElite ? 24 : 18,
-    speed: rand(monsterType === 'bat' ? 135 : 70, monsterType === 'bat' ? 165 : 110) * (isElite ? 0.9 : 1) * (1 + Math.min(10,state.stage - 1) * 0.02),
-    hp: (isElite ? 70 : 22) * mult,
-    maxHp: (isElite ? 70 : 22) * mult,
-    dmg: (isElite ? 14 : 8) * mult,
+    radius: monsterType === 'tree' ? 31 : isElite ? 24 : 18,
+    renderSize: monsterType === 'tree' ? 172 : undefined,
+    speed: rand(monsterType === 'tree' ? 55 : monsterType === 'bat' ? 135 : 70, monsterType === 'tree' ? 75 : monsterType === 'bat' ? 165 : 110) * (isElite ? 0.9 : 1) * (1 + Math.min(10,state.stage - 1) * 0.02),
+    hp: (isElite ? 70 : monsterType === 'tree' ? 30 : 22) * mult,
+    maxHp: (isElite ? 70 : monsterType === 'tree' ? 30 : 22) * mult,
+    dmg: (isElite ? 14 : monsterType === 'tree' ? 4 : 8) * mult,
     isElite,
     isBoss: false,
     hitCooldown: 0,
@@ -627,7 +634,9 @@ function findNearestEnemy(x, y, maxRange) {
   let best = null, bestD = maxRange;
   for (const e of enemies) {
     if (e.dead) continue;
-    const d = dist(x, y, e.x, e.y);
+    // 거리는 몸통 표면 기준으로 잰다 — 판정 반지름이 큰 보스(슬라임 왕 등)를 중심까지의
+    // 거리로만 재면, 사거리 안에 서 있어도 "닿지 않은" 것으로 취급돼 공격이 아예 안 나간다.
+    const d = dist(x, y, e.x, e.y) - (e.radius || 0);
     if (d < bestD) { bestD = d; best = e; }
   }
   return best;
@@ -671,7 +680,7 @@ function meleeArcAttack(cfg) {
 
   for (const e of enemies) {
     if (e.dead) continue;
-    if (dist(player.x, player.y, e.x, e.y) > cfg.range) continue;
+    if (dist(player.x, player.y, e.x, e.y) - e.radius > cfg.range) continue;
     let diff = Math.abs(Math.atan2(e.y - player.y, e.x - player.x) - angle);
     if (diff > Math.PI) diff = 2 * Math.PI - diff;
     if (diff <= halfArc) {
@@ -713,7 +722,7 @@ function holyPulseAttack(cfg) {
   // holy 사운드는 Q스킬(정령 소환) 전용 — 기본공격에선 재생 안 함(사용자 요청)
   for (const e of enemies) {
     if (e.dead) continue;
-    if (dist(player.x, player.y, e.x, e.y) <= cfg.range) {
+    if (dist(player.x, player.y, e.x, e.y) - e.radius <= cfg.range) {
       const isCrit = Math.random() < player.critChance;
       const dmg = player.atk * cfg.dmgMult * (isCrit ? player.critMult : 1);
       dealDamageToEnemy(e, dmg, isCrit);
@@ -771,7 +780,10 @@ function killEnemy(e) {
     }
     return;
   }
-  if (e.monsterType === 'slime') playSfx('slime_die');
+  if (e.monsterType === 'slime' || e.monsterType === 'poison_slime') playSfx('slime_die');
+  if (e.monsterType === 'poison_slime') {
+    makeHazard(e,'poison',{delay:.65,duration:4,radius:62,damage:e.dmg*.5,nextTick:0});
+  }
   if (e.monsterType === 'bat') playSfx('bat_die');
   const goldDrop = Math.round((e.isBoss ? rand(60, 90) : e.isElite ? rand(8, 14) : rand(2, 5)) * player.goldMult);
   const expDrop = e.isBoss ? 40 : e.isElite ? 12 : rand(3, 6);
@@ -944,7 +956,7 @@ function qWarriorLineSlash(s) {
     if (e.dead) continue;
     const relx = e.x - player.x, rely = e.y - player.y;
     const proj = relx * dx + rely * dy; // 진행축으로의 투영 거리
-    if (proj < 0 || proj > s.range) continue;
+    if (proj < -e.radius || proj > s.range + e.radius) continue;
     const perp = Math.abs(relx * dy - rely * dx); // 진행축에서 수직으로 떨어진 거리
     if (perp <= halfWidth + e.radius) {
       dealDamageToEnemy(e, player.atk * s.dmgMult, false);
@@ -1308,13 +1320,14 @@ function update(dt) {
 
   // 이동 (사망 연출 중에는 입력을 막아 시체가 미끄러지지 않게 한다)
   const mv = player.activeDash ? { dx: 0, dy: 0 } : moveVector();
-  const curSpeed = player.speed * (1 + player.buffMoveSpeed + advancementMoveSpeed());
+  const curSpeed = player.speed * (1 + player.buffMoveSpeed + advancementMoveSpeed()) * (player.slowTimer > 0 ? 0.55 : 1);
   player.x = clamp(player.x + mv.dx * curSpeed * dt, player.radius, WORLD_W - player.radius);
   player.y = clamp(player.y + mv.dy * curSpeed * dt, player.radius, WORLD_H - player.radius);
   player.moving = mv.dx !== 0 || mv.dy !== 0;
   if (player.moving && player.attackAnimTimer <= 0) setPlayerDirection(mv.dx,mv.dy);
 
   if (player.invuln > 0) player.invuln -= dt;
+  if (player.slowTimer > 0) player.slowTimer -= dt;
   if (player.hitFlash > 0) player.hitFlash -= dt;
   if (player.attackLunge > 0) player.attackLunge -= dt;
   if (player.lifestealVfxCd > 0) player.lifestealVfxCd -= dt;
@@ -1474,7 +1487,7 @@ function update(dt) {
     if (e.attackAnim > 0) e.attackAnim -= dt;
 
     // 걷기 애니메이션 프레임 진행
-    const animFps = e.isBoss ? 5 : 8;
+    const animFps = e.isBoss ? 5 : e.monsterType === 'tree' ? 3 : 8;
     e.animTimer = (e.animTimer || 0) + dt;
     if (e.animTimer >= 1 / animFps) {
       e.animTimer -= 1 / animFps;
@@ -1483,12 +1496,12 @@ function update(dt) {
 
     if (e.isTotem) { updateTotem(e, dt); continue; }
     if (e.isBoss) { if (!player.dying) updateBossAI(e, dt); continue; }
-    if(e.monsterType !== 'slime'){updateNormalEnemy(e,dt);continue;}
+    if(e.monsterType !== 'slime' && e.monsterType !== 'poison_slime'){updateNormalEnemy(e,dt);continue;}
     if(e.aiState && e.aiState!=='idle'){updateNormalAttack(e,dt);continue;}
 
     const d = dist(e.x, e.y, player.x, player.y);
     const desired = e.radius + player.radius - 4;
-    if (e.monsterType === 'slime') {
+    if (e.monsterType === 'slime' || e.monsterType === 'poison_slime') {
       // 짧게 웅크린 뒤 방향을 고정하고 전진한다. 공중에선 접촉 공격을 하지 않는다.
       e.hopTime -= dt;
       if (!e.hopping && e.hopTime <= 0 && d > desired) {
@@ -1755,7 +1768,7 @@ function drawPlayer() {
     const drawW = cellW * scale;
     const drawH = cellH * scale;
 
-    ctx.translate(sx, sy + player.radius * 0.5);
+    ctx.translate(sx, sy + player.radius * 0.68);
     if (player.animFlip) ctx.scale(-1, 1);
     ctx.drawImage(stateImg, frame * cellW, 0, cellW, cellH, -drawW / 2, -drawH, drawW, drawH);
   } else if (heroImg && heroImg.complete && heroImg.naturalWidth > 0) {
@@ -1866,9 +1879,14 @@ function drawEnemies() {
     const [sx, sy] = worldToScreen(e.x, e.y);
 
     // 바닥 그림자 — 스프라이트 발 위치(footAnchor)에 맞춰서 그려야 붕 떠 보이지 않는다
-    const shadowY = sy + e.radius * (e.isBoss ? 0.35 : 0.4);
+    // 판정 원(e.radius)과 실제 그려지는 몸집(e.renderSize)이 분리된 개체는 그림자 폭도
+    // 판정이 아니라 그려지는 크기를 따라가야 한다 — 안 그러면 큰 몸집 아래 그림자만 작아서
+    // 공중에 뜬 것처럼 보인다.
+    const shadowY = e.bossId==='slime_king' ? sy+86+(e.height||0) : sy + e.radius * (e.isBoss ? 0.35 : 0.4);
+    const shadowRx = e.bossId==='slime_king' ? e.renderSize * 0.34 : e.renderSize ? e.renderSize * 0.30 : e.radius * 0.95;
+    const shadowRy = e.bossId==='slime_king' ? e.renderSize * 0.12 : e.renderSize ? e.renderSize * 0.10 : e.radius * 0.34;
     ctx.beginPath();
-    ctx.ellipse(sx, shadowY, e.radius * 0.95, e.radius * 0.34, 0, 0, Math.PI * 2);
+    ctx.ellipse(sx, shadowY, shadowRx, shadowRy, 0, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(0,0,0,0.42)';
     ctx.fill();
 
@@ -1876,12 +1894,12 @@ function drawEnemies() {
     ctx.translate(sx, sy);
     if (e.facing < 0) ctx.scale(-1, 1);
 
-    const size = e.isBoss ? e.radius * 4.4 : e.radius * 3.6;
+    const size = e.renderSize || (e.isBoss ? e.radius * 4.4 : e.radius * 3.6);
     const footAnchor = e.radius * (e.isBoss ? 0.35 : 0.4);   // 스프라이트 하단(발) 위치
     // 셀 안에서 캐릭터 발밑에 투명 여백이 있으면 그대로 그릴 때 그림자보다 위에 붕 떠 보인다.
     // 실제 불투명 픽셀의 하단 비율(bottomRatio)만큼만 그려서 "진짜 발"이 footAnchor에 오게 한다.
     const bottomRatio = e.isBoss ? .88 : (monsterOpaqueBottom[e.monsterType] != null ? monsterOpaqueBottom[e.monsterType] : 0.92);
-    const drawTopY = footAnchor - size * bottomRatio - (e.height || 0);
+    const drawTopY = e.bossId==='slime_king' ? -size*.60 : footAnchor - size * bottomRatio - (e.height || 0);
     const spriteTopY = sy + drawTopY;                        // 셀 상단의 화면 y
     let drawn = false;
 
@@ -1928,7 +1946,7 @@ function drawEnemies() {
         } else {
           ctx.filter = 'none';
         }
-        const squash = e.monsterType === 'slime' && !e.hopping && e.hopTime < .2 ? .88 : 1;
+        const squash = (e.monsterType === 'slime' || e.monsterType === 'poison_slime') && !e.hopping && e.hopTime < .2 ? .88 : 1;
         ctx.drawImage(drawImg, frame * MONSTER_FRAME, 0, MONSTER_FRAME, MONSTER_FRAME,
                       -size / (2*squash), drawTopY + size*(1-squash), size/squash, size*squash);
         drawn = true;

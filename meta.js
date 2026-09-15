@@ -13,7 +13,6 @@ function defaultMeta() {
     crystal: 0, // 미구현
     charLevel: 1,
     charExp: 0,
-    job: { tier1: null, tier2: null },
     advancements: { owned: [], selected: {} },
     maxStageCleared: 0,
     equipment: { starter_dagger: { level: 0 } }, // id -> { level }
@@ -37,8 +36,6 @@ function normalizeMeta(input) {
   if(APPEARANCE_POOL.some(a=>a.id===valid.appearance))base.appearance=valid.appearance;
   base.advancements.owned = ADVANCED_JOBS.filter(j=>Array.isArray(valid.advancements?.owned)&&valid.advancements.owned.includes(j.id)).map(j=>j.id);
   for(const j of ADVANCED_JOBS)if(base.advancements.owned.includes(j.id)&&valid.advancements?.selected?.[j.base]===j.id)base.advancements.selected[j.base]=j.id;
-  const tier1=JOB_TIER1.find(j=>j.id===valid.job?.tier1);
-  if(tier1){base.job.tier1=tier1.id;const tier2=JOB_TIER2.find(j=>j.id===valid.job?.tier2&&j.upgradeOf===tier1.id);if(tier2)base.job.tier2=tier2.id;}
   if(valid.equipment&&typeof valid.equipment==='object')for(const def of EQUIPMENT_POOL){const item=valid.equipment[def.id];if(item&&Number.isFinite(item.level))base.equipment[def.id]={level:Math.max(0,Math.min(10,Math.floor(item.level)))};}
   for(const [key,category] of [['equippedWeapon','weapon'],['equippedArmor','armor'],['equippedAccessory','accessory']]){
     if(valid[key]===null)base[key]=null;
@@ -105,7 +102,6 @@ function setAppearance(id) {
   saveMeta();
 }
 
-function canChooseTier1() { return meta.charLevel >= 5 && !meta.job.tier1; }
 function chooseAdvancement(id) {
   const job=ADVANCED_JOBS.find(j=>j.id===id&&j.base===meta.appearance);
   if(!job||meta.charLevel<5)return false;
@@ -116,32 +112,6 @@ function chooseAdvancement(id) {
   }
   meta.advancements.selected[job.base]=id;
   if(!saveMeta()){meta.advancements=JSON.parse(prior);meta.gold=gold;meta.soul=soul;return false;}
-  return true;
-}
-function canChooseTier2() {
-  return meta.charLevel >= 15 && meta.job.tier1 && !meta.job.tier2;
-}
-
-function chooseTier1(jobId) {
-  const node = JOB_TIER1.find(j => j.id === jobId);
-  if (!node || !canChooseTier1()) return false;
-  if (meta.gold < node.cost.gold || meta.soul < node.cost.soul) return false;
-  meta.gold -= node.cost.gold;
-  meta.soul -= node.cost.soul;
-  meta.job.tier1 = jobId;
-  saveMeta();
-  return true;
-}
-
-function chooseTier2() {
-  if (!canChooseTier2()) return false;
-  const node = JOB_TIER2.find(j => j.upgradeOf === meta.job.tier1);
-  if (!node) return false;
-  if (meta.gold < node.cost.gold || meta.soul < node.cost.soul) return false;
-  meta.gold -= node.cost.gold;
-  meta.soul -= node.cost.soul;
-  meta.job.tier2 = node.id;
-  saveMeta();
   return true;
 }
 
@@ -258,7 +228,7 @@ function getComputedStats() {
   s.atk += GROWTH_PER_LEVEL.atk * (meta.charLevel - 1);
   s.def += GROWTH_PER_LEVEL.def * (meta.charLevel - 1);
 
-  const jobNode = getJobNode(meta.job);
+  const jobNode = getJobNode();
   applyStatBonus(s, jobNode.statBonus);
 
   for (const id of [meta.equippedWeapon, meta.equippedArmor, meta.equippedAccessory]) {
@@ -311,7 +281,7 @@ function getWeaponSkill() {
 }
 
 function getJobSkills() {
-  return getJobNode(meta.job); // { qSkill, eSkill, ... }
+  return getJobNode(); // { qSkill, eSkill, ... }
 }
 
 function getEquippedPetDef() {

@@ -1,0 +1,60 @@
+﻿{
+    "cellSize":  256,
+    "baseline":  232,
+    "animations":  {
+                       "walk":  {
+                                    "count":  8,
+                                    "indices":  [
+                                                    0,
+                                                    2,
+                                                    4,
+                                                    6
+                                                ]
+                                },
+                       "idle":  {
+                                    "count":  6,
+                                    "indices":  [
+                                                    0,
+                                                    2,
+                                                    3,
+                                                    5
+                                                ]
+                                },
+                       "attack":  {
+                                      "count":  5,
+                                      "indices":  [
+                                                      0,
+                                                      1,
+                                                      3,
+                                                      4
+                                                  ]
+                                  },
+                       "hit":  {
+                                   "count":  6,
+                                   "indices":  [
+                                                   0,
+                                                   2,
+                                                   3,
+                                                   5
+                                               ]
+                               },
+                       "death":  {
+                                     "count":  5,
+                                     "indices":  [
+                                                     0,
+                                                     1,
+                                                     3,
+                                                     4
+                                                 ]
+                                 },
+                       "revive":  {
+                                      "count":  5,
+                                      "indices":  [
+                                                      0,
+                                                      1,
+                                                      3,
+                                                      4
+                                                  ]
+                                  }
+                   }
+}

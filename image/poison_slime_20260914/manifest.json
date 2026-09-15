@@ -1,0 +1,51 @@
+﻿{
+    "cellSize":  256,
+    "baseline":  232,
+    "animations":  {
+                       "walk":  {
+                                    "count":  5,
+                                    "indices":  [
+                                                    0,
+                                                    1,
+                                                    3,
+                                                    4
+                                                ]
+                                },
+                       "attack":  {
+                                      "count":  4,
+                                      "indices":  [
+                                                      0,
+                                                      1,
+                                                      2,
+                                                      3
+                                                  ]
+                                  },
+                       "hit":  {
+                                   "count":  4,
+                                   "indices":  [
+                                                   0,
+                                                   1,
+                                                   2,
+                                                   3
+                                               ]
+                               },
+                       "death":  {
+                                     "count":  4,
+                                     "indices":  [
+                                                     0,
+                                                     1,
+                                                     2,
+                                                     3
+                                                 ]
+                                 },
+                       "puddle":  {
+                                      "count":  7,
+                                      "indices":  [
+                                                      1,
+                                                      3,
+                                                      5,
+                                                      6
+                                                  ]
+                                  }
+                   }
+}
